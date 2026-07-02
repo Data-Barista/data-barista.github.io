@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Data Barista · I make AI legible to leadership</title>
+  <meta name="description" content="Applied-AI builder. 20 years in financial services technology. RAG pipelines, LLM agents, adoption analytics, and the governance that makes them stick.">
+  <meta property="og:title" content="Data Barista">
+  <meta property="og:description" content="I make AI legible to leadership.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://data-barista.github.io/">
+  <meta name="theme-color" content="#faf6f0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#16110d" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="/">
+    <svg viewBox="0 0 64 64" width="22" height="22" aria-hidden="true" focusable="false">
+      <rect x="20" y="18" width="5" height="8" rx="2.5" class="mark-steam"/>
+      <rect x="29" y="13" width="5" height="13" rx="2.5" class="mark-steam"/>
+      <rect x="38" y="8" width="5" height="18" rx="2.5" class="mark-steam"/>
+      <path d="M16 32h30v10a10 10 0 0 1-10 10h-10a10 10 0 0 1-10-10z" fill="currentColor"/>
+      <path d="M46 36c7 0 7 10 0 10" stroke="currentColor" stroke-width="4" fill="none"/>
+    </svg>
+    <span>Data Barista</span>
+  </a>
+  <nav aria-label="Site">
+    <a href="#work">Work</a>
+    <a href="#how">How I work</a>
+    <a href="https://github.com/Data-Barista" target="_blank" rel="noopener noreferrer">GitHub</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <h1>I make AI legible to&nbsp;leadership.</h1>
+    <p class="lede">20 years in financial services technology, most of them spent translating between the business and the engineers. AI changed the math, so now I build the thing myself: RAG pipelines, LLM agents, adoption analytics on Snowflake and Power&nbsp;BI. Then I explain what it's worth in language a steering committee can act on.</p>
+    <p class="lede">I turn AI chaos into decisions leadership can trust. What's being adopted, what it costs, which workflows to redesign, and where governance has to hold.</p>
+  </section>
+
+  <section id="work" aria-labelledby="work-title">
+    <h2 id="work-title">Work</h2>
+    <p class="section-note">7 public builds. Every one runs on synthetic or fictional data, so click through and read the code.</p>
+
+    <ul class="cards">
+      <li class="card">
+        <h3><a href="https://github.com/Data-Barista/ai-investment-map" target="_blank" rel="noopener noreferrer">AI Investment Map</a></h3>
+        <p class="pitch">A bank's whole AI portfolio on one screen: every initiative sized by spend and colored by status, in a treemap I squarified by hand instead of importing a chart library.</p>
+        <p class="shows"><strong>What it shows:</strong> execs read it in 10 seconds, and that was the whole spec.</p>
+        <p class="repo">Data-Barista/ai-investment-map&thinsp;&#8599;</p>
+      </li>
+
+      <li class="card">
+        <h3><a href="https://github.com/NebulaOrchid/Brief-Me" target="_blank" rel="noopener noreferrer">Brief Me</a></h3>
+        <p class="pitch">Adoption analytics for an AI rollout. Ask a question in plain English and a Snowflake Cortex agent writes the SQL, over a population of 500 synthetic employees.</p>
+        <p class="shows"><strong>What it shows:</strong> adoption claims need a pipeline under them. I built the pipeline first, then the conversational layer.</p>
+        <p class="repo">NebulaOrchid/Brief-Me&thinsp;&#8599;</p>
+      </li>
+
+      <li class="card">
+        <h3><a href="https://github.com/Data-Barista/deep-research-harness" target="_blank" rel="noopener noreferrer">Deep Research Harness</a></h3>
+        <p class="pitch">A rerunnable research pipeline on Claude Code: fan out searches, check every claim against its source, produce a cited report you can regenerate next month without starting over.</p>
+        <p class="shows"><strong>What it shows:</strong> agents earn trust through repeatability and citations, so both are built in.</p>
+        <p class="repo">Data-Barista/deep-research-harness&thinsp;&#8599;</p>
+      </li>
+
+      <li class="card">
+        <h3><a href="https://github.com/Data-Barista/chief-of-staff-os" target="_blank" rel="noopener noreferrer">Chief of Staff OS</a></h3>
+        <p class="pitch">A playbook for AI-assisted executive comms. It extracts the exec's voice from past writing, drafts in it, and passes every number through a firewall so nothing invented goes out.</p>
+        <p class="shows"><strong>What it shows:</strong> the scary failure mode is a made-up number in a leadership memo. The design starts there, with holdout validation to prove the voice holds.</p>
+        <p class="repo">Data-Barista/chief-of-staff-os&thinsp;&#8599;</p>
+      </li>
+
+      <li class="card">
+        <h3><a href="https://github.com/Data-Barista/agentic-pmo-playbook" target="_blank" rel="noopener noreferrer">Agentic PMO Playbook</a></h3>
+        <p class="pitch">An architecture for running a PMO with agents on the Microsoft stack: Copilot Studio as the interface, Dataverse for state, Power Automate for the plumbing.</p>
+        <p class="shows"><strong>What it shows:</strong> most large firms already live on Microsoft. Meeting them there beats selling a new stack.</p>
+        <p class="repo">Data-Barista/agentic-pmo-playbook&thinsp;&#8599;</p>
+      </li>
+
+      <li class="card">
+        <h3><a href="https://github.com/Data-Barista/ir-memo-agent" target="_blank" rel="noopener noreferrer">IR Memo Agent</a></h3>
+        <p class="pitch">An agent pipeline that preps a company for analyst questions: it drafts the memo, flags the hard questions, and cites its sources. FastAPI backend, React front end, fictional company throughout.</p>
+        <p class="shows"><strong>What it shows:</strong> agentic workflows pay off on prep work that always gets squeezed. Also a full-stack build, end to end.</p>
+        <p class="repo">Data-Barista/ir-memo-agent&thinsp;&#8599;</p>
+      </li>
+
+      <li class="card">
+        <h3><a href="https://github.com/Data-Barista/spelling-bee" target="_blank" rel="noopener noreferrer">Spelling Bee</a></h3>
+        <p class="pitch">A voice-first spelling app for kids. OpenAI text-to-speech reads the word aloud, and Whisper checks the spelling the kid says back.</p>
+        <p class="shows"><strong>What it shows:</strong> small and finished counts too. Voice UX has sharp edges you only find by shipping.</p>
+        <p class="repo">Data-Barista/spelling-bee&thinsp;&#8599;</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="how" aria-labelledby="how-title">
+    <h2 id="how-title">How I work</h2>
+    <p class="section-note">Every problem gets sorted into the same 3 buckets. When a project is stuck, one of these is usually the reason.</p>
+
+    <div class="buckets">
+      <article>
+        <p class="bucket-num" aria-hidden="true">01</p>
+        <h3>Business value</h3>
+        <p>What decision does this change, and what is that worth? If I can't answer in a sentence, it's a demo. Demos are fun to build and easy to kill at budget time.</p>
+      </article>
+      <article>
+        <p class="bucket-num" aria-hidden="true">02</p>
+        <h3>Technical feasibility</h3>
+        <p>Can we build it with the stack and the data we actually have? I prototype before I promise. The tech is usually the easy part, which still surprises people.</p>
+      </article>
+      <article>
+        <p class="bucket-num" aria-hidden="true">03</p>
+        <h3>Organizational dynamics</h3>
+        <p>Who has to change how they work for this to land? This is where AI projects die. Someone has to sit with the team that distrusts the new tool, and I'd rather it be the person who built it.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="hire">
+    <p>Hiring, or need something like this built? GitHub is the front door for now. Open an issue on any repo, or start at <a href="https://github.com/Data-Barista" target="_blank" rel="noopener noreferrer">github.com/Data-Barista</a>.</p>
+  </section>
+</main>
+
+<footer>
+  <p>Fictional data everywhere: every project uses synthetic or fictional firms and people.</p>
+  <p><a href="https://github.com/Data-Barista" target="_blank" rel="noopener noreferrer">github.com/Data-Barista</a> &middot; &copy; 2026 Data Barista</p>
+</footer>
+
+</body>
+</html>
