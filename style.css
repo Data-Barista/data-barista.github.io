@@ -5,6 +5,7 @@
 
   --bg: #faf6f0;
   --surface: #fffdf9;
+  --panel: #f4ede1;
   --ink: #241b13;
   --ink-soft: #6d604f;
   --accent: #96450f;
@@ -20,6 +21,7 @@
   :root {
     --bg: #16110c;
     --surface: #1f1812;
+    --panel: #241c13;
     --ink: #ece3d6;
     --ink-soft: #a1937f;
     --accent: #e29a63;
@@ -200,74 +202,222 @@ h2 {
   padding: 1.25rem 1.5rem;
 }
 
-/* ---------- tile illustrations ---------- */
+/* ---------- architecture-diagram tiles ---------- */
 
-.card-illus {
-  aspect-ratio: 900 / 506;
-  overflow: hidden;
+.card-arch {
+  aspect-ratio: 360 / 204;
+  background: var(--panel);
   border-bottom: 1px solid var(--line);
-  background: #f6efe3; /* illustrations stay on cream in dark mode, like printed cards */
 }
 
-.illus-zoom {
-  height: 100%;
-  transition: transform 400ms ease;
-}
-
-.card-illus img {
+.card-arch svg {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+}
+
+.a-box {
+  fill: var(--surface);
+  stroke: var(--ink);
+  stroke-opacity: 0.3;
+  stroke-width: 1.4;
+}
+
+.a-box-acc {
+  fill: var(--accent);
+}
+
+.a-txt {
+  fill: var(--ink);
+  font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+  font-size: 11.5px;
+}
+
+.a-txt-inv {
+  fill: var(--bg);
+  font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+  font-size: 11.5px;
+}
+
+.a-stack {
+  fill: var(--ink-soft);
+  font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+  font-size: 10px;
+}
+
+.a-arrow {
+  stroke: var(--accent);
+  stroke-width: 2;
+  fill: none;
+}
+
+.a-head {
+  fill: var(--accent);
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  /* Reveal once scrolled into view (.in via IntersectionObserver),
-     then a slow drift keeps each tile quietly alive. */
-  .card-illus.in img {
-    animation:
-      tile-settle 1s cubic-bezier(0.16, 1, 0.3, 1) both,
-      tile-drift 26s ease-in-out 1s infinite alternate;
+  /* Diagram assembles step by step once scrolled into view (.in via
+     IntersectionObserver): box, arrow, box, arrow, box, then the stack line. */
+  .card-arch .a-s1,
+  .card-arch .a-s2,
+  .card-arch .a-s3,
+  .card-arch .a-s4 {
+    transform-box: fill-box;
+    transform-origin: center;
   }
 
-  /* Second column settles a beat later and drifts on a different axis,
-     so the grid doesn't move in lockstep. */
-  .cards li:nth-child(even) .card-illus.in img {
-    animation:
-      tile-settle 1s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both,
-      tile-drift-alt 30s ease-in-out 1.2s infinite alternate;
-  }
+  .card-arch.in .a-s1 { animation: arch-step 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .card-arch.in .a-s2 { animation: arch-step 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both; }
+  .card-arch.in .a-s3 { animation: arch-step 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both; }
+  .card-arch.in .a-s4 { animation: arch-fade 0.6s ease-out 0.65s both; }
 
-  .card:hover .illus-zoom {
-    transform: scale(1.04);
+  .card-arch.in path.a-arrow { animation: arch-draw 0.35s ease-out both; }
+  .card-arch.in .a-s2.a-arrow { animation-delay: 0.3s; }
+  .card-arch.in .a-s3.a-arrow { animation-delay: 0.5s; }
+
+  /* Hovering a card gives the agent step a single gentle pulse. */
+  .card:hover .a-box-acc {
+    animation: arch-pulse 0.9s ease-in-out;
   }
 }
 
-@keyframes tile-settle {
-  from { opacity: 0; transform: scale(1.08); }
+@keyframes arch-step {
+  from { opacity: 0; transform: translateY(10px); }
 }
 
-/* Both drift loops start from the identity transform so they pick up
-   seamlessly where tile-settle ends, then alternate back. */
-@keyframes tile-drift {
-  from { transform: scale(1) translateX(0); }
-  to   { transform: scale(1.07) translateX(1.2%); }
+@keyframes arch-draw {
+  from { stroke-dasharray: 26; stroke-dashoffset: 26; }
+  to   { stroke-dasharray: 26; stroke-dashoffset: 0; }
 }
 
-@keyframes tile-drift-alt {
-  from { transform: scale(1) translateY(0); }
-  to   { transform: scale(1.06) translateY(-1.4%); }
+@keyframes arch-fade {
+  from { opacity: 0; }
+}
+
+@keyframes arch-pulse {
+  50% { transform: scale(1.02); }
+}
+
+/* ---------- project detail dialogs ---------- */
+
+dialog.proj {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--ink);
+  padding: 0;
+  width: min(34rem, calc(100vw - 2.5rem));
+  max-height: calc(100dvh - 3rem);
+  overflow: hidden auto;
+}
+
+dialog.proj::backdrop {
+  background: rgb(22 17 12 / 0.55);
+  backdrop-filter: blur(3px);
+}
+
+.proj-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid var(--line);
+  background: #f6efe3; /* illustration stays on cream in dark mode, like a printed card */
+}
+
+.proj-inner {
+  position: relative;
+  padding: 1.5rem 1.75rem 1.75rem;
+}
+
+.proj-close {
+  position: absolute;
+  top: 1.1rem;
+  right: 1.25rem;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--ink-soft);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.proj-close:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+dialog.proj h3 {
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+  padding-right: 2.5rem;
+}
+
+dialog.proj h4 {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 1.25rem 0 0.35rem;
+}
+
+dialog.proj p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+.chips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.chips li {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.2rem 0.55rem;
+}
+
+.proj-links {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 1.5rem !important;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--bg);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+.btn:hover {
+  text-decoration: none;
+  filter: brightness(1.08);
+}
+
+body:has(dialog[open]) {
+  overflow: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .card,
   .card:hover {
-    transition: none;
-    transform: none;
-  }
-
-  .illus-zoom,
-  .card:hover .illus-zoom {
     transition: none;
     transform: none;
   }
@@ -299,17 +449,6 @@ h2 {
 
 .pitch {
   margin: 0 0 0.85rem;
-}
-
-.shows {
-  color: var(--ink-soft);
-  font-size: 0.95rem;
-  margin: 0 0 1.1rem;
-}
-
-.shows strong {
-  color: var(--ink);
-  font-weight: 600;
 }
 
 .repo {
