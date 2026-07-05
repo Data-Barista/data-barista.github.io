@@ -183,7 +183,7 @@ h2 {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 12px;
-  padding: 1.5rem 1.5rem 1.25rem;
+  overflow: hidden;
   box-shadow: var(--shadow);
   transition: border-color 120ms ease, transform 120ms ease;
 }
@@ -193,9 +193,81 @@ h2 {
   transform: translateY(-2px);
 }
 
+.card-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.25rem 1.5rem;
+}
+
+/* ---------- tile illustrations ---------- */
+
+.card-illus {
+  aspect-ratio: 900 / 506;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  background: #f6efe3; /* illustrations stay on cream in dark mode, like printed cards */
+}
+
+.illus-zoom {
+  height: 100%;
+  transition: transform 400ms ease;
+}
+
+.card-illus img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Reveal once scrolled into view (.in via IntersectionObserver),
+     then a slow drift keeps each tile quietly alive. */
+  .card-illus.in img {
+    animation:
+      tile-settle 1s cubic-bezier(0.16, 1, 0.3, 1) both,
+      tile-drift 26s ease-in-out 1s infinite alternate;
+  }
+
+  /* Second column settles a beat later and drifts on a different axis,
+     so the grid doesn't move in lockstep. */
+  .cards li:nth-child(even) .card-illus.in img {
+    animation:
+      tile-settle 1s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both,
+      tile-drift-alt 30s ease-in-out 1.2s infinite alternate;
+  }
+
+  .card:hover .illus-zoom {
+    transform: scale(1.04);
+  }
+}
+
+@keyframes tile-settle {
+  from { opacity: 0; transform: scale(1.08); }
+}
+
+/* Both drift loops start from the identity transform so they pick up
+   seamlessly where tile-settle ends, then alternate back. */
+@keyframes tile-drift {
+  from { transform: scale(1) translateX(0); }
+  to   { transform: scale(1.07) translateX(1.2%); }
+}
+
+@keyframes tile-drift-alt {
+  from { transform: scale(1) translateY(0); }
+  to   { transform: scale(1.06) translateY(-1.4%); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .card,
   .card:hover {
+    transition: none;
+    transform: none;
+  }
+
+  .illus-zoom,
+  .card:hover .illus-zoom {
     transition: none;
     transform: none;
   }
