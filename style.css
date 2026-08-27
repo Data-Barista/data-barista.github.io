@@ -117,8 +117,7 @@ a:hover {
 /* ---------- hero ---------- */
 
 .hero {
-  padding: clamp(3rem, 10vw, 6.5rem) 0 clamp(2.5rem, 7vw, 5rem);
-  max-width: 42rem;
+  padding: clamp(1.75rem, 5vw, 2rem) 0 clamp(0.5rem, 2vw, 1.25rem);
 }
 
 h1 {
@@ -127,7 +126,32 @@ h1 {
   font-size: clamp(2.4rem, 6.5vw, 4rem);
   line-height: 1.08;
   letter-spacing: -0.015em;
-  margin: 0 0 1.75rem;
+  margin: 0 0 1.25rem;
+}
+
+h1 a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 3px solid var(--line);
+  transition: border-color 120ms ease;
+}
+
+h1 a:hover {
+  border-bottom-color: var(--accent);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 46rem) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    gap: 2.5rem;
+    align-items: start;
+  }
 }
 
 .lede {
@@ -141,10 +165,28 @@ h1 {
   margin-bottom: 0;
 }
 
+.hero-stack {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.hero-stack + .hero-stack {
+  margin-top: 0.9rem;
+}
+
+@media (max-width: 45.99rem) {
+  .hero-side {
+    margin-top: 0.25rem;
+  }
+}
+
 /* ---------- sections ---------- */
 
 section {
-  padding: clamp(2.5rem, 6vw, 4.5rem) 0;
+  padding: clamp(1.75rem, 4vw, 2.25rem) 0;
 }
 
 h2 {
@@ -157,7 +199,7 @@ h2 {
 
 .section-note {
   color: var(--ink-soft);
-  margin: 0 0 2.25rem;
+  margin: 0 0 1.5rem;
   max-width: 38rem;
 }
 
@@ -207,7 +249,7 @@ h2 {
 .card-arch {
   aspect-ratio: 360 / 204;
   background: var(--panel);
-  border-bottom: 1px solid var(--line);
+  border-top: 1px solid var(--line);
 }
 
 .card-arch svg {
@@ -456,44 +498,6 @@ body:has(dialog[open]) {
   font-family: var(--mono);
   font-size: 0.78rem;
   color: var(--ink-soft);
-}
-
-/* ---------- how I work ---------- */
-
-.buckets {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-}
-
-@media (min-width: 46rem) {
-  .buckets {
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 2.5rem;
-  }
-}
-
-.bucket-num {
-  font-family: var(--mono);
-  font-size: 0.8rem;
-  color: var(--accent);
-  margin: 0 0 0.4rem;
-}
-
-.buckets h3 {
-  font-family: var(--serif);
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin: 0 0 0.5rem;
-}
-
-.buckets p {
-  margin: 0;
-  color: var(--ink-soft);
-}
-
-.buckets p.bucket-num {
-  color: var(--accent);
 }
 
 /* ---------- hire ---------- */

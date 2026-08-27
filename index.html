@@ -4,16 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Data Barista · AI solution engineer</title>
-  <meta name="description" content="AI solution engineer and enabler. 20 years in financial services technology. RAG pipelines, LLM agents, adoption analytics, and the enablement that makes them stick.">
+  <meta name="description" content="Katie Zhang, AI product manager and embedded builder with 20 years in financial services. I build the metrics and governance layer that shows leaders what AI is actually doing across the firm.">
   <meta property="og:title" content="Data Barista">
-  <meta property="og:description" content="AI solution engineer and enabler. I build AI solutions, then I get people using them.">
+  <meta property="og:description" content="AI product manager and embedded builder with 20 years in financial services. My clients are Chief of Staff teams and COOs.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://data-barista.github.io/">
   <meta property="og:image" content="https://data-barista.github.io/assets/tile-ai-investment-map.jpg">
   <meta name="theme-color" content="#faf6f0" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#16110d" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
 
@@ -30,24 +30,36 @@
   </a>
   <nav aria-label="Site">
     <a href="#work">Work</a>
-    <a href="#how">How I work</a>
     <a href="https://github.com/Data-Barista" target="_blank" rel="noopener noreferrer">GitHub</a>
   </nav>
 </header>
 
 <main>
   <section class="hero">
-    <h1>I build AI solutions. Then I get people using&nbsp;them.</h1>
-    <p class="lede">AI solution engineer, 20 years in financial services technology, most of them spent translating between the business and the engineers. AI changed the math, so now I build the thing myself: RAG pipelines, LLM agents, adoption analytics on Snowflake and Power&nbsp;BI.</p>
-    <p class="lede">Building is half the job. The other half is enablement: teaching teams to work the tools, showing leadership what they're worth, and setting the governance that keeps them trustworthy.</p>
+    <h1><a href="https://www.linkedin.com/in/katiezhang" target="_blank" rel="noopener noreferrer">Katie&nbsp;Zhang</a></h1>
+    <div class="hero-grid">
+      <div class="hero-bio">
+        <p class="lede">AI product manager and embedded builder with 20 years in financial services. I build the metrics and governance layer that shows leaders what AI is actually doing across the firm.</p>
+        <p class="lede">My clients are Chief of Staff teams and COOs. I sit with their teams, prototype in days, and turn what works into repeatable patterns, from briefing memo generation to agentic PMO workflows and AI-enabled executive coordination.</p>
+      </div>
+      <div class="hero-side">
+        <p class="hero-stack">GenAI data and analytics &middot; LLM agents &middot; RAG pipelines &middot; automations &middot; AI adoption metrics</p>
+        <p class="hero-stack">Snowflake &middot; Power&nbsp;BI &middot; Power Platform and Power&nbsp;Automate &middot; Claude&nbsp;Code &middot; Python</p>
+      </div>
+    </div>
   </section>
 
   <section id="work" aria-labelledby="work-title">
     <h2 id="work-title">Work</h2>
-    <p class="section-note">7 public builds on synthetic or fictional data. Open any tile for the business problem, the stack, and what I learned.</p>
+    <p class="section-note">Examples, built on synthetic or fictional data. Open any tile for the business problem, the stack, and what I learned.</p>
 
     <ul class="cards">
       <li class="card" data-dialog="d-investment-map">
+        <div class="card-content">
+          <h3><a href="https://ai-investment-map-mu.vercel.app" target="_blank" rel="noopener noreferrer">AI Investment Map</a></h3>
+          <p class="pitch">A bank's whole AI portfolio on one screen: every initiative sized by spend and colored by status, in a treemap I squarified by hand instead of importing a chart library.</p>
+          <p class="repo">ai-investment-map-mu.vercel.app&thinsp;&#8599;</p>
+        </div>
         <div class="card-arch" aria-hidden="true">
           <svg viewBox="0 0 360 204">
             <rect fill="#fffdf9" stroke="#241b13" stroke-opacity="0.3" stroke-width="1.4" class="a-box a-s1" x="30" y="12" width="300" height="34" rx="6"/>
@@ -63,14 +75,14 @@
             <text fill="#6d604f" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" class="a-stack a-s4" x="180" y="192" text-anchor="middle">React 19 · Vite 7 · Tailwind 4 · no chart library</text>
           </svg>
         </div>
-        <div class="card-content">
-          <h3><a href="https://ai-investment-map-mu.vercel.app" target="_blank" rel="noopener noreferrer">AI Investment Map</a></h3>
-          <p class="pitch">A bank's whole AI portfolio on one screen: every initiative sized by spend and colored by status, in a treemap I squarified by hand instead of importing a chart library.</p>
-          <p class="repo">ai-investment-map-mu.vercel.app&thinsp;&#8599;</p>
-        </div>
       </li>
 
       <li class="card" data-dialog="d-brief-me">
+        <div class="card-content">
+          <h3><a href="https://github.com/Data-Barista/brief-me" target="_blank" rel="noopener noreferrer">Brief Me</a></h3>
+          <p class="pitch">Adoption analytics for an AI rollout. Ask a question in plain English and a Snowflake Cortex agent writes the SQL, over a population of 500 synthetic employees.</p>
+          <p class="repo">Data-Barista/brief-me&thinsp;&#8599;</p>
+        </div>
         <div class="card-arch" aria-hidden="true">
           <svg viewBox="0 0 360 204">
             <rect fill="#fffdf9" stroke="#241b13" stroke-opacity="0.3" stroke-width="1.4" class="a-box a-s1" x="30" y="12" width="300" height="34" rx="6"/>
@@ -86,14 +98,14 @@
             <text fill="#6d604f" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" class="a-stack a-s4" x="180" y="192" text-anchor="middle">Next.js 14 · Snowflake · Tremor · AG Grid</text>
           </svg>
         </div>
-        <div class="card-content">
-          <h3><a href="https://github.com/Data-Barista/brief-me" target="_blank" rel="noopener noreferrer">Brief Me</a></h3>
-          <p class="pitch">Adoption analytics for an AI rollout. Ask a question in plain English and a Snowflake Cortex agent writes the SQL, over a population of 500 synthetic employees.</p>
-          <p class="repo">Data-Barista/brief-me&thinsp;&#8599;</p>
-        </div>
       </li>
 
       <li class="card" data-dialog="d-research">
+        <div class="card-content">
+          <h3><a href="https://github.com/Data-Barista/deep-research-harness" target="_blank" rel="noopener noreferrer">Deep Research Harness</a></h3>
+          <p class="pitch">A rerunnable research pipeline on Claude Code: fan out searches, check every claim against its source, produce a cited report you can regenerate next month without starting over.</p>
+          <p class="repo">Data-Barista/deep-research-harness&thinsp;&#8599;</p>
+        </div>
         <div class="card-arch" aria-hidden="true">
           <svg viewBox="0 0 360 204">
             <rect fill="#fffdf9" stroke="#241b13" stroke-opacity="0.3" stroke-width="1.4" class="a-box a-s1" x="30" y="12" width="300" height="34" rx="6"/>
@@ -109,14 +121,14 @@
             <text fill="#6d604f" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" class="a-stack a-s4" x="180" y="192" text-anchor="middle">Claude Code · Markdown · no runtime, no database</text>
           </svg>
         </div>
-        <div class="card-content">
-          <h3><a href="https://github.com/Data-Barista/deep-research-harness" target="_blank" rel="noopener noreferrer">Deep Research Harness</a></h3>
-          <p class="pitch">A rerunnable research pipeline on Claude Code: fan out searches, check every claim against its source, produce a cited report you can regenerate next month without starting over.</p>
-          <p class="repo">Data-Barista/deep-research-harness&thinsp;&#8599;</p>
-        </div>
       </li>
 
       <li class="card" data-dialog="d-cos">
+        <div class="card-content">
+          <h3><a href="https://github.com/Data-Barista/chief-of-staff-os" target="_blank" rel="noopener noreferrer">Chief of Staff OS</a></h3>
+          <p class="pitch">A playbook for AI-assisted executive comms. It extracts the exec's voice from past writing, drafts in it, and passes every number through a firewall so nothing invented goes out.</p>
+          <p class="repo">Data-Barista/chief-of-staff-os&thinsp;&#8599;</p>
+        </div>
         <div class="card-arch" aria-hidden="true">
           <svg viewBox="0 0 360 204">
             <rect fill="#fffdf9" stroke="#241b13" stroke-opacity="0.3" stroke-width="1.4" class="a-box a-s1" x="30" y="12" width="300" height="34" rx="6"/>
@@ -132,14 +144,14 @@
             <text fill="#6d604f" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" class="a-stack a-s4" x="180" y="192" text-anchor="middle">System prompts · fact tables · rubric scoring</text>
           </svg>
         </div>
-        <div class="card-content">
-          <h3><a href="https://github.com/Data-Barista/chief-of-staff-os" target="_blank" rel="noopener noreferrer">Chief of Staff OS</a></h3>
-          <p class="pitch">A playbook for AI-assisted executive comms. It extracts the exec's voice from past writing, drafts in it, and passes every number through a firewall so nothing invented goes out.</p>
-          <p class="repo">Data-Barista/chief-of-staff-os&thinsp;&#8599;</p>
-        </div>
       </li>
 
       <li class="card" data-dialog="d-pmo">
+        <div class="card-content">
+          <h3><a href="https://github.com/Data-Barista/agentic-pmo-playbook" target="_blank" rel="noopener noreferrer">Agentic PMO Playbook</a></h3>
+          <p class="pitch">An architecture for running a PMO with agents on the Microsoft stack: Copilot Studio as the interface, Dataverse for state, Power Automate for the plumbing.</p>
+          <p class="repo">Data-Barista/agentic-pmo-playbook&thinsp;&#8599;</p>
+        </div>
         <div class="card-arch" aria-hidden="true">
           <svg viewBox="0 0 360 204">
             <rect fill="#fffdf9" stroke="#241b13" stroke-opacity="0.3" stroke-width="1.4" class="a-box a-s1" x="30" y="12" width="300" height="34" rx="6"/>
@@ -155,14 +167,14 @@
             <text fill="#6d604f" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" class="a-stack a-s4" x="180" y="192" text-anchor="middle">Copilot Studio · Dataverse · Power Automate · Fluent UI</text>
           </svg>
         </div>
-        <div class="card-content">
-          <h3><a href="https://github.com/Data-Barista/agentic-pmo-playbook" target="_blank" rel="noopener noreferrer">Agentic PMO Playbook</a></h3>
-          <p class="pitch">An architecture for running a PMO with agents on the Microsoft stack: Copilot Studio as the interface, Dataverse for state, Power Automate for the plumbing.</p>
-          <p class="repo">Data-Barista/agentic-pmo-playbook&thinsp;&#8599;</p>
-        </div>
       </li>
 
       <li class="card" data-dialog="d-ir">
+        <div class="card-content">
+          <h3><a href="https://github.com/Data-Barista/ir-memo-agent" target="_blank" rel="noopener noreferrer">IR Memo Agent</a></h3>
+          <p class="pitch">An agent pipeline that preps a company for analyst questions: it drafts the memo, flags the hard questions, and cites its sources. FastAPI backend, React front end, fictional company throughout.</p>
+          <p class="repo">Data-Barista/ir-memo-agent&thinsp;&#8599;</p>
+        </div>
         <div class="card-arch" aria-hidden="true">
           <svg viewBox="0 0 360 204">
             <rect fill="#fffdf9" stroke="#241b13" stroke-opacity="0.3" stroke-width="1.4" class="a-box a-s1" x="30" y="12" width="300" height="34" rx="6"/>
@@ -178,14 +190,14 @@
             <text fill="#6d604f" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" class="a-stack a-s4" x="180" y="192" text-anchor="middle">FastAPI · Claude API · yfinance · React 19</text>
           </svg>
         </div>
-        <div class="card-content">
-          <h3><a href="https://github.com/Data-Barista/ir-memo-agent" target="_blank" rel="noopener noreferrer">IR Memo Agent</a></h3>
-          <p class="pitch">An agent pipeline that preps a company for analyst questions: it drafts the memo, flags the hard questions, and cites its sources. FastAPI backend, React front end, fictional company throughout.</p>
-          <p class="repo">Data-Barista/ir-memo-agent&thinsp;&#8599;</p>
-        </div>
       </li>
 
       <li class="card" data-dialog="d-bee">
+        <div class="card-content">
+          <h3><a href="https://github.com/Data-Barista/spelling-bee" target="_blank" rel="noopener noreferrer">Spelling Bee</a></h3>
+          <p class="pitch">A voice-first spelling app for kids. OpenAI text-to-speech reads the word aloud, and Whisper checks the spelling the kid says back.</p>
+          <p class="repo">Data-Barista/spelling-bee&thinsp;&#8599;</p>
+        </div>
         <div class="card-arch" aria-hidden="true">
           <svg viewBox="0 0 360 204">
             <rect fill="#fffdf9" stroke="#241b13" stroke-opacity="0.3" stroke-width="1.4" class="a-box a-s1" x="30" y="12" width="300" height="34" rx="6"/>
@@ -201,40 +213,13 @@
             <text fill="#6d604f" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" class="a-stack a-s4" x="180" y="192" text-anchor="middle">React 19 · OpenAI TTS + Whisper · PWA offline</text>
           </svg>
         </div>
-        <div class="card-content">
-          <h3><a href="https://github.com/Data-Barista/spelling-bee" target="_blank" rel="noopener noreferrer">Spelling Bee</a></h3>
-          <p class="pitch">A voice-first spelling app for kids. OpenAI text-to-speech reads the word aloud, and Whisper checks the spelling the kid says back.</p>
-          <p class="repo">Data-Barista/spelling-bee&thinsp;&#8599;</p>
-        </div>
       </li>
     </ul>
   </section>
 
-  <section id="how" aria-labelledby="how-title">
-    <h2 id="how-title">How I work</h2>
-    <p class="section-note">Every problem gets sorted into the same 3 buckets. When a project is stuck, one of these is usually the reason.</p>
-
-    <div class="buckets">
-      <article>
-        <p class="bucket-num" aria-hidden="true">01</p>
-        <h3>Business value</h3>
-        <p>What decision does this change, and what is that worth? If I can't answer in a sentence, it's a demo. Demos are fun to build and easy to kill at budget time.</p>
-      </article>
-      <article>
-        <p class="bucket-num" aria-hidden="true">02</p>
-        <h3>Technical feasibility</h3>
-        <p>Can we build it with the stack and the data we actually have? I prototype before I promise. The tech is usually the easy part, which still surprises people.</p>
-      </article>
-      <article>
-        <p class="bucket-num" aria-hidden="true">03</p>
-        <h3>Organizational dynamics</h3>
-        <p>Who has to change how they work for this to land? This is where AI projects die. Someone has to sit with the team that distrusts the new tool, and I'd rather it be the person who built it.</p>
-      </article>
-    </div>
-  </section>
 
   <section class="hire">
-    <p>Hiring, or need something like this built? GitHub is the front door for now. Open an issue on any repo, or start at <a href="https://github.com/Data-Barista" target="_blank" rel="noopener noreferrer">github.com/Data-Barista</a>.</p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/katiezhang" target="_blank" rel="noopener noreferrer">Katie Zhang</a></p>
   </section>
 </main>
 
