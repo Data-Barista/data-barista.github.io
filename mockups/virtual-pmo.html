@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mockup: Virtual PMO, reporting control plane</title>
+<link rel="stylesheet" href="mock.css">
+<style>
+  .stage { padding: 40px 56px; }
+  .hd { margin-bottom: 20px; }
+  .tiles { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-bottom: 20px; }
+  .kpi { padding: 12px 16px 12px; }
+  .kpi span { display: block; font-family: var(--mono); font-size: 10.5px; color: var(--ink-soft); letter-spacing: 0.02em; margin-bottom: 4px; }
+  .kpi b { display: block; font-family: var(--serif); font-weight: 600; font-size: 26px; line-height: 1.1; position: relative; }
+  .kpi b .a, .kpi b .b { display: block; font: inherit; color: inherit; letter-spacing: 0; margin: 0; }
+  .kpi b .b { position: absolute; inset: 0; opacity: 0; }
+  .kpi b .ready { color: var(--ok); }
+  .kpi b .wait { color: var(--ink-soft); font-size: 20px; padding-top: 4px; }
+
+  table.cp { width: 100%; }
+  .cp th { padding: 8px 12px; font-size: 10.5px; }
+  .cp td { padding: 11px 12px; font-size: 13px; vertical-align: middle; }
+  .cp td.bu { font-family: var(--serif); font-weight: 600; font-size: 14.5px; }
+  .cp td.own { color: var(--ink-soft); font-size: 12.5px; }
+  .cp .pill { font-size: 10.5px; }
+  .cp .rag { display: inline-flex; gap: 4px; }
+  .cp .rag i { font-style: normal; font-family: var(--mono); font-size: 10px; padding: 3px 6px; border-radius: 5px; }
+  .cp .rag .g { background: var(--ok-soft); color: var(--ok); }
+  .cp .rag .am { background: var(--warn-soft); color: var(--warn); }
+  .cp .rag .r { background: var(--bad-soft); color: var(--bad); }
+  .cp .swap { position: relative; display: inline-block; }
+  .cp .swap .b { position: absolute; left: 0; top: 0; opacity: 0; white-space: nowrap; }
+  .foot { margin-top: 14px; font-family: var(--mono); font-size: 11px; color: var(--ink-soft); display: flex; justify-content: space-between; }
+
+  /* ---- motion (html.play only): the cycle plays out. Evidence lands for the
+     two late units, drafts appear, every unit signs, the package unlocks. ---- */
+  @keyframes rise { from { opacity: 0; transform: translateY(8px); } }
+  @keyframes pop { from { opacity: 0; transform: scale(0.7); } 70% { transform: scale(1.06); } }
+  @keyframes out { to { opacity: 0; } }
+  @keyframes in { to { opacity: 1; } }
+  html.play .kpi { animation: rise 0.45s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  html.play .kpi:nth-child(1) { animation-delay: 0.15s; }
+  html.play .kpi:nth-child(2) { animation-delay: 0.25s; }
+  html.play .kpi:nth-child(3) { animation-delay: 0.35s; }
+  html.play .kpi:nth-child(4) { animation-delay: 0.45s; }
+  html.play .kpi:nth-child(5) { animation-delay: 0.55s; }
+  html.play .cp tbody tr { animation: rise 0.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  html.play .cp tbody tr:nth-child(1) { animation-delay: 0.8s; }
+  html.play .cp tbody tr:nth-child(2) { animation-delay: 0.95s; }
+  html.play .cp tbody tr:nth-child(3) { animation-delay: 1.1s; }
+  html.play .cp tbody tr:nth-child(4) { animation-delay: 1.25s; }
+  html.play .cp tbody tr:nth-child(5) { animation-delay: 1.4s; }
+  html.play .cp tbody tr:nth-child(6) { animation-delay: 1.55s; }
+  /* swaps: .a fades out, .b fades in, at the delay set per element */
+  html.play .swap .a, html.play .kpi b .a { animation: out 0.3s both; animation-delay: var(--t, 99s); }
+  html.play .swap .b, html.play .kpi b .b { animation: in 0.35s both; animation-delay: var(--t, 99s); }
+  html.play .cp .late { animation: pop 0.35s cubic-bezier(0.16, 1, 0.3, 1) both; animation-delay: var(--t, 99s); }
+  html.play .foot { animation: rise 0.4s 1.9s both; }
+</style>
+<script src="play.js"></script>
+</head>
+<body>
+<div class="stage">
+  <div class="hd">
+    <h1>Reporting control plane</h1>
+    <span class="meta">Northwind Capital, May 2026 cycle, open until Fri 22 May</span>
+  </div>
+
+  <div class="tiles">
+    <div class="card kpi"><span>business units</span><b>6</b></div>
+    <div class="card kpi"><span>initiatives reporting</span><b>24</b></div>
+    <div class="card kpi"><span>evidence received</span><b><span class="a" style="--t:3.6s">4 of 6</span><span class="b" style="--t:3.6s">6 of 6</span></b></div>
+    <div class="card kpi"><span>signed off</span><b><span class="a" style="--t:6.2s">2 of 6</span><span class="b" style="--t:6.2s">6 of 6</span></b></div>
+    <div class="card kpi"><span>package</span><b><span class="a wait" style="--t:6.7s">not yet</span><span class="b ready" style="--t:6.7s">ready</span></b></div>
+  </div>
+
+  <div class="card">
+    <table class="cp">
+      <thead><tr><th>Business unit</th><th>Owner</th><th>Evidence</th><th>Draft</th><th>RAG</th><th>Sign-off</th></tr></thead>
+      <tbody>
+        <tr><td class="bu">Harbor</td><td class="own">A. Ferreira</td><td><span class="pill ok">received, 3 docs</span></td><td><span class="pill">drafted, 5 updates</span></td><td><span class="rag"><i class="g">4</i><i class="am">1</i></span></td><td><span class="pill ok">A. Ferreira, 11 May 15:40</span></td></tr>
+        <tr><td class="bu">Cedar</td><td class="own">J. Mbeki</td><td><span class="pill ok">received, 2 docs</span></td><td><span class="pill">drafted, 6 updates</span></td><td><span class="rag"><i class="g">4</i><i class="am">1</i><i class="r">1</i></span></td><td><span class="pill ok">J. Mbeki, 12 May 09:15</span></td></tr>
+        <tr><td class="bu">Summit</td><td class="own">L. Novak</td><td><span class="pill ok">received, 1 doc</span></td><td><span class="pill">drafted, 3 updates</span></td><td><span class="rag"><i class="g">3</i></span></td><td><span class="swap"><span class="a" style="--t:4.6s"><span class="pill">in review</span></span><span class="b" style="--t:4.6s"><span class="pill ok">L. Novak, 12 May 14:10</span></span></span></td></tr>
+        <tr><td class="bu">Meadow</td><td class="own">S. Iqbal</td><td><span class="pill ok">received, 2 docs</span></td><td><span class="pill">drafted, 4 updates</span></td><td><span class="rag"><i class="g">3</i><i class="am">1</i></span></td><td><span class="swap"><span class="a" style="--t:5.0s"><span class="pill">in review</span></span><span class="b" style="--t:5.0s"><span class="pill ok">S. Iqbal, 12 May 14:32</span></span></span></td></tr>
+        <tr><td class="bu">Willow</td><td class="own">R. Lindqvist</td><td><span class="swap"><span class="a" style="--t:2.3s"><span class="pill warn">missing</span></span><span class="b" style="--t:2.3s"><span class="pill ok">received, 1 doc</span></span></span></td><td><span class="late" style="--t:2.9s"><span class="pill">drafted, 2 updates</span></span></td><td><span class="late rag" style="--t:3.2s"><i class="g">1</i><i class="am">1</i></span></td><td><span class="swap"><span class="a" style="--t:5.4s"><span class="pill warn">no update filed</span></span><span class="b" style="--t:5.4s"><span class="pill ok">R. Lindqvist, 12 May 16:02</span></span></span></td></tr>
+        <tr><td class="bu">Slate</td><td class="own">T. Halvorsen</td><td><span class="swap"><span class="a" style="--t:3.4s"><span class="pill warn">missing</span></span><span class="b" style="--t:3.4s"><span class="pill ok">received, 2 docs</span></span></span></td><td><span class="late" style="--t:3.9s"><span class="pill">drafted, 3 updates</span></span></td><td><span class="late rag" style="--t:4.2s"><i class="g">2</i><i class="r">1</i></span></td><td><span class="swap"><span class="a" style="--t:5.8s"><span class="pill warn">no update filed</span></span><span class="b" style="--t:5.8s"><span class="pill ok">T. Halvorsen, 12 May 16:45</span></span></span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="foot"><span>drafts come from meeting minutes and notes the units already produce. A unit with no evidence stays &ldquo;no update filed&rdquo;, never a guessed Green.</span><span>package builds from signed rows only</span></p>
+</div>
+</body>
+</html>

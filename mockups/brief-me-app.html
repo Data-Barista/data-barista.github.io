@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mockup: Brief Me dashboard</title>
+<style>
+  /* The app's own palette, from the repo's color-scheme.json. This mockup is a
+     product screen, so it stays light in both site themes. All figures are the
+     synthetic Northwind Capital dataset. */
+  :root {
+    --navy: #1B3A5C;
+    --mid: #4A7FB5;
+    --light: #7BAFD4;
+    --line: #E0E6EB;
+    --grid: #E5E7EB;
+    --axis: #6B7280;
+    --ok: #10B981;
+    --warn: #F59E0B;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { width: 1200px; height: 750px; overflow: hidden; background: #F7F9FB; font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+  .app { display: grid; grid-template-columns: 220px 1fr; height: 750px; }
+
+  /* sidebar */
+  .side { background: var(--navy); color: #fff; display: flex; flex-direction: column; }
+  .brand { padding: 22px 20px 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .brand b { display: block; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+  .brand span { display: block; font-size: 10px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+  .nav { flex: 1; padding: 16px 12px; }
+  .nav a { display: block; padding: 9px 12px; border-radius: 8px; font-size: 13.5px; color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 4px; }
+  .nav a.on { background: rgba(255,255,255,0.15); color: #fff; font-weight: 500; }
+  .side .foot { padding: 16px 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 10px; color: rgba(255,255,255,0.4); }
+
+  /* main */
+  .main { padding: 24px 28px; overflow: hidden; }
+  .hd { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 18px; }
+  .hd h1 { font-size: 22px; font-weight: 600; color: var(--navy); margin: 0; }
+  .hd p { font-size: 12.5px; color: #6B7280; margin: 3px 0 0; }
+  .hd .stamp { font-size: 11px; color: #9CA3AF; }
+
+  .filters { display: flex; gap: 10px; align-items: center; background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin-bottom: 16px; }
+  .filters .f { font-size: 12px; color: #374151; border: 1px solid var(--line); border-radius: 7px; padding: 5px 10px; display: inline-flex; gap: 6px; align-items: center; }
+  .filters .f b { font-weight: 500; color: var(--navy); }
+  .filters .f::after { content: "\25BE"; color: #9CA3AF; font-size: 9px; }
+  .filters .apply { margin-left: auto; background: var(--navy); color: #fff; font-size: 12px; font-weight: 500; border-radius: 7px; padding: 6px 14px; }
+
+  .kpis { display: grid; grid-template-columns: repeat(7, 1fr); gap: 9px; margin-bottom: 18px; }
+  .kpi { background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--mid); border-radius: 10px; padding: 11px 12px; }
+  .kpi.p { border-left-color: var(--navy); }
+  .kpi.a { border-left-color: var(--light); }
+  .kpi span { display: block; font-size: 9.5px; font-weight: 500; color: #6B7280; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.3; height: 24px; }
+  .kpi b { display: block; font-size: 21px; font-weight: 600; color: var(--navy); margin-top: 3px; letter-spacing: -0.01em; }
+
+  .charts { display: grid; grid-template-columns: 1.25fr 1fr; gap: 14px; }
+  .card { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px 12px; }
+  .card h3 { font-size: 13px; font-weight: 600; color: var(--navy); margin: 0 0 2px; }
+  .card p.sub { font-size: 10.5px; color: #9CA3AF; margin: 0 0 10px; }
+  svg { display: block; }
+  .ln { fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+  .gridline { stroke: var(--grid); stroke-width: 1; }
+  .tick { font-size: 9px; fill: var(--axis); font-family: var(--sans); }
+  .lg { display: flex; gap: 12px; margin-top: 8px; font-size: 10px; color: var(--axis); }
+  .lg i { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 4px; vertical-align: -1px; }
+
+  .bars { margin-top: 2px; }
+  .bar { display: grid; grid-template-columns: 118px 1fr 38px; align-items: center; gap: 8px; margin-bottom: 15px; font-size: 11.5px; color: #374151; white-space: nowrap; }
+  .bar .track { height: 18px; background: #F3F4F6; border-radius: 3px; overflow: hidden; }
+  .bar .fill { height: 100%; background: var(--mid); border-radius: 3px; transform-origin: left center; }
+  .bar .val { text-align: right; font-size: 11px; color: var(--navy); font-weight: 600; }
+
+  /* ---- motion (html.play only): filters apply, KPIs land, charts draw. ---- */
+  @keyframes rise { from { opacity: 0; transform: translateY(6px); } }
+  @keyframes fade { from { opacity: 0; } }
+  @keyframes grow { from { transform: scaleX(0); } }
+  @keyframes drawline { from { stroke-dashoffset: 900; } to { stroke-dashoffset: 0; } }
+  @keyframes press { 50% { background: var(--mid); } }
+  html.play .filters { animation: rise 0.4s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  html.play .filters .apply { animation: press 0.5s 0.9s both; }
+  html.play .kpi { animation: rise 0.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  html.play .kpi:nth-child(1) { animation-delay: 1.3s; }
+  html.play .kpi:nth-child(2) { animation-delay: 1.4s; }
+  html.play .kpi:nth-child(3) { animation-delay: 1.5s; }
+  html.play .kpi:nth-child(4) { animation-delay: 1.6s; }
+  html.play .kpi:nth-child(5) { animation-delay: 1.7s; }
+  html.play .kpi:nth-child(6) { animation-delay: 1.8s; }
+  html.play .kpi:nth-child(7) { animation-delay: 1.9s; }
+  html.play .charts .card { animation: rise 0.45s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  html.play .charts .card:nth-child(1) { animation-delay: 2.2s; }
+  html.play .charts .card:nth-child(2) { animation-delay: 2.5s; }
+  html.play .ln { stroke-dasharray: 900; animation: drawline 1.3s 2.5s ease-out both; }
+  html.play .lg { animation: fade 0.4s 3.6s both; }
+  html.play .bar .fill { animation: grow 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  html.play .bar .val { animation: fade 0.4s both; }
+  html.play .bar:nth-child(1) .fill, html.play .bar:nth-child(1) .val { animation-delay: 2.9s; }
+  html.play .bar:nth-child(2) .fill, html.play .bar:nth-child(2) .val { animation-delay: 3.0s; }
+  html.play .bar:nth-child(3) .fill, html.play .bar:nth-child(3) .val { animation-delay: 3.1s; }
+  html.play .bar:nth-child(4) .fill, html.play .bar:nth-child(4) .val { animation-delay: 3.2s; }
+  html.play .bar:nth-child(5) .fill, html.play .bar:nth-child(5) .val { animation-delay: 3.3s; }
+  html.play .bar:nth-child(6) .fill, html.play .bar:nth-child(6) .val { animation-delay: 3.4s; }
+</style>
+<script src="play.js"></script>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brand"><b>Brief Me</b><span>AI Adoption Analytics</span></div>
+    <nav class="nav">
+      <a class="on">Dashboard</a>
+      <a>Deep Dive</a>
+      <a>Ask a Question</a>
+    </nav>
+    <div class="foot">Northwind Capital &middot; synthetic data</div>
+  </aside>
+
+  <main class="main">
+    <div class="hd">
+      <div>
+        <h1>Dashboard</h1>
+        <p>Weekly snapshot of AI tool enablement and usage</p>
+      </div>
+      <span class="stamp">week of 16 Feb 2026</span>
+    </div>
+
+    <div class="filters">
+      <span class="f">Week: <b>16 Feb 2026</b></span>
+      <span class="f">Division: <b>All (6)</b></span>
+      <span class="f">Product: <b>All (3)</b></span>
+      <span class="f">Level: <b>All</b></span>
+      <span class="apply">Apply</span>
+    </div>
+
+    <div class="kpis">
+      <div class="kpi p"><span>Total employees</span><b>500</b></div>
+      <div class="kpi"><span>Enabled</span><b>441</b></div>
+      <div class="kpi"><span>% enabled</span><b>88.2%</b></div>
+      <div class="kpi p"><span>Active users</span><b>283</b></div>
+      <div class="kpi"><span>Adoption rate</span><b>64.2%</b></div>
+      <div class="kpi a"><span>Total sessions</span><b>7,955</b></div>
+      <div class="kpi a"><span>Sessions / user</span><b>28.1</b></div>
+    </div>
+
+    <div class="charts">
+      <div class="card">
+        <h3>Weekly active users</h3>
+        <p class="sub">last 12 weeks, by product</p>
+        <svg viewBox="0 0 520 330" width="100%" height="330">
+          <line class="gridline" x1="34" y1="20" x2="512" y2="20"/>
+          <line class="gridline" x1="34" y1="92" x2="512" y2="92"/>
+          <line class="gridline" x1="34" y1="164" x2="512" y2="164"/>
+          <line class="gridline" x1="34" y1="236" x2="512" y2="236"/>
+          <line class="gridline" x1="34" y1="290" x2="512" y2="290"/>
+          <text class="tick" x="28" y="24" text-anchor="end">160</text>
+          <text class="tick" x="28" y="96" text-anchor="end">120</text>
+          <text class="tick" x="28" y="168" text-anchor="end">80</text>
+          <text class="tick" x="28" y="240" text-anchor="end">40</text>
+          <path class="ln" stroke="#1B3A5C" d="M40 158 L83 148 L126 138 L169 129 L212 117 L255 113 L298 101 L341 92 L384 85 L427 77 L470 68 L508 62"/>
+          <path class="ln" stroke="#4A7FB5" d="M40 210 L83 203 L126 200 L169 190 L212 185 L255 178 L298 171 L341 166 L384 159 L427 154 L470 147 L508 143"/>
+          <path class="ln" stroke="#7BAFD4" d="M40 251 L83 250 L126 243 L169 245 L212 236 L255 231 L298 227 L341 219 L384 215 L427 207 L470 202 L508 196"/>
+          <text class="tick" x="40" y="312">24 Nov</text>
+          <text class="tick" x="186" y="312">22 Dec</text>
+          <text class="tick" x="332" y="312">19 Jan</text>
+          <text class="tick" x="478" y="312" text-anchor="end">16 Feb</text>
+        </svg>
+        <div class="lg"><span><i style="background:#1B3A5C"></i>Microsoft Copilot</span><span><i style="background:#4A7FB5"></i>ChatGPT</span><span><i style="background:#7BAFD4"></i>Claude Code</span></div>
+      </div>
+
+      <div class="card">
+        <h3>4-week reach by division</h3>
+        <p class="sub">share of enabled employees active at least once</p>
+        <div class="bars">
+          <div class="bar"><span>Harbor</span><span class="track"><span class="fill" style="width:71%"></span></span><span class="val">71%</span></div>
+          <div class="bar"><span>Cedar</span><span class="track"><span class="fill" style="width:58%"></span></span><span class="val">58%</span></div>
+          <div class="bar"><span>Summit</span><span class="track"><span class="fill" style="width:55%"></span></span><span class="val">55%</span></div>
+          <div class="bar"><span>Meadow</span><span class="track"><span class="fill" style="width:47%"></span></span><span class="val">47%</span></div>
+          <div class="bar"><span>Willow</span><span class="track"><span class="fill" style="width:42%"></span></span><span class="val">42%</span></div>
+          <div class="bar"><span>Slate</span><span class="track"><span class="fill" style="width:37%"></span></span><span class="val">37%</span></div>
+        </div>
+        <p style="margin:18px 0 0;padding-top:12px;border-top:1px solid var(--line);font-size:11px;line-height:1.55;color:#6B7280">Reach counts an employee once if they were active in any of the last 4 weeks. Adoption rate is weekly active users over enabled users, defined once in the semantic model.</p>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>

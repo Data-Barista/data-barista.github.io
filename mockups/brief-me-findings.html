@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mockup: Brief Me, findings</title>
+<style>
+  /* Same app palette as the dashboard screen (repo color-scheme.json). A product
+     screen, so it stays light in both site themes. Synthetic Northwind data. */
+  :root {
+    --navy: #1B3A5C;
+    --mid: #4A7FB5;
+    --light: #7BAFD4;
+    --line: #E0E6EB;
+    --ok: #10B981;
+    --warn: #F59E0B;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { width: 1200px; height: 750px; overflow: hidden; background: #F7F9FB; font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+  .app { display: grid; grid-template-columns: 220px 1fr; height: 750px; }
+
+  .side { background: var(--navy); color: #fff; display: flex; flex-direction: column; }
+  .brand { padding: 22px 20px 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .brand b { display: block; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+  .brand span { display: block; font-size: 10px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+  .nav { flex: 1; padding: 16px 12px; }
+  .nav a { display: block; padding: 9px 12px; border-radius: 8px; font-size: 13.5px; color: rgba(255,255,255,0.7); margin-bottom: 4px; }
+  .nav a.on { background: rgba(255,255,255,0.15); color: #fff; font-weight: 500; }
+  .side .foot { padding: 16px 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 10px; color: rgba(255,255,255,0.4); }
+
+  .main { padding: 30px 34px; }
+  .hd { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .hd h1 { font-size: 24px; font-weight: 600; color: var(--navy); margin: 0; }
+  .deck { background: var(--navy); color: #fff; font-size: 12.5px; font-weight: 500; border-radius: 8px; padding: 9px 16px; }
+  .filter { font-size: 12.5px; color: #6B7280; margin: 0 0 22px; }
+  .filter b { color: var(--navy); font-weight: 500; }
+
+  .lbl { font-size: 11px; font-weight: 600; color: #6B7280; text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 12px; }
+
+  .finds { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 26px; }
+  .f { background: #fff; border: 1px solid var(--line); border-top: 3px solid var(--mid); border-radius: 10px; padding: 16px 18px 18px; }
+  .f.up { border-top-color: var(--ok); }
+  .f.flat { border-top-color: var(--warn); }
+  .f .k { font-size: 10.5px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--mid); margin: 0 0 8px; }
+  .f.up .k { color: var(--ok); }
+  .f.flat .k { color: var(--warn); }
+  .f .n { font-size: 30px; font-weight: 600; color: var(--navy); letter-spacing: -0.02em; margin: 0; line-height: 1.1; }
+  .f .n em { font-style: normal; font-size: 14px; font-weight: 500; color: #6B7280; margin-left: 6px; }
+  .f p { font-size: 12.5px; line-height: 1.5; color: #4B5563; margin: 8px 0 0; }
+
+  .qa { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px 20px; }
+  .q { display: flex; gap: 10px; align-items: center; margin-bottom: 14px; }
+  .q .av { width: 26px; height: 26px; border-radius: 7px; background: #EEF2F6; color: #6B7280; font-size: 10px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex: none; }
+  .q p { margin: 0; font-size: 15px; color: var(--navy); }
+  .a { display: flex; gap: 10px; align-items: flex-start; }
+  .a .av { width: 26px; height: 26px; border-radius: 7px; background: var(--navy); color: #fff; font-size: 10px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex: none; }
+  .a p { margin: 0; font-size: 14px; line-height: 1.55; color: #374151; }
+  .a p b { color: var(--navy); font-weight: 600; }
+  .a .src { display: block; font-family: var(--mono); font-size: 10.5px; color: #9CA3AF; margin-top: 7px; }
+
+  /* ---- motion (html.play only): the filter applies, findings land one by one,
+     the question arrives, the answer reads it back, the deck exports. ---- */
+  @keyframes rise { from { opacity: 0; transform: translateY(8px); } }
+  @keyframes fade { from { opacity: 0; } }
+  @keyframes pop { from { opacity: 0; transform: scale(0.8); } 70% { transform: scale(1.04); } }
+  html.play .filter { animation: fade 0.4s 0.2s both; }
+  html.play .lbl { animation: fade 0.4s both; }
+  html.play .lbl:nth-of-type(1) { animation-delay: 0.6s; }
+  html.play .f { animation: rise 0.45s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  html.play .f:nth-child(1) { animation-delay: 0.9s; }
+  html.play .f:nth-child(2) { animation-delay: 1.4s; }
+  html.play .f:nth-child(3) { animation-delay: 1.9s; }
+  html.play .f p { animation: fade 0.35s both; }
+  html.play .f:nth-child(1) p { animation-delay: 1.2s; }
+  html.play .f:nth-child(2) p { animation-delay: 1.7s; }
+  html.play .f:nth-child(3) p { animation-delay: 2.2s; }
+  html.play .qa { animation: rise 0.45s 2.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  html.play .q { animation: fade 0.4s 3.0s both; }
+  html.play .a { animation: rise 0.4s 3.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  html.play .a .src { animation: fade 0.35s 4.2s both; }
+  html.play .deck { animation: pop 0.4s 4.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+</style>
+<script src="play.js"></script>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brand"><b>Brief Me</b><span>AI Adoption Analytics</span></div>
+    <nav class="nav">
+      <a>Dashboard</a>
+      <a class="on">Deep Dive</a>
+      <a>Ask a Question</a>
+    </nav>
+    <div class="foot">Northwind Capital &middot; synthetic data</div>
+  </aside>
+
+  <main class="main">
+    <div class="hd">
+      <h1>What the dashboard found</h1>
+      <span class="deck">Export deck</span>
+    </div>
+    <p class="filter">Division: <b>Summit</b> &middot; 29 metrics run &middot; week of 16 Feb 2026</p>
+
+    <p class="lbl">Findings</p>
+    <div class="finds">
+      <div class="f up">
+        <p class="k">Moved</p>
+        <p class="n">55%<em>from 48%</em></p>
+        <p>Adoption up 7 points in 4 weeks. Microsoft Copilot accounts for most of the gain.</p>
+      </div>
+      <div class="f flat">
+        <p class="k">Stalled</p>
+        <p class="n">12.4<em>sessions / user</em></p>
+        <p>Flat for 6 weeks. Mid-tier users are not moving up to High.</p>
+      </div>
+      <div class="f">
+        <p class="k">Against goal</p>
+        <p class="n">10 pts<em>below target</em></p>
+        <p>The year-end goal is 65%. At the current rate the division reaches it in August.</p>
+      </div>
+    </div>
+
+    <div class="qa">
+      <div class="q">
+        <span class="av">COO</span>
+        <p>Which teams are furthest from the goal?</p>
+      </div>
+      <div class="a">
+        <span class="av">BM</span>
+        <p>Advisory Operations at <b>38%</b> and Client Service at <b>44%</b>, both under the division&rsquo;s 55%. Together they hold 61 of the 118 enabled employees who have not been active in the last 4 weeks.
+        <span class="src">2 queries, latest week, adoption_rate as defined in the semantic model</span></p>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>

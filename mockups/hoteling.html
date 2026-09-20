@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mockup: Hoteling automation</title>
+<link rel="stylesheet" href="mock.css">
+<style>
+  .stage { padding: 44px 64px; }
+  .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0 0 8px; }
+  .title { font-family: var(--serif); font-weight: 600; font-size: 40px; letter-spacing: -0.015em; line-height: 1.1; margin: 0 0 6px; }
+  .sub { font-size: 16px; color: var(--ink-soft); margin: 0 0 26px; }
+  .box { border: 1.5px solid var(--accent); border-radius: 8px; background: var(--surface); }
+  .box .k { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0 0 6px; }
+  .req { display: flex; align-items: center; justify-content: space-between; padding: 14px 22px; margin-bottom: 26px; }
+  .req .line { font-size: 22px; margin: 0; }
+  .req .chk { font-family: var(--sans); font-size: 16px; font-weight: 600; color: var(--accent); background: var(--warn-soft); border-radius: 4px; padding: 8px 14px; }
+  .chain { position: relative; display: grid; grid-template-columns: 1fr 34px 1fr 34px 1fr; align-items: stretch; }
+  .card2 { padding: 16px 20px 14px; }
+  .card2 .was { font-size: 14px; color: var(--ink-soft); margin: 0 0 10px; }
+  .card2 .now { font-family: var(--sans); font-size: 26px; font-weight: 500; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .card2 .eff { font-size: 13.5px; color: var(--ink-soft); margin: 0; }
+  .arrow { display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 22px; }
+  svg.links { display: block; width: 100%; height: 44px; overflow: visible; }
+  svg.links path { stroke: var(--line); stroke-width: 2; fill: none; }
+  .notices { display: flex; align-items: center; gap: 40px; padding: 14px 22px; }
+  .notices .k { margin: 0; font-size: 15px; letter-spacing: 0.06em; font-weight: 700; font-family: var(--sans); }
+  .notices .list { font-size: 20px; margin: 0; }
+  .foot { margin-top: 12px; font-size: 14px; color: var(--ink-soft); }
+
+  /* ---- motion (html.play only): the request lands, the rules check, the
+     chain plays left to right, the notices go out. ---- */
+  @keyframes rise { from { opacity: 0; transform: translateY(8px); } }
+  @keyframes fade { from { opacity: 0; } }
+  @keyframes pop { from { opacity: 0; transform: scale(0.7); } 70% { transform: scale(1.06); } }
+  @keyframes draw { 0% { stroke-dashoffset: 1200; opacity: 0; } 2% { opacity: 1; } 100% { stroke-dashoffset: 0; opacity: 1; } }
+  html.play .eyebrow, html.play .title, html.play .sub { animation: fade 0.5s both; }
+  html.play .req { animation: rise 0.45s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  html.play .req .chk { animation: pop 0.35s 1.0s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  html.play .card2 { animation: rise 0.45s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  html.play .card2 .now, html.play .card2 .eff { animation: fade 0.35s both; }
+  html.play .chain > .card2:nth-child(1) { animation-delay: 1.5s; }
+  html.play .chain > .card2:nth-child(1) .now { animation-delay: 1.9s; } html.play .chain > .card2:nth-child(1) .eff { animation-delay: 2.05s; }
+  html.play .chain > .arrow:nth-child(2) { animation: fade 0.3s 2.3s both; }
+  html.play .chain > .card2:nth-child(3) { animation-delay: 2.5s; }
+  html.play .chain > .card2:nth-child(3) .now { animation-delay: 2.9s; } html.play .chain > .card2:nth-child(3) .eff { animation-delay: 3.05s; }
+  html.play .chain > .arrow:nth-child(4) { animation: fade 0.3s 3.3s both; }
+  html.play .chain > .card2:nth-child(5) { animation-delay: 3.5s; }
+  html.play .chain > .card2:nth-child(5) .now { animation-delay: 3.9s; } html.play .chain > .card2:nth-child(5) .eff { animation-delay: 4.05s; }
+  html.play svg.links path { stroke-dasharray: 1200; stroke-dashoffset: 1200; opacity: 0; animation: draw 0.6s 4.4s ease-out both; }
+  html.play .notices { animation: rise 0.45s 4.9s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  html.play .foot { animation: fade 0.4s 5.5s both; }
+</style>
+<script src="play.js"></script>
+</head>
+<body>
+<div class="stage">
+  <p class="eyebrow">Hoteling, fictional example</p>
+  <p class="title">One request. A chain of changes.</p>
+  <p class="sub">Rooms and desks are full. The allocation rules guide each move.</p>
+
+  <div class="box req">
+    <div><p class="k">Outlook request</p><p class="line">VIP, one day, room requested</p></div>
+    <span class="chk">Booking rules checked</span>
+  </div>
+
+  <div class="chain">
+    <div class="box card2"><p class="k">Room 01</p><p class="was">Was: MD booking</p><p class="now">VIP confirmed</p><p class="eff">Room reassigned</p></div>
+    <div class="arrow">&rarr;</div>
+    <div class="box card2"><p class="k">Desk 01</p><p class="was">Was: lower-tier booking</p><p class="now">MD moved here</p><p class="eff">Desk reassigned</p></div>
+    <div class="arrow">&rarr;</div>
+    <div class="box card2"><p class="k">Prior desk booking</p><p class="was">Was: confirmed</p><p class="now">Marked bumped</p><p class="eff">EA copied on notice</p></div>
+  </div>
+
+  <svg class="links" viewBox="0 0 1072 44" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M165 0 L165 22 L907 22 L907 0 M536 0 L536 44"/>
+  </svg>
+
+  <div class="box notices">
+    <p class="k">Outlook notices</p>
+    <p class="list">Confirmation, desk move, reassignment</p>
+  </div>
+  <p class="foot">No eligible allocation? The request goes to the EA team for review.</p>
+</div>
+</body>
+</html>

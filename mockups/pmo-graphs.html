@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mockup: Virtual PMO, how it works</title>
+<link rel="stylesheet" href="mock.css">
+<style>
+  .stage { padding: 34px 48px; }
+  .hd { margin-bottom: 14px; }
+  .two { display: grid; grid-template-columns: 500px 580px; gap: 24px; align-items: start; }
+  .col-hd { font-family: var(--mono); font-size: 11px; color: var(--ink-soft); letter-spacing: 0.02em; margin: 0 0 8px; }
+
+  /* ---- left: minutes to package ---- */
+  .flow .step { padding: 10px 14px; }
+  .flow .arrow { text-align: center; color: var(--accent); font-size: 14px; line-height: 1; padding: 5px 0; font-family: var(--mono); }
+  .flow .arrow span { font-size: 10.5px; color: var(--ink-soft); margin-left: 8px; }
+  .step b { display: block; font-family: var(--serif); font-weight: 600; font-size: 13.5px; margin-bottom: 4px; }
+  .step p { margin: 0; font-size: 12px; line-height: 1.45; color: var(--ink-soft); }
+  .step .q { font-family: var(--serif); font-style: italic; color: var(--ink); }
+  .hl { background: var(--warn-soft); border-radius: 3px; padding: 0 3px; color: var(--ink); font-style: normal; }
+  .hl.dec { background: var(--ok-soft); }
+  .step .chips { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
+  .step .pill { font-size: 10.5px; }
+  .step .src { font-family: var(--mono); font-size: 10.5px; color: var(--ink-soft); display: block; margin-top: 4px; }
+
+  /* ---- right: the record ---- */
+  .rec { position: relative; height: 560px; }
+  .grp { position: absolute; top: 0; font-family: var(--mono); font-size: 10.5px; color: var(--ink-soft); letter-spacing: 0.02em; }
+  .tbl { position: absolute; width: 170px; padding: 8px 10px 8px; }
+  .tbl b { display: block; font-family: var(--serif); font-weight: 600; font-size: 13px; margin-bottom: 3px; }
+  .tbl span { display: block; font-family: var(--mono); font-size: 10px; line-height: 1.55; color: var(--ink-soft); }
+  .tbl.tx { border-color: var(--accent); }
+  .tbl.tx b { color: var(--accent); }
+  .tbl .st { margin-top: 4px; color: var(--ink); }
+  svg.links { position: absolute; inset: 0; width: 580px; height: 560px; pointer-events: none; overflow: visible; }
+  svg.links > path { stroke: var(--accent); stroke-width: 1.8; fill: none; }
+  svg.links > text { font-family: var(--mono); font-size: 10px; fill: var(--ink-soft); }
+
+  /* ---- motion (html.play only): the left flow lands step by step, then the
+     record assembles and its relationships draw. ---- */
+  @keyframes rise { from { opacity: 0; transform: translateY(8px); } }
+  @keyframes fade { from { opacity: 0; } }
+  @keyframes draw { 0% { stroke-dashoffset: 300; opacity: 0; } 2% { opacity: 1; } 100% { stroke-dashoffset: 0; opacity: 1; } }
+  @keyframes mark { from { background: transparent; } }
+  html.play .flow .step, html.play .flow .arrow { animation: rise 0.45s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  html.play .flow .step:nth-of-type(1) { animation-delay: 0.2s; }
+  html.play .flow .arrow:nth-of-type(2) { animation-delay: 0.9s; }
+  html.play .flow .step:nth-of-type(3) { animation-delay: 1.1s; }
+  html.play .flow .arrow:nth-of-type(4) { animation-delay: 1.7s; }
+  html.play .flow .step:nth-of-type(5) { animation-delay: 1.9s; }
+  html.play .flow .arrow:nth-of-type(6) { animation-delay: 2.5s; }
+  html.play .flow .step:nth-of-type(7) { animation-delay: 2.7s; }
+  html.play .hl { animation: mark 0.5s 0.7s both; }
+  html.play .tbl { animation: rise 0.45s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  html.play .grp { animation: fade 0.4s 3.2s both; }
+  html.play .tbl:nth-of-type(1) { animation-delay: 3.3s; }
+  html.play .tbl:nth-of-type(2) { animation-delay: 3.45s; }
+  html.play .tbl:nth-of-type(3) { animation-delay: 3.6s; }
+  html.play .tbl:nth-of-type(4) { animation-delay: 3.9s; }
+  html.play .tbl:nth-of-type(5) { animation-delay: 4.05s; }
+  html.play .tbl:nth-of-type(6) { animation-delay: 4.3s; }
+  html.play .tbl:nth-of-type(7) { animation-delay: 4.45s; }
+  html.play .tbl:nth-of-type(8) { animation-delay: 4.6s; }
+  html.play svg.links > path { stroke-dasharray: 300; stroke-dashoffset: 300; opacity: 0; animation: draw 0.5s ease-out both; }
+  html.play svg.links > text { animation: fade 0.4s both; }
+  html.play svg.links > path:nth-of-type(1) { animation-delay: 4.9s; }
+  html.play svg.links > path:nth-of-type(2) { animation-delay: 5.05s; }
+  html.play svg.links > path:nth-of-type(3) { animation-delay: 5.2s; }
+  html.play svg.links > path:nth-of-type(4) { animation-delay: 5.35s; }
+  html.play svg.links > path:nth-of-type(5) { animation-delay: 5.5s; }
+  html.play svg.links > path:nth-of-type(6) { animation-delay: 5.65s; }
+  html.play svg.links > path:nth-of-type(7) { animation-delay: 5.8s; }
+  html.play svg.links > text { animation-delay: 5.9s; }
+</style>
+<script src="play.js"></script>
+</head>
+<body>
+<div class="stage">
+  <div class="hd">
+    <h1>How the Virtual PMO works</h1>
+    <span class="meta">from meeting minutes to a signed package, on one record</span>
+  </div>
+
+  <div class="two">
+    <div class="flow">
+      <p class="col-hd">from minutes to package</p>
+      <div class="card step">
+        <b>Meeting minutes, as written</b>
+        <p class="q">&ldquo;&hellip;Priya confirmed the copilot pilot is live with 12 advisors. <span class="hl">Data access approval is still pending with Risk</span>, which pushes the rollout. <span class="hl dec">Decision: extend the pilot to June</span> and revisit at the next steering.&rdquo;</p>
+        <span class="src">willow-steering-2026-05-12.docx, p.2</span>
+      </div>
+      <div class="arrow">&darr;<span>AI extracts who said what and what was decided</span></div>
+      <div class="card step">
+        <b>Initiative update, May</b>
+        <p>WIL-03 Advisor desk copilot</p>
+        <div class="chips"><span class="pill warn">Amber</span><span class="pill">blocker: data access approval</span><span class="pill">decision: pilot to June</span></div>
+        <span class="src">source: minutes p.2, Priya. Lineage kept on the row</span>
+      </div>
+      <div class="arrow">&darr;<span>rolls up, a person edits and signs</span></div>
+      <div class="card step">
+        <b>Business unit summary, Willow</b>
+        <p>4 initiatives: 3 Green, 1 Amber. Themes, blockers, requests, next month.</p>
+        <div class="chips"><span class="pill ok">Signed off, R. Lindqvist, 16:02</span></div>
+      </div>
+      <div class="arrow">&darr;<span>generated from signed rows only</span></div>
+      <div class="card step">
+        <b>Reporting package, May 2026</b>
+        <p>Cover, 6 business unit summaries, 24 initiative cards, RAG mix. PowerPoint and PDF.</p>
+      </div>
+    </div>
+
+    <div>
+      <p class="col-hd">the record, 8 tables</p>
+      <div class="rec">
+        <span class="grp" style="left:0">master data</span>
+        <span class="grp" style="left:196px">monthly rows</span>
+        <span class="grp" style="left:410px">supporting</span>
+
+        <div class="card tbl" style="left:0;top:24px"><b>Initiative</b><span>code, name, aliases</span><span>&rarr; business unit</span><span>type, funding, target date</span></div>
+        <div class="card tbl" style="left:0;top:170px"><b>Business unit</b><span>name, code</span><span>lead, sponsor</span></div>
+        <div class="card tbl" style="left:0;top:275px"><b>People</b><span>name, role</span><span>who may sign</span></div>
+
+        <div class="card tbl tx" style="left:196px;top:40px;width:198px"><b>Initiative update</b><span>&rarr; initiative, period</span><span>RAG, blockers, decisions, asks</span><span>&rarr; source document</span><span class="st">Drafting &rarr; In review &rarr; Signed off</span></div>
+        <div class="card tbl tx" style="left:196px;top:300px;width:198px"><b>Business unit summary</b><span>&rarr; business unit, period</span><span>themes, requests, next month</span><span class="st">signed off by, at</span></div>
+
+        <div class="card tbl" style="left:410px;top:24px"><b>Reporting period</b><span>May 2026</span><span>Open &rarr; Closed</span></div>
+        <div class="card tbl" style="left:410px;top:150px"><b>Source document</b><span>minutes, decks, notes</span><span>extracted text, hash</span><span>&rarr; initiative, period</span></div>
+        <div class="card tbl" style="left:410px;top:300px"><b>Report package</b><span>&rarr; period</span><span>PPTX, PDF</span><span>built from signed rows</span></div>
+
+        <svg class="links" viewBox="0 0 580 560" aria-hidden="true">
+          <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--accent)" stroke="none"/></marker></defs>
+          <path d="M170 90 L196 90" marker-end="url(#ah)"/>
+          <path d="M170 212 C 184 212, 184 340, 196 340" marker-end="url(#ah)"/>
+          <path d="M170 318 C 184 318, 184 372, 196 372" marker-end="url(#ah)"/>
+          <path d="M295 172 L295 300" marker-end="url(#ah)"/>
+          <path d="M410 52 C 402 52, 402 66, 394 66" marker-end="url(#ah)"/>
+          <path d="M410 186 C 401 186, 401 128, 394 128" marker-end="url(#ah)"/>
+          <path d="M394 346 L410 346" marker-end="url(#ah)"/>
+          <text x="304" y="240">rolls up</text>
+          <text x="300" y="416">signed rows only &rarr; package</text>
+        </svg>
+      </div>
+      <p class="col-hd" style="margin-top:6px">the month is a set of rows, so a closed month stays queryable and &ldquo;what changed since April&rdquo; is one query</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

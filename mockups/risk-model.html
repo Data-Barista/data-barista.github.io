@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mockup: Application risk analytics, the data model</title>
+<link rel="stylesheet" href="mock.css">
+<style>
+  .stage { padding: 40px 48px; }
+  .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0 0 8px; }
+  .title { font-family: var(--serif); font-weight: 600; font-size: 34px; letter-spacing: -0.015em; line-height: 1.1; margin: 0 0 6px; }
+  .sub { font-size: 15.5px; color: var(--ink-soft); margin: 0 0 24px; }
+  .two { display: grid; grid-template-columns: 1fr 330px; gap: 32px; align-items: start; }
+
+  /* the chain: five tables across, SLA policy hanging under Finding */
+  .chain { display: grid; grid-template-columns: 1fr 18px 1fr 18px 1fr 18px 1fr 18px 1fr; grid-template-rows: auto 22px auto; align-items: stretch; }
+  .tb { background: var(--surface); border: 1.5px solid var(--accent); border-radius: 8px; padding: 10px 12px; grid-row: 1; }
+  .tb.sla { grid-row: 3; grid-column: 7; }
+  .tb b { display: block; font-family: var(--serif); font-weight: 600; font-size: 15px; margin-bottom: 6px; }
+  .tb ul { list-style: none; margin: 0; padding: 0; font-family: var(--mono); font-size: 10.5px; line-height: 1.6; color: var(--ink-soft); }
+  .tb li.key { color: var(--ink); }
+  .h { grid-row: 1; align-self: center; height: 2px; background: var(--accent); }
+  .v { grid-row: 2; grid-column: 7; justify-self: center; width: 2px; background: var(--accent); }
+  .t1 { grid-column: 1; } .h1 { grid-column: 2; }
+  .t2 { grid-column: 3; } .h2 { grid-column: 4; }
+  .t3 { grid-column: 5; } .h3 { grid-column: 6; }
+  .t4 { grid-column: 7; } .h4 { grid-column: 8; }
+  .t5 { grid-column: 9; }
+  .joins { margin: 18px 0 0; font-family: var(--mono); font-size: 11px; color: var(--ink-soft); line-height: 1.7; }
+  .joins b { color: var(--ink); font-weight: 500; }
+
+  .dec { margin-top: 22px; padding: 4px 0 4px 18px; border-left: 3px solid var(--accent); max-width: 620px; }
+  .dec b { display: block; font-weight: 600; font-size: 16px; margin-bottom: 6px; }
+  .dec p { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--ink-soft); }
+  html.play .dec { animation: rise 0.45s 3.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .side .qc { padding: 12px 0 12px 16px; border-left: 3px solid var(--accent); margin-bottom: 14px; }
+  .side .qc b { display: block; font-weight: 600; font-size: 15px; margin-bottom: 3px; }
+  .side .qc p { margin: 0 0 4px; font-size: 13.5px; line-height: 1.5; color: var(--ink-soft); }
+  .side .qc code { font-family: var(--mono); font-size: 11px; color: var(--accent); }
+  .done { margin-top: 20px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 14.5px; color: var(--ink); }
+  .done b { color: var(--accent); font-weight: 600; }
+  .fine { margin-top: 10px; font-size: 12.5px; color: var(--ink-soft); }
+
+  /* ---- motion (html.play only): the tables land left to right, the joins
+     draw, then the three questions, then the definition of done. ---- */
+  @keyframes rise { from { opacity: 0; transform: translateY(8px); } }
+  @keyframes fade { from { opacity: 0; } }
+  @keyframes growx { from { transform: scaleX(0); } }
+  @keyframes growy { from { transform: scaleY(0); } }
+  html.play .eyebrow, html.play .title, html.play .sub { animation: fade 0.5s both; }
+  html.play .tb { animation: rise 0.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  html.play .t1 { animation-delay: 0.4s; }
+  html.play .t2 { animation-delay: 0.7s; }
+  html.play .t3 { animation-delay: 1.0s; }
+  html.play .t4 { animation-delay: 1.3s; }
+  html.play .t5 { animation-delay: 1.6s; }
+  html.play .sla { animation-delay: 2.0s; }
+  html.play .h { transform-origin: left; animation: growx 0.3s ease-out both; }
+  html.play .h1 { animation-delay: 0.65s; }
+  html.play .h2 { animation-delay: 0.95s; }
+  html.play .h3 { animation-delay: 1.25s; }
+  html.play .h4 { animation-delay: 1.55s; }
+  html.play .v { transform-origin: top; animation: growy 0.3s 1.9s ease-out both; }
+  html.play .joins { animation: fade 0.5s 2.3s both; }
+  html.play .qc { animation: rise 0.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  html.play .qc:nth-child(1) { animation-delay: 2.6s; }
+  html.play .qc:nth-child(2) { animation-delay: 2.9s; }
+  html.play .qc:nth-child(3) { animation-delay: 3.2s; }
+  html.play .done, html.play .fine { animation: fade 0.5s 3.7s both; }
+</style>
+<script src="play.js"></script>
+</head>
+<body>
+<div class="stage">
+  <p class="eyebrow">Application risk analytics &middot; the data model</p>
+  <p class="title">Six tables answer three questions.</p>
+  <p class="sub">Pipeline built with an AI coding agent from APIs and manual files, shaped in Python, presented in Power BI.</p>
+
+  <div class="two">
+    <div>
+      <div class="chain">
+        <div class="tb t1"><b>Application</b><ul><li class="key">app_id</li><li>name</li><li>tier</li><li>owner_team</li></ul></div>
+        <div class="h h1"></div>
+        <div class="tb t2"><b>Repository</b><ul><li class="key">repo_id</li><li>app_id</li><li>language</li><li>active</li></ul></div>
+        <div class="h h2"></div>
+        <div class="tb t3"><b>Scan</b><ul><li class="key">scan_id</li><li>repo_id</li><li>scanned_at</li><li>scan_type</li></ul></div>
+        <div class="h h3"></div>
+        <div class="tb t4"><b>Finding</b><ul><li class="key">finding_id</li><li>scan_id</li><li>severity</li><li>opened_at</li><li>status</li></ul></div>
+        <div class="h h4"></div>
+        <div class="tb t5"><b>Remediation</b><ul><li class="key">finding_id</li><li>closed_at</li><li>fix_type</li><li>days_open</li></ul></div>
+        <div class="v"></div>
+        <div class="tb sla"><b>SLA policy</b><ul><li class="key">severity</li><li>window_days</li><li>effective_from</li></ul></div>
+      </div>
+      <p class="joins"><b>coverage</b> = repos with a scan in the window / repos in scope, by app<br><b>within SLA</b> = closed_at &minus; opened_at &le; window_days for that severity<br><b>mean time to resolve</b> = average days_open of findings closed that week</p>
+      <div class="dec"><b>The decisions this supports</b><p>Gives business leaders a way to ask where exposure is known, where visibility is incomplete, and whether remediation is keeping pace. The same questions guide the move from clearing a backlog to ongoing risk monitoring.</p></div>
+    </div>
+
+    <div class="side">
+      <div class="qc"><b>1 &middot; Do we know all our risks?</b><p>In scope, scanned, findings by severity and SLA.</p><code>Application &rarr; Repository &rarr; Scan &rarr; Finding</code></div>
+      <div class="qc"><b>2 &middot; Are we fixing them in time?</b><p>Burn-down against SLA, worst severity first.</p><code>Finding &rarr; Remediation, SLA policy</code></div>
+      <div class="qc"><b>3 &middot; When are we done?</b><p>Mean time to resolve, held inside the window.</p><code>Remediation, SLA policy, by week</code></div>
+      <p class="done"><b>Done is a steady state.</b> New findings close within SLA as fast as they arrive, and the mean resolution time stays inside the window. That is the measure once it is business as usual.</p>
+      <p class="fine">Fictional SLA windows: critical 2 weeks, high 6 weeks, medium 12 weeks, low next release. Every count synthetic.</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

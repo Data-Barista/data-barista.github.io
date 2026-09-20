@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mockup: Talking points, what the setup keeps</title>
+<link rel="stylesheet" href="mock.css">
+<style>
+  .stage { padding: 44px 64px; }
+  .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0 0 8px; }
+  .title { font-family: var(--serif); font-weight: 600; font-size: 36px; letter-spacing: -0.015em; line-height: 1.1; margin: 0 0 6px; }
+  .sub { font-size: 16px; color: var(--ink-soft); margin: 0 0 30px; }
+  .three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .box { border: 1.5px solid var(--accent); border-radius: 8px; background: var(--surface); padding: 18px 22px 20px; min-height: 250px; display: flex; flex-direction: column; }
+  .box .k { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0 0 12px; }
+  .box .big { font-family: var(--serif); font-weight: 600; font-size: 24px; line-height: 1.3; margin: 0 0 12px; }
+  .box .small { font-size: 15px; line-height: 1.5; color: var(--ink-soft); margin: 0; }
+  .box .tag { margin-top: auto; padding-top: 14px; }
+  .box .tag span { font-family: var(--mono); font-size: 12px; padding: 4px 8px; border-radius: 4px; }
+  .box .tag .hole { color: var(--accent); background: var(--warn-soft); }
+  .box .tag .ok { color: var(--ok); background: var(--ok-soft); }
+  .foot { margin-top: 34px; padding-top: 14px; border-top: 1px solid var(--line); font-family: var(--mono); font-size: 13px; color: var(--ink-soft); }
+  .foot span { color: var(--ink); }
+
+  /* ---- motion (html.play only): the three rules land in turn, each with
+     its consequence, then the rank order settles. ---- */
+  @keyframes rise { from { opacity: 0; transform: translateY(8px); } }
+  @keyframes fade { from { opacity: 0; } }
+  html.play .eyebrow, html.play .title, html.play .sub { animation: fade 0.5s both; }
+  html.play .box { animation: rise 0.45s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  html.play .box:nth-child(1) { animation-delay: 0.4s; }
+  html.play .box:nth-child(2) { animation-delay: 1.3s; }
+  html.play .box:nth-child(3) { animation-delay: 2.2s; }
+  html.play .box .small, html.play .box .tag { animation: fade 0.4s both; }
+  html.play .box:nth-child(1) .small { animation-delay: 0.8s; } html.play .box:nth-child(1) .tag { animation-delay: 1.0s; }
+  html.play .box:nth-child(2) .small { animation-delay: 1.7s; } html.play .box:nth-child(2) .tag { animation-delay: 1.9s; }
+  html.play .box:nth-child(3) .small { animation-delay: 2.6s; } html.play .box:nth-child(3) .tag { animation-delay: 2.8s; }
+  html.play .foot { animation: fade 0.4s 3.3s both; }
+  html.play .foot span { animation: fade 0.3s both; color: var(--accent); }
+  html.play .foot span:nth-of-type(1) { animation-delay: 3.5s; }
+  html.play .foot span:nth-of-type(2) { animation-delay: 3.65s; }
+  html.play .foot span:nth-of-type(3) { animation-delay: 3.8s; }
+  html.play .foot span:nth-of-type(4) { animation-delay: 3.95s; }
+  html.play .foot span:nth-of-type(5) { animation-delay: 4.1s; }
+  html.play .foot span:nth-of-type(6) { animation-delay: 4.25s; }
+</style>
+<script src="play.js"></script>
+</head>
+<body>
+<div class="stage">
+  <p class="eyebrow">Talking points, how the setup was built</p>
+  <p class="title">Reverse engineer the precedents, write the rules down.</p>
+  <p class="sub">The context files carry the job. The model works inside them.</p>
+
+  <div class="three">
+    <div class="box">
+      <p class="k">Boundaries</p>
+      <p class="big">What the model may use, and what it may not.</p>
+      <p class="small">Past talking points are precedents: shape and sound only. Numbers, names, and dates come from what the user drops in for this event, or they stay marked. Out of scope stays out.</p>
+      <p class="tag"><span class="hole">[CONFIRM: current figure]</span></p>
+    </div>
+    <div class="box">
+      <p class="k">Voice and format</p>
+      <p class="big">Codified from the team&rsquo;s own files.</p>
+      <p class="small">Reverse engineered from the past talking points and the house template: how a page opens and closes, how long bullets run, which sections come back every time. Written down as rules and reusable blocks.</p>
+      <p class="tag"><span class="ok">same voice, same page, every event</span></p>
+    </div>
+    <div class="box">
+      <p class="k">QA and what the user adds</p>
+      <p class="big">Checked before it is shown, then the user&rsquo;s additions go in.</p>
+      <p class="small">A silent check against the rules: sources, example leak, voice, template. Then what the user asked for this event: names to thank, a callback, extra detail. What still needs a person is listed beside the file.</p>
+      <p class="tag"><span class="ok">completion list, outside the file</span></p>
+    </div>
+  </div>
+
+  <p class="foot">When rules clash, rank decides: <span>role</span> &rarr; <span>voice</span> &rarr; <span>blocks</span> &rarr; <span>output contract</span> &rarr; <span>template</span> &rarr; <span>workflow</span></p>
+</div>
+</body>
+</html>

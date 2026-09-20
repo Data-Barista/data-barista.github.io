@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mockup: Pre-meeting brief</title>
+<link rel="stylesheet" href="mock.css">
+<style>
+  .stage { padding: 36px 48px; }
+  .hd { margin-bottom: 18px; }
+  .grid { display: grid; grid-template-columns: 226px 560px 272px; gap: 23px; align-items: start; }
+  .col-hd { font-family: var(--mono); font-size: 11px; color: var(--ink-soft); letter-spacing: 0.02em; margin: 0 0 8px; }
+
+  /* ---- sources ---- */
+  .group { padding: 10px 12px 8px; margin-bottom: 12px; }
+  .group b { display: block; font-family: var(--serif); font-weight: 600; font-size: 14px; margin-bottom: 6px; }
+  .group ul { list-style: none; margin: 0; padding: 0; }
+  .group li { font-family: var(--mono); font-size: 11px; line-height: 1.5; color: var(--ink-soft); padding: 3px 0; border-top: 1px solid var(--line); }
+  .group li:first-child { border-top: 0; }
+  .flow { font-family: var(--mono); font-size: 11px; color: var(--accent); text-align: center; margin: 2px 0 0; }
+
+  /* ---- memo, a one-pager ---- */
+  .memo { padding: 14px 16px 12px; font-size: 9.5px; line-height: 1.4; }
+  .memo .title { font-family: var(--sans); font-weight: 700; font-size: 15px; letter-spacing: -0.01em; margin: 0 0 4px; }
+  .memo .meta { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 8px; font-size: 9px; color: var(--ink-soft); padding-bottom: 8px; border-bottom: 1px solid var(--line); margin-bottom: 8px; }
+  .memo .meta b { color: var(--ink); font-weight: 600; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .colhd { font-family: var(--sans); font-weight: 700; font-size: 10px; color: var(--accent); border-bottom: 1px solid var(--accent); padding-bottom: 2px; margin: 0 0 6px; }
+  .sec { margin: 0 0 8px; }
+  .sec h5 { margin: 0 0 2px; font-family: var(--sans); font-weight: 700; font-size: 9.5px; }
+  .sec p { margin: 0 0 2px 8px; color: var(--ink-soft); position: relative; }
+  .sec p::before { content: ""; position: absolute; left: -7px; top: 5px; width: 3px; height: 3px; border-radius: 50%; background: var(--accent); }
+  .bar { display: block; height: 5px; border-radius: 3px; background: var(--line); margin: 3px 0 4px 8px; }
+  .bar.w1 { width: 92%; } .bar.w2 { width: 70%; } .bar.w3 { width: 55%; }
+  .fin { width: 100%; border-collapse: collapse; font-size: 8.5px; margin: 2px 0 4px; }
+  .fin th, .fin td { padding: 2px 4px; border: 1px solid var(--line); font-family: var(--mono); font-size: 8.5px; }
+  .fin th { font-weight: 500; background: var(--panel); color: var(--ink-soft); }
+  .fin td:first-child { font-family: var(--sans); }
+  .fin td.n { text-align: right; }
+  .exec { display: grid; grid-template-columns: 1fr 44px; gap: 8px; }
+  .photo { height: 50px; border: 1px solid var(--line); background: var(--panel); border-radius: 4px; font-family: var(--mono); font-size: 7px; color: var(--ink-soft); display: flex; align-items: center; justify-content: center; text-align: center; }
+  .confirm { font-family: var(--mono); font-size: 8.5px; color: var(--warn); background: var(--warn-soft); border-radius: 3px; padding: 0 3px; }
+
+  /* ---- guardrails ---- */
+  .rule { padding: 9px 12px 9px; margin-bottom: 8px; display: grid; grid-template-columns: 1fr 16px; gap: 8px; align-items: start; }
+  .rule b { display: block; font-family: var(--serif); font-weight: 600; font-size: 13.5px; margin-bottom: 2px; }
+  .rule span { display: block; font-family: var(--mono); font-size: 10.5px; line-height: 1.45; color: var(--ink-soft); }
+  .rule i { font-style: normal; color: var(--ok); font-size: 13px; line-height: 1; padding-top: 2px; }
+  .gate { margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap; }
+
+  /* ---- motion (html.play only): sources land, the brief fills section by
+     section, then each guardrail checks in. ---- */
+  @keyframes rise { from { opacity: 0; transform: translateY(8px); } }
+  @keyframes fade { from { opacity: 0; } }
+  @keyframes grow { from { transform: scaleX(0); } }
+  @keyframes pop { from { opacity: 0; transform: scale(0.6); } 70% { transform: scale(1.1); } }
+  html.play .group { animation: rise 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  html.play .group:nth-of-type(1) { animation-delay: 0.15s; }
+  html.play .group:nth-of-type(2) { animation-delay: 0.45s; }
+  html.play .flow { animation: fade 0.4s 0.9s both; }
+  html.play .memo { animation: rise 0.5s 1.0s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  html.play .memo .sec { animation: rise 0.4s both; }
+  html.play .memo .bar { transform-origin: left center; animation: grow 0.5s both; }
+  html.play .cols > div:nth-child(1) .sec:nth-of-type(1) { animation-delay: 1.4s; }
+  html.play .cols > div:nth-child(1) .sec:nth-of-type(2) { animation-delay: 1.7s; }
+  html.play .cols > div:nth-child(1) .sec:nth-of-type(3) { animation-delay: 2.0s; }
+  html.play .cols > div:nth-child(1) .sec:nth-of-type(4) { animation-delay: 2.3s; }
+  html.play .cols > div:nth-child(2) .sec:nth-of-type(1) { animation-delay: 2.6s; }
+  html.play .cols > div:nth-child(2) .sec:nth-of-type(2) { animation-delay: 2.9s; }
+  html.play .cols > div:nth-child(2) .sec:nth-of-type(3) { animation-delay: 3.2s; }
+  html.play .cols > div:nth-child(2) .sec:nth-of-type(4) { animation-delay: 3.5s; }
+  html.play .cols > div:nth-child(1) .sec:nth-of-type(1) .bar { animation-delay: 1.6s; }
+  html.play .cols > div:nth-child(1) .sec:nth-of-type(2) .bar { animation-delay: 1.9s; }
+  html.play .cols > div:nth-child(1) .sec:nth-of-type(3) .bar { animation-delay: 2.2s; }
+  html.play .cols > div:nth-child(1) .sec:nth-of-type(4) .bar { animation-delay: 2.5s; }
+  html.play .cols > div:nth-child(2) .sec:nth-of-type(1) .bar { animation-delay: 2.8s; }
+  html.play .cols > div:nth-child(2) .sec:nth-of-type(2) .bar { animation-delay: 3.1s; }
+  html.play .cols > div:nth-child(2) .sec:nth-of-type(3) .bar { animation-delay: 3.4s; }
+  html.play .cols > div:nth-child(2) .sec:nth-of-type(4) .bar { animation-delay: 3.7s; }
+  html.play .rule { animation: rise 0.45s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  html.play .rule i { animation: pop 0.35s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  html.play .rule:nth-of-type(1) { animation-delay: 3.9s; } html.play .rule:nth-of-type(1) i { animation-delay: 4.2s; }
+  html.play .rule:nth-of-type(2) { animation-delay: 4.15s; } html.play .rule:nth-of-type(2) i { animation-delay: 4.45s; }
+  html.play .rule:nth-of-type(3) { animation-delay: 4.4s; } html.play .rule:nth-of-type(3) i { animation-delay: 4.7s; }
+  html.play .rule:nth-of-type(4) { animation-delay: 4.65s; } html.play .rule:nth-of-type(4) i { animation-delay: 4.95s; }
+  html.play .rule:nth-of-type(5) { animation-delay: 4.9s; } html.play .rule:nth-of-type(5) i { animation-delay: 5.2s; }
+  html.play .gate .pill { animation: pop 0.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  html.play .gate .pill:nth-of-type(1) { animation-delay: 5.5s; }
+  html.play .gate .pill:nth-of-type(2) { animation-delay: 5.7s; }
+</style>
+<script src="play.js"></script>
+</head>
+<body>
+<div class="stage">
+  <div class="hd">
+    <h1>Pre-meeting brief: context management</h1>
+    <span class="meta">Northwind Capital, one page for the leader before the meeting</span>
+  </div>
+
+  <div class="grid">
+    <div>
+      <p class="col-hd">data sources</p>
+      <div class="card group">
+        <b>Structured</b>
+        <ul>
+          <li>CRM database</li>
+          <li>Client registered list</li>
+          <li>Performance metrics, finance</li>
+          <li>Revenue and mandate tables</li>
+        </ul>
+      </div>
+      <div class="card group">
+        <b>Unstructured</b>
+        <ul>
+          <li>Earnings call transcripts</li>
+          <li>Background documents</li>
+          <li>Emails and threads</li>
+          <li>SharePoint documents</li>
+        </ul>
+      </div>
+      <p class="flow">compiled into the fields the brief needs &rarr;</p>
+    </div>
+
+    <div>
+      <p class="col-hd">the brief</p>
+      <div class="card memo">
+        <p class="title">Brightwater Capital Partners (BWCP)</p>
+        <div class="meta">
+          <div><b>Date / time:</b> Tue 23 Sep, 10:00<br><b>Location:</b> client office</div>
+          <div><b>Client attendee</b><br>M. Okafor, CFO</div>
+          <div><b>Northwind attendee</b><br>R. Lindqvist, Head of Coverage</div>
+        </div>
+        <div class="cols">
+          <div>
+            <p class="colhd">Company</p>
+            <div class="sec">
+              <h5>Company description</h5>
+              <p>Multi-strategy manager, $4.2B AUM, 3 offices</p>
+              <span class="bar w1"></span><span class="bar w2"></span>
+            </div>
+            <div class="sec">
+              <h5>LTM financials ($M)</h5>
+              <table class="fin">
+                <tr><th>Revenue</th><th>Current YTD</th><th>Prior FY</th></tr>
+                <tr><td>Advisory</td><td class="n">31.4</td><td class="n">28.9</td></tr>
+                <tr><td>Trading</td><td class="n">18.2</td><td class="n">19.6</td></tr>
+                <tr><td>Custody</td><td class="n">9.7</td><td class="n">7.1</td></tr>
+              </table>
+            </div>
+            <div class="sec">
+              <h5>M. Okafor, CFO</h5>
+              <div class="exec">
+                <div>
+                  <p>CFO since 2022, prior treasurer at a regional bank</p>
+                  <span class="bar w2"></span><span class="bar w3"></span>
+                </div>
+                <div class="photo">photo</div>
+              </div>
+            </div>
+            <div class="sec">
+              <h5>Coverage</h5>
+              <p>R. Lindqvist, coverage lead</p>
+              <span class="bar w3"></span>
+            </div>
+          </div>
+          <div>
+            <p class="colhd">Relationship</p>
+            <div class="sec">
+              <h5>Background and key messages</h5>
+              <p>Custody and FX live since May; wants a second mandate before year end</p>
+              <span class="bar w1"></span><span class="bar w2"></span>
+            </div>
+            <div class="sec">
+              <h5>Where we could do more</h5>
+              <p>Lending headline: <span class="confirm">[CONFIRM: not in corpus]</span></p>
+              <span class="bar w2"></span>
+            </div>
+            <div class="sec">
+              <h5>Recent transactions</h5>
+              <p>FX mandate, May; custody conversion, June</p>
+              <span class="bar w3"></span>
+            </div>
+            <div class="sec">
+              <h5>Asks and next steps</h5>
+              <p>Open by thanking them for the CFO introduction</p>
+              <span class="bar w2"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p class="col-hd">guardrails</p>
+      <div class="card rule"><div><b>Voice guide</b><span>Reads like the coverage lead: short, declarative, numbers with periods.</span></div><i>&#10003;</i></div>
+      <div class="card rule"><div><b>Production rules</b><span>Template order is fixed. Every box is an extraction target.</span></div><i>&#10003;</i></div>
+      <div class="card rule"><div><b>Writing rules</b><span>Every figure from an uploaded source or [CONFIRM]. Conflicts labeled, never averaged.</span></div><i>&#10003;</i></div>
+      <div class="card rule"><div><b>Text density rule</b><span>The precedent sets bullets per box. Compress wording, never substance.</span></div><i>&#10003;</i></div>
+      <div class="card rule"><div><b>QA testing</b><span>Holdout against a real brief. Coverage, voice, and the number gate scored separately.</span></div><i>&#10003;</i></div>
+      <div class="gate"><span class="pill ok">number gate PASS</span><span class="pill">1 to 2 weeks &rarr; 1 to 2 hours</span></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

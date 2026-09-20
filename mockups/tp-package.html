@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mockup: Talking points, workflow starter</title>
+<link rel="stylesheet" href="mock.css">
+<style>
+  .stage { padding: 44px 64px; }
+  .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0 0 8px; }
+  .title { font-family: var(--serif); font-weight: 600; font-size: 40px; letter-spacing: -0.015em; line-height: 1.1; margin: 0 0 6px; }
+  .sub { font-size: 16px; color: var(--ink-soft); margin: 0 0 26px; }
+
+  .comp { position: relative; display: grid; grid-template-columns: 340px 80px 620px; align-items: start; }
+  .comp > .right { grid-column: 3; }
+  .box { border: 1.5px solid var(--accent); border-radius: 8px; background: var(--surface); padding: 16px 20px 14px; }
+  .box .k { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0 0 8px; }
+  .box .line { font-family: var(--sans); font-size: 20px; line-height: 1.5; margin: 0; }
+  .setup { position: relative; margin-bottom: 26px; }
+  .setup::before { content: ""; position: absolute; left: 10px; right: -6px; top: -8px; height: 100%; border: 1.5px solid var(--accent); border-radius: 8px; opacity: 0.35; z-index: -1; }
+  .draft { padding: 18px 26px 22px; }
+  .draft .k { color: var(--ink-soft); }
+  .draft h2 { font-family: var(--serif); font-weight: 600; font-size: 30px; margin: 0 0 4px; padding-bottom: 8px; border-bottom: 2px solid var(--accent); }
+  .sec { display: grid; grid-template-columns: 120px 1fr; align-items: center; gap: 12px; margin-top: 18px; }
+  .sec .h { font-family: var(--sans); font-weight: 700; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .sec .bar { height: 5px; border-radius: 3px; background: var(--ink-soft); opacity: 0.45; width: 90%; }
+  .sec .confirm { font-family: var(--sans); font-size: 18px; color: var(--accent); background: var(--warn-soft); border-radius: 4px; padding: 6px 12px; display: inline-block; }
+  .human { margin: 26px 0 0 60px; border-color: var(--accent); }
+  .human .k { color: var(--accent); }
+  .foot { margin-top: 30px; padding-top: 14px; border-top: 1px solid var(--line); font-family: var(--mono); font-size: 13px; color: var(--ink-soft); }
+  .foot span { color: var(--ink); }
+  svg.links { position: absolute; left: 340px; top: 0; width: 80px; height: 420px; overflow: visible; pointer-events: none; }
+  svg.links path { stroke: var(--accent); stroke-width: 2; fill: none; }
+  svg.dash { position: absolute; left: 441px; top: 243px; width: 40px; height: 120px; overflow: visible; pointer-events: none; }
+  svg.dash path { stroke: var(--accent); stroke-width: 1.5; fill: none; stroke-dasharray: 4 4; }
+
+  /* ---- motion (html.play only): setup first, then this event, the two feed
+     the draft, the hole flags itself, the human list arrives, the pipeline
+     lights up. ---- */
+  @keyframes rise { from { opacity: 0; transform: translateY(8px); } }
+  @keyframes fade { from { opacity: 0; } }
+  @keyframes draw { 0% { stroke-dashoffset: 200; opacity: 0; } 2% { opacity: 1; } 100% { stroke-dashoffset: 0; opacity: 1; } }
+  @keyframes grow { from { transform: scaleX(0); } }
+  @keyframes flag { 0%, 100% { box-shadow: 0 0 0 0 transparent; } 40% { box-shadow: 0 0 0 5px var(--warn-soft); } }
+  html.play .eyebrow, html.play .title, html.play .sub { animation: fade 0.5s both; }
+  html.play .setup { animation: rise 0.45s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  html.play .setup .line { animation: fade 0.3s both; }
+  html.play .setup .line:nth-of-type(1) { animation-delay: 0.6s; }
+  html.play .setup .line:nth-of-type(2) { animation-delay: 0.75s; }
+  html.play .setup .line:nth-of-type(3) { animation-delay: 0.9s; }
+  html.play .event { animation: rise 0.45s 1.2s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  html.play .event .line { animation: fade 0.3s both; }
+  html.play .event .line:nth-of-type(1) { animation-delay: 1.45s; }
+  html.play .event .line:nth-of-type(2) { animation-delay: 1.6s; }
+  html.play svg.links path { stroke-dasharray: 200; stroke-dashoffset: 200; opacity: 0; animation: draw 0.5s ease-out both; }
+  html.play svg.links path:nth-of-type(1) { animation-delay: 1.9s; }
+  html.play svg.links path:nth-of-type(2) { animation-delay: 2.1s; }
+  html.play .draft { animation: rise 0.45s 2.3s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  html.play .sec { animation: rise 0.35s both; }
+  html.play .sec:nth-of-type(1) { animation-delay: 2.7s; }
+  html.play .sec:nth-of-type(2) { animation-delay: 3.0s; }
+  html.play .sec:nth-of-type(3) { animation-delay: 3.3s; }
+  html.play .sec .bar { transform-origin: left center; animation: grow 0.5s both; }
+  html.play .sec:nth-of-type(1) .bar { animation-delay: 2.85s; }
+  html.play .sec:nth-of-type(2) .bar { animation-delay: 3.15s; }
+  html.play .confirm { animation: flag 1s 3.7s 1; }
+  html.play svg.dash path { animation: fade 0.4s 4.1s both; }
+  html.play .human { animation: rise 0.45s 4.3s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  html.play .foot { animation: fade 0.4s 4.8s both; }
+  html.play .foot span { animation: fade 0.3s both; color: var(--accent); }
+  html.play .foot span:nth-of-type(1) { animation-delay: 5.0s; }
+  html.play .foot span:nth-of-type(2) { animation-delay: 5.2s; }
+  html.play .foot span:nth-of-type(3) { animation-delay: 5.4s; }
+  html.play .foot span:nth-of-type(4) { animation-delay: 5.6s; }
+  html.play .foot span:nth-of-type(5) { animation-delay: 5.8s; }
+</style>
+<script src="play.js"></script>
+</head>
+<body>
+<div class="stage">
+  <p class="eyebrow">Talking points, workflow starter</p>
+  <p class="title">Set up once. Prepare every time.</p>
+  <p class="sub">A familiar voice, fresh facts, and a clear handoff.</p>
+
+  <div class="comp">
+    <div>
+      <div class="box setup">
+        <p class="k">Reusable setup</p>
+        <p class="line">Voice + structure</p>
+        <p class="line">Blocks + template</p>
+        <p class="line">Workflow + checks</p>
+      </div>
+      <div class="box event">
+        <p class="k">This event</p>
+        <p class="line">Agenda + notes</p>
+        <p class="line">Current facts</p>
+      </div>
+    </div>
+
+    <svg class="links" viewBox="0 0 80 420" aria-hidden="true">
+      <path d="M0 80 L40 80 L40 130 L80 130"/>
+      <path d="M0 292 L52 292 L52 158 L80 158"/>
+    </svg>
+
+    <div class="right">
+      <div class="box draft">
+        <p class="k">Illustrative working draft</p>
+        <h2>Talking points</h2>
+        <div class="sec"><span class="h">Opening</span><span class="bar"></span></div>
+        <div class="sec"><span class="h">Our focus</span><span class="bar"></span></div>
+        <div class="sec"><span class="h">Progress</span><span><span class="confirm">[CONFIRM: current figure]</span></span></div>
+      </div>
+      <svg class="dash" viewBox="0 0 40 120" aria-hidden="true"><path d="M0 0 L0 70 L40 70"/></svg>
+      <div class="box human">
+        <p class="k">Human completion list, separate</p>
+        <p class="line">Verify facts. Add the personal touch.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="foot"><span>Intake</span> &rarr; <span>outline</span> &rarr; <span>draft</span> &rarr; <span>check</span> &rarr; <span>produce</span></p>
+</div>
+</body>
+</html>

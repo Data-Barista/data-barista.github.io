@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mockup: Tokenomics, the chart</title>
+<link rel="stylesheet" href="mock.css">
+<style>
+  .stage { padding: 40px 56px; }
+  .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0 0 8px; }
+  .title { font-family: var(--serif); font-weight: 600; font-size: 34px; letter-spacing: -0.015em; line-height: 1.1; margin: 0 0 6px; }
+  .sub { font-size: 15.5px; color: var(--ink-soft); margin: 0 0 18px; }
+  .two { display: grid; grid-template-columns: 1fr 300px; gap: 28px; align-items: start; }
+  svg.scatter { display: block; width: 100%; }
+  .dot { fill: var(--ink-soft); opacity: 0.3; }
+  .leak { fill: var(--accent); opacity: 0.55; }
+  .med { stroke: var(--accent); stroke-width: 2; }
+  .mid { stroke: var(--ink-soft); stroke-width: 1; stroke-dasharray: 3 3; }
+  .grid { stroke: var(--line); stroke-width: 1; }
+  .tick { font-family: var(--mono); font-size: 10.5px; fill: var(--ink-soft); }
+  .axl { font-family: var(--sans); font-size: 12px; fill: var(--ink); font-weight: 600; }
+  .lab { font-family: var(--mono); font-size: 10.5px; fill: var(--accent); }
+  .side .card { padding: 16px 18px; margin-bottom: 10px; border-left: 3px solid var(--accent); }
+  .side b { display: block; font-family: var(--sans); font-weight: 600; font-size: 15px; margin-bottom: 8px; }
+  .side p { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--ink-soft); }
+  .side .sig { font-family: var(--mono); font-size: 11px; color: var(--ink); line-height: 1.6; }
+  .side .dir { border-color: var(--warn); }
+  .side .dir b { color: var(--warn); }
+
+  /* ---- motion (html.play only): the cloud settles, the median splits it,
+     the leakage lights up, then the side notes. ---- */
+  @keyframes rise { from { opacity: 0; transform: translateY(8px); } }
+  @keyframes fade { from { opacity: 0; } }
+  @keyframes drawv { from { transform: scaleY(0); } }
+  html.play .eyebrow, html.play .title, html.play .sub { animation: fade 0.5s both; }
+  html.play .grid, html.play .tick, html.play .axl, html.play .mid { animation: fade 0.5s 0.3s both; }
+  html.play .dot { animation: fade 1.2s 0.5s both; }
+  html.play .med { transform-origin: center bottom; transform-box: fill-box; animation: drawv 0.6s 1.8s ease-out both; }
+  html.play .leak { animation: fade 0.8s 2.4s both; }
+  html.play .lab { animation: fade 0.4s 3.1s both; }
+  html.play .side .card { animation: rise 0.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  html.play .side .card:nth-child(1) { animation-delay: 3.4s; }
+  html.play .side .card:nth-child(2) { animation-delay: 3.7s; }
+  html.play .side .card:nth-child(3) { animation-delay: 4.0s; }
+</style>
+<script src="play.js"></script>
+<script src="tokenomics.js"></script>
+</head>
+<body>
+<div class="stage">
+  <p class="eyebrow">Tokenomics, every user on one chart</p>
+  <p class="title">Complexity of use against what it costs.</p>
+  <p class="sub">One dot per user, one month. The median splits low from high cost.</p>
+
+  <div class="two">
+    <div>
+      <svg class="scatter" viewBox="0 0 760 470" data-x0="70" data-x1="740" data-lgmin="2.6" data-lgmax="6.9" data-y0="410" data-y1="30" aria-hidden="true">
+        <line class="grid" x1="70" y1="30" x2="70" y2="410"/>
+        <line class="grid" x1="70" y1="410" x2="740" y2="410"/>
+        <line class="grid" x1="226" y1="30" x2="226" y2="410"/>
+        <line class="grid" x1="382" y1="30" x2="382" y2="410"/>
+        <line class="grid" x1="538" y1="30" x2="538" y2="410"/>
+        <line class="grid" x1="694" y1="30" x2="694" y2="410"/>
+        <line class="mid" x1="70" y1="220" x2="740" y2="220"/>
+        <text class="tick" x="62" y="36" text-anchor="end">heavy</text>
+        <text class="tick" x="62" y="224" text-anchor="end">medium</text>
+        <text class="tick" x="62" y="412" text-anchor="end">light</text>
+        <text class="axl" x="14" y="230" transform="rotate(-90 14 230)" text-anchor="middle">Task complexity</text>
+        <text class="tick" x="70" y="430">1k</text>
+        <text class="tick" x="226" y="430" text-anchor="middle">10k</text>
+        <text class="tick" x="382" y="430" text-anchor="middle">100k</text>
+        <text class="tick" x="538" y="430" text-anchor="middle">1M</text>
+        <text class="tick" x="694" y="430" text-anchor="middle">10M</text>
+        <text class="axl" x="405" y="460" text-anchor="middle">Token spend per user per month, log scale</text>
+        <text class="lab" x="734" y="404" text-anchor="end">leakage: light work, frontier prices</text>
+        <text class="lab" x="76" y="44">exemplars: hard work, modest spend</text>
+      </svg>
+    </div>
+
+    <div class="side">
+      <div class="card">
+        <b>What this explores</b>
+        <p>Creates a starting point for investigating AI consumption. It makes the measurement questions visible: how much work was done, what kind of work it was, and whether the result was useful.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    var svg = document.querySelector('svg.scatter');
+    var mx = window.drawScatter(svg, 6, 2.4);
+    var l = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    l.setAttribute('class', 'med'); l.setAttribute('x1', mx); l.setAttribute('x2', mx); l.setAttribute('y1', 24); l.setAttribute('y2', 414);
+    svg.appendChild(l);
+    var labs = svg.querySelectorAll('.lab'); svg.appendChild(labs[0]); svg.appendChild(labs[1]);
+  })();
+</script>
+</body>
+</html>

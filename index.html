@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Data Barista · AI solution engineer</title>
-  <meta name="description" content="Katie Zhang, AI product manager and embedded builder with 20 years in financial services. I build the metrics and governance layer that shows leaders what AI is actually doing across the firm.">
-  <meta property="og:title" content="Data Barista">
-  <meta property="og:description" content="AI product manager and embedded builder with 20 years in financial services. My clients are Chief of Staff teams and COOs.">
+  <title>Katie Zhang · Data Barista</title>
+  <meta name="description" content="Katie Zhang builds AI workflows and GenAI data analytics for finance leaders. AI workflow agents, adoption and investment analytics, and the governance that makes them trustworthy. Every project runs on synthetic data.">
+  <meta property="og:title" content="Katie Zhang · Data Barista">
+  <meta property="og:description" content="AI lets me build more of what I'm curious about. Explore what I'm making, how I think, and what I'm learning along the way.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://data-barista.github.io/">
-  <meta property="og:image" content="https://data-barista.github.io/assets/tile-ai-investment-map.jpg">
-  <meta name="theme-color" content="#faf6f0" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#16110d" media="(prefers-color-scheme: dark)">
+  <meta property="og:image" content="https://data-barista.github.io/assets/mock-pre-meeting-brief.png">
+  <meta name="theme-color" content="#fcfaf6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1f1915" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="style.css?v=7">
+  <link rel="stylesheet" href="style.css?v=9">
 </head>
 <body>
 
@@ -29,7 +29,10 @@
     <span>Data Barista</span>
   </a>
   <nav aria-label="Site">
-    <a href="#work">Work</a>
+    <a href="#workflow">AI workflow</a>
+    <a href="#analytics">Data analytics</a>
+    <a href="#personal">Personal</a>
+    <a href="#build">How I build</a>
     <a href="https://github.com/Data-Barista" target="_blank" rel="noopener noreferrer">GitHub</a>
   </nav>
 </header>
@@ -37,189 +40,206 @@
 <main>
   <section class="hero">
     <h1><a href="https://www.linkedin.com/in/katiezhang" target="_blank" rel="noopener noreferrer">Katie&nbsp;Zhang</a></h1>
-    <div class="hero-grid">
-      <div class="hero-bio">
-        <p class="lede">AI product manager and embedded builder with 20 years in financial services. I build the metrics and governance layer that shows leaders what AI is actually doing across the firm.</p>
-        <p class="lede">My clients are Chief of Staff teams and COOs. I sit with their teams, prototype in days, and turn what works into repeatable patterns, from briefing memo generation to agentic PMO workflows and AI-enabled executive coordination.</p>
-      </div>
-      <div class="hero-side">
-        <p class="hero-stack">GenAI data and analytics &middot; LLM agents &middot; RAG pipelines &middot; automations &middot; AI adoption metrics</p>
-        <p class="hero-stack">Snowflake &middot; Power&nbsp;BI &middot; Power Platform and Power&nbsp;Automate &middot; Claude&nbsp;Code &middot; Python</p>
-      </div>
-    </div>
+    <p class="lede">AI lets me build more of what I&rsquo;m curious about.</p>
+    <p class="lede-2">Explore what I&rsquo;m making, how I think, and what I&rsquo;m learning along the way.</p>
   </section>
 
-  <section id="work" aria-labelledby="work-title">
-    <h2 id="work-title">Work</h2>
-    <p class="section-note">Examples, built on synthetic or fictional data. Open any tile for the business problem, the stack, and what I learned.</p>
+  <section id="workflow" aria-labelledby="t-workflow">
+    <h2 id="t-workflow">AI workflow</h2>
 
-    <ul class="cards">
-      <li class="card" data-dialog="d-investment-map">
-        <div class="card-content">
-          <h3><a href="https://ai-investment-map-mu.vercel.app" target="_blank" rel="noopener noreferrer">AI Investment Map</a></h3>
-          <p class="pitch">A bank's whole AI portfolio on one screen: every initiative sized by spend and colored by status, in a treemap I squarified by hand instead of importing a chart library.</p>
-          <p class="repo">ai-investment-map-mu.vercel.app&thinsp;&#8599;</p>
-        </div>
-        <div class="card-arch" aria-hidden="true">
-          <svg viewBox="0 0 360 204">
-            <rect fill="#fffdf9" stroke="#241b13" stroke-opacity="0.3" stroke-width="1.4" class="a-box a-s1" x="30" y="12" width="300" height="34" rx="6"/>
-            <text fill="#241b13" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.5" class="a-txt a-s1" x="180" y="34" text-anchor="middle">Synthetic portfolio · 37-month timeline</text>
-            <path stroke="#96450f" stroke-width="2" fill="none" class="a-arrow a-s2" d="M180 50 L180 66"/>
-            <path fill="#96450f" class="a-head a-s2" d="M174 64 L180 72 L186 64 Z"/>
-            <rect fill="#96450f" class="a-box-acc a-s2" x="30" y="74" width="300" height="34" rx="6"/>
-            <text fill="#faf6f0" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.5" class="a-txt-inv a-s2" x="180" y="96" text-anchor="middle">Hand-rolled squarified treemap</text>
-            <path stroke="#96450f" stroke-width="2" fill="none" class="a-arrow a-s3" d="M180 112 L180 128"/>
-            <path fill="#96450f" class="a-head a-s3" d="M174 126 L180 134 L186 126 Z"/>
-            <rect fill="#fffdf9" stroke="#241b13" stroke-opacity="0.3" stroke-width="1.4" class="a-box a-s3" x="30" y="136" width="300" height="34" rx="6"/>
-            <text fill="#241b13" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.5" class="a-txt a-s3" x="180" y="158" text-anchor="middle">Drill-down · semantic zoom · ROI</text>
-            <text fill="#6d604f" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" class="a-stack a-s4" x="180" y="192" text-anchor="middle">React 19 · Vite 7 · Tailwind 4 · no chart library</text>
-          </svg>
-        </div>
-      </li>
-
-      <li class="card" data-dialog="d-brief-me">
-        <div class="card-content">
-          <h3><a href="https://github.com/Data-Barista/brief-me" target="_blank" rel="noopener noreferrer">Brief Me</a></h3>
-          <p class="pitch">Adoption analytics for an AI rollout. Ask a question in plain English and a Snowflake Cortex agent writes the SQL, over a population of 500 synthetic employees.</p>
-          <p class="repo">Data-Barista/brief-me&thinsp;&#8599;</p>
-        </div>
-        <div class="card-arch" aria-hidden="true">
-          <svg viewBox="0 0 360 204">
-            <rect fill="#fffdf9" stroke="#241b13" stroke-opacity="0.3" stroke-width="1.4" class="a-box a-s1" x="30" y="12" width="300" height="34" rx="6"/>
-            <text fill="#241b13" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.5" class="a-txt a-s1" x="180" y="34" text-anchor="middle">Plain-English question</text>
-            <path stroke="#96450f" stroke-width="2" fill="none" class="a-arrow a-s2" d="M180 50 L180 66"/>
-            <path fill="#96450f" class="a-head a-s2" d="M174 64 L180 72 L186 64 Z"/>
-            <rect fill="#96450f" class="a-box-acc a-s2" x="30" y="74" width="300" height="34" rx="6"/>
-            <text fill="#faf6f0" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.5" class="a-txt-inv a-s2" x="180" y="96" text-anchor="middle">Snowflake SQL + Cortex COMPLETE</text>
-            <path stroke="#96450f" stroke-width="2" fill="none" class="a-arrow a-s3" d="M180 112 L180 128"/>
-            <path fill="#96450f" class="a-head a-s3" d="M174 126 L180 134 L186 126 Z"/>
-            <rect fill="#fffdf9" stroke="#241b13" stroke-opacity="0.3" stroke-width="1.4" class="a-box a-s3" x="30" y="136" width="300" height="34" rx="6"/>
-            <text fill="#241b13" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.5" class="a-txt a-s3" x="180" y="158" text-anchor="middle">Charts, tables, adoption narrative</text>
-            <text fill="#6d604f" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" class="a-stack a-s4" x="180" y="192" text-anchor="middle">Next.js 14 · Snowflake · Tremor · AG Grid</text>
-          </svg>
-        </div>
-      </li>
-
-      <li class="card" data-dialog="d-research">
-        <div class="card-content">
-          <h3><a href="https://github.com/Data-Barista/deep-research-harness" target="_blank" rel="noopener noreferrer">Deep Research Harness</a></h3>
-          <p class="pitch">A rerunnable research pipeline on Claude Code: fan out searches, check every claim against its source, produce a cited report you can regenerate next month without starting over.</p>
-          <p class="repo">Data-Barista/deep-research-harness&thinsp;&#8599;</p>
-        </div>
-        <div class="card-arch" aria-hidden="true">
-          <svg viewBox="0 0 360 204">
-            <rect fill="#fffdf9" stroke="#241b13" stroke-opacity="0.3" stroke-width="1.4" class="a-box a-s1" x="30" y="12" width="300" height="34" rx="6"/>
-            <text fill="#241b13" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.5" class="a-txt a-s1" x="180" y="34" text-anchor="middle">Research question + prior run log</text>
-            <path stroke="#96450f" stroke-width="2" fill="none" class="a-arrow a-s2" d="M180 50 L180 66"/>
-            <path fill="#96450f" class="a-head a-s2" d="M174 64 L180 72 L186 64 Z"/>
-            <rect fill="#96450f" class="a-box-acc a-s2" x="30" y="74" width="300" height="34" rx="6"/>
-            <text fill="#faf6f0" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.5" class="a-txt-inv a-s2" x="180" y="96" text-anchor="middle">Parallel subagents, findings to disk</text>
-            <path stroke="#96450f" stroke-width="2" fill="none" class="a-arrow a-s3" d="M180 112 L180 128"/>
-            <path fill="#96450f" class="a-head a-s3" d="M174 126 L180 134 L186 126 Z"/>
-            <rect fill="#fffdf9" stroke="#241b13" stroke-opacity="0.3" stroke-width="1.4" class="a-box a-s3" x="30" y="136" width="300" height="34" rx="6"/>
-            <text fill="#241b13" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.5" class="a-txt a-s3" x="180" y="158" text-anchor="middle">Cited synthesis · deduped sources</text>
-            <text fill="#6d604f" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" class="a-stack a-s4" x="180" y="192" text-anchor="middle">Claude Code · Markdown · no runtime, no database</text>
-          </svg>
-        </div>
-      </li>
-
-      <li class="card" data-dialog="d-cos">
-        <div class="card-content">
-          <h3><a href="https://github.com/Data-Barista/chief-of-staff-os" target="_blank" rel="noopener noreferrer">Chief of Staff OS</a></h3>
-          <p class="pitch">A playbook for AI-assisted executive comms. It extracts the exec's voice from past writing, drafts in it, and passes every number through a firewall so nothing invented goes out.</p>
+    <ul class="tiles">
+      <li class="tile" data-dialog="d-brief">
+        <div class="tile-body">
+          <h3><a href="https://github.com/Data-Barista/chief-of-staff-os" target="_blank" rel="noopener noreferrer">Pre-meeting brief</a></h3>
+          <p class="result">1 to 2 weeks became 1 to 2 hours. Exec communication judgment, turned into a repeatable process for meeting-ready briefs.</p>
           <p class="repo">Data-Barista/chief-of-staff-os&thinsp;&#8599;</p>
         </div>
-        <div class="card-arch" aria-hidden="true">
-          <svg viewBox="0 0 360 204">
-            <rect fill="#fffdf9" stroke="#241b13" stroke-opacity="0.3" stroke-width="1.4" class="a-box a-s1" x="30" y="12" width="300" height="34" rx="6"/>
-            <text fill="#241b13" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.5" class="a-txt a-s1" x="180" y="34" text-anchor="middle">Voice guide from 5 real examples</text>
-            <path stroke="#96450f" stroke-width="2" fill="none" class="a-arrow a-s2" d="M180 50 L180 66"/>
-            <path fill="#96450f" class="a-head a-s2" d="M174 64 L180 72 L186 64 Z"/>
-            <rect fill="#96450f" class="a-box-acc a-s2" x="30" y="74" width="300" height="34" rx="6"/>
-            <text fill="#faf6f0" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.5" class="a-txt-inv a-s2" x="180" y="96" text-anchor="middle">Draft from reusable content blocks</text>
-            <path stroke="#96450f" stroke-width="2" fill="none" class="a-arrow a-s3" d="M180 112 L180 128"/>
-            <path fill="#96450f" class="a-head a-s3" d="M174 126 L180 134 L186 126 Z"/>
-            <rect fill="#fffdf9" stroke="#241b13" stroke-opacity="0.3" stroke-width="1.4" class="a-box a-s3" x="30" y="136" width="300" height="34" rx="6"/>
-            <text fill="#241b13" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.5" class="a-txt a-s3" x="180" y="158" text-anchor="middle">Numbers firewall · holdout test</text>
-            <text fill="#6d604f" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" class="a-stack a-s4" x="180" y="192" text-anchor="middle">System prompts · fact tables · rubric scoring</text>
-          </svg>
-        </div>
-      </li>
+        <figure class="tile-fig">
+          <div class="tile-shot live" data-src="mockups/pre-meeting-brief.html">
+            <picture>
+              <source srcset="assets/mock-pre-meeting-brief-dark.png?v=2" media="(prefers-color-scheme: dark)">
+              <img class="poster" src="assets/mock-pre-meeting-brief.png?v=2" alt="" width="1800" height="1125" loading="lazy" decoding="async">
+            </picture>
+          </div>
+        </figure>      </li>
 
-      <li class="card" data-dialog="d-pmo">
-        <div class="card-content">
-          <h3><a href="https://github.com/Data-Barista/agentic-pmo-playbook" target="_blank" rel="noopener noreferrer">Agentic PMO Playbook</a></h3>
-          <p class="pitch">An architecture for running a PMO with agents on the Microsoft stack: Copilot Studio as the interface, Dataverse for state, Power Automate for the plumbing.</p>
+      <li class="tile" data-dialog="d-pmo">
+        <div class="tile-body">
+          <h3><a href="https://github.com/Data-Barista/agentic-pmo-playbook" target="_blank" rel="noopener noreferrer">Virtual PMO</a></h3>
+          <p class="result">The reporting factory became an agent in Teams. It collects the updates, keeps the context, and produces the package. People review and sign.</p>
           <p class="repo">Data-Barista/agentic-pmo-playbook&thinsp;&#8599;</p>
         </div>
-        <div class="card-arch" aria-hidden="true">
-          <svg viewBox="0 0 360 204">
-            <rect fill="#fffdf9" stroke="#241b13" stroke-opacity="0.3" stroke-width="1.4" class="a-box a-s1" x="30" y="12" width="300" height="34" rx="6"/>
-            <text fill="#241b13" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.5" class="a-txt a-s1" x="180" y="34" text-anchor="middle">Status note logged in Teams</text>
-            <path stroke="#96450f" stroke-width="2" fill="none" class="a-arrow a-s2" d="M180 50 L180 66"/>
-            <path fill="#96450f" class="a-head a-s2" d="M174 64 L180 72 L186 64 Z"/>
-            <rect fill="#96450f" class="a-box-acc a-s2" x="30" y="74" width="300" height="34" rx="6"/>
-            <text fill="#faf6f0" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.5" class="a-txt-inv a-s2" x="180" y="96" text-anchor="middle">Copilot Studio agent + 10 flows</text>
-            <path stroke="#96450f" stroke-width="2" fill="none" class="a-arrow a-s3" d="M180 112 L180 128"/>
-            <path fill="#96450f" class="a-head a-s3" d="M174 126 L180 134 L186 126 Z"/>
-            <rect fill="#fffdf9" stroke="#241b13" stroke-opacity="0.3" stroke-width="1.4" class="a-box a-s3" x="30" y="136" width="300" height="34" rx="6"/>
-            <text fill="#241b13" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.5" class="a-txt a-s3" x="180" y="158" text-anchor="middle">Dataverse · sign-off · monthly report</text>
-            <text fill="#6d604f" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" class="a-stack a-s4" x="180" y="192" text-anchor="middle">Copilot Studio · Dataverse · Power Automate · Fluent UI</text>
-          </svg>
-        </div>
+        <figure class="tile-fig">
+          <div class="tile-shot live" data-src="mockups/virtual-pmo.html">
+            <picture>
+              <source srcset="assets/mock-virtual-pmo-dark.png" media="(prefers-color-scheme: dark)">
+              <img class="poster" src="assets/mock-virtual-pmo.png" alt="" width="1800" height="1125" loading="lazy" decoding="async">
+            </picture>
+          </div>
+        </figure>
       </li>
 
-      <li class="card" data-dialog="d-ir">
-        <div class="card-content">
-          <h3><a href="https://github.com/Data-Barista/ir-memo-agent" target="_blank" rel="noopener noreferrer">IR Memo Agent</a></h3>
-          <p class="pitch">An agent pipeline that preps a company for analyst questions: it drafts the memo, flags the hard questions, and cites its sources. FastAPI backend, React front end, fictional company throughout.</p>
-          <p class="repo">Data-Barista/ir-memo-agent&thinsp;&#8599;</p>
+      <li class="tile" data-dialog="d-cos">
+        <div class="tile-body">
+          <h3><a href="https://github.com/Data-Barista/chief-of-staff-os" target="_blank" rel="noopener noreferrer">Talking points drafter</a></h3>
+          <p class="result">A general AI tool, set up once for the team. Past talking points reverse engineered into written rules, so every draft comes out in the same voice and format, from reusable blocks.</p>
+          <p class="repo">Data-Barista/chief-of-staff-os&thinsp;&#8599;</p>
         </div>
-        <div class="card-arch" aria-hidden="true">
-          <svg viewBox="0 0 360 204">
-            <rect fill="#fffdf9" stroke="#241b13" stroke-opacity="0.3" stroke-width="1.4" class="a-box a-s1" x="30" y="12" width="300" height="34" rx="6"/>
-            <text fill="#241b13" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.5" class="a-txt a-s1" x="180" y="34" text-anchor="middle">Analyst + company inputs</text>
-            <path stroke="#96450f" stroke-width="2" fill="none" class="a-arrow a-s2" d="M180 50 L180 66"/>
-            <path fill="#96450f" class="a-head a-s2" d="M174 64 L180 72 L186 64 Z"/>
-            <rect fill="#96450f" class="a-box-acc a-s2" x="30" y="74" width="300" height="34" rx="6"/>
-            <text fill="#faf6f0" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.5" class="a-txt-inv a-s2" x="180" y="96" text-anchor="middle">6-step agent pipeline, live progress</text>
-            <path stroke="#96450f" stroke-width="2" fill="none" class="a-arrow a-s3" d="M180 112 L180 128"/>
-            <path fill="#96450f" class="a-head a-s3" d="M174 126 L180 134 L186 126 Z"/>
-            <rect fill="#fffdf9" stroke="#241b13" stroke-opacity="0.3" stroke-width="1.4" class="a-box a-s3" x="30" y="136" width="300" height="34" rx="6"/>
-            <text fill="#241b13" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.5" class="a-txt a-s3" x="180" y="158" text-anchor="middle">Memo with confidence badges</text>
-            <text fill="#6d604f" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" class="a-stack a-s4" x="180" y="192" text-anchor="middle">FastAPI · Claude API · yfinance · React 19</text>
-          </svg>
-        </div>
+        <figure class="tile-fig">
+          <div class="tile-shot live" data-src="mockups/tp-package.html">
+            <picture>
+              <source srcset="assets/mock-tp-package-dark.png" media="(prefers-color-scheme: dark)">
+              <img class="poster" src="assets/mock-tp-package.png" alt="" width="1800" height="1125" loading="lazy" decoding="async">
+            </picture>
+          </div>
+        </figure>
       </li>
 
-      <li class="card" data-dialog="d-bee">
-        <div class="card-content">
-          <h3><a href="https://github.com/Data-Barista/spelling-bee" target="_blank" rel="noopener noreferrer">Spelling Bee</a></h3>
-          <p class="pitch">A voice-first spelling app for kids. OpenAI text-to-speech reads the word aloud, and Whisper checks the spelling the kid says back.</p>
-          <p class="repo">Data-Barista/spelling-bee&thinsp;&#8599;</p>
+
+      <li class="tile" data-dialog="d-hotel">
+        <div class="tile-body">
+          <h3><a href="https://github.com/Data-Barista" target="_blank" rel="noopener noreferrer">Hoteling automation</a></h3>
+          <p class="result">One email starts the booking, reassignment, and follow-up workflow.</p>
+          <p class="repo">Power Automate, AI Builder, SharePoint. Method only, no public code</p>
         </div>
-        <div class="card-arch" aria-hidden="true">
-          <svg viewBox="0 0 360 204">
-            <rect fill="#fffdf9" stroke="#241b13" stroke-opacity="0.3" stroke-width="1.4" class="a-box a-s1" x="30" y="12" width="300" height="34" rx="6"/>
-            <text fill="#241b13" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.5" class="a-txt a-s1" x="180" y="34" text-anchor="middle">TTS reads the word aloud</text>
-            <path stroke="#96450f" stroke-width="2" fill="none" class="a-arrow a-s2" d="M180 50 L180 66"/>
-            <path fill="#96450f" class="a-head a-s2" d="M174 64 L180 72 L186 64 Z"/>
-            <rect fill="#96450f" class="a-box-acc a-s2" x="30" y="74" width="300" height="34" rx="6"/>
-            <text fill="#faf6f0" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.5" class="a-txt-inv a-s2" x="180" y="96" text-anchor="middle">Kid spells aloud, Whisper transcribes</text>
-            <path stroke="#96450f" stroke-width="2" fill="none" class="a-arrow a-s3" d="M180 112 L180 128"/>
-            <path fill="#96450f" class="a-head a-s3" d="M174 126 L180 134 L186 126 Z"/>
-            <rect fill="#fffdf9" stroke="#241b13" stroke-opacity="0.3" stroke-width="1.4" class="a-box a-s3" x="30" y="136" width="300" height="34" rx="6"/>
-            <text fill="#241b13" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.5" class="a-txt a-s3" x="180" y="158" text-anchor="middle">Letter-by-letter feedback</text>
-            <text fill="#6d604f" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" class="a-stack a-s4" x="180" y="192" text-anchor="middle">React 19 · OpenAI TTS + Whisper · PWA offline</text>
-          </svg>
-        </div>
+        <figure class="tile-fig">
+          <div class="tile-shot live" data-src="mockups/hoteling.html">
+            <picture>
+              <source srcset="assets/mock-hoteling-dark.png" media="(prefers-color-scheme: dark)">
+              <img class="poster" src="assets/mock-hoteling.png" alt="" width="1800" height="1125" loading="lazy" decoding="async">
+            </picture>
+          </div>
+        </figure>
       </li>
     </ul>
   </section>
 
+  <section id="analytics" aria-labelledby="t-analytics">
+    <h2 id="t-analytics">GenAI data analytics</h2>
+
+    <ul class="tiles">
+      <li class="tile" data-dialog="d-investment-map">
+        <div class="tile-body">
+          <h3><a href="https://ai-investment-map-mu.vercel.app" target="_blank" rel="noopener noreferrer">AI Investment Map</a></h3>
+          <p class="result">About 130 initiatives across 7 business units on one screen, sized by spend and colored by status, with a timeline you can scrub.</p>
+          <p class="repo">ai-investment-map-mu.vercel.app&thinsp;&#8599;</p>
+        </div>
+        <figure class="tile-fig">
+          <div class="tile-shot">
+            <video class="loop" muted playsinline loop preload="none" poster="assets/mock-ai-investment-map.jpg" width="1200" height="750">
+              <source src="assets/loop-ai-investment-map.webm" type="video/webm">
+            </video>
+          </div>
+        </figure>      </li>
+
+      <li class="tile" data-dialog="d-brief-me">
+        <div class="tile-body">
+          <h3><a href="https://github.com/Data-Barista/brief-me" target="_blank" rel="noopener noreferrer">Brief Me</a></h3>
+          <p class="result">An AI adoption dashboard on 500 synthetic employees. Ask in plain English and a Snowflake Cortex agent writes the SQL.</p>
+          <p class="repo">Data-Barista/brief-me&thinsp;&#8599;</p>
+        </div>
+        <figure class="tile-fig">
+          <div class="tile-shot live" data-src="mockups/brief-me-app.html">
+            <img class="poster" src="assets/mock-brief-me-app.png" alt="" width="1800" height="1125" loading="lazy" decoding="async">
+          </div>
+        </figure>
+      </li>
+
+      <li class="tile" data-dialog="d-training">
+        <div class="tile-body">
+          <h3><a href="https://github.com/Data-Barista" target="_blank" rel="noopener noreferrer">AI training impact</a></h3>
+          <p class="result">Does training change AI habits? Research project using Python pipeline to test the hypothesis.</p>
+          <p class="repo">Python pipeline. Adoption research</p>
+        </div>
+        <figure class="tile-fig">
+          <div class="tile-shot live" data-src="mockups/training-card.html">
+            <picture>
+              <source srcset="assets/mock-training-card-dark.png" media="(prefers-color-scheme: dark)">
+              <img class="poster" src="assets/mock-training-card.png" alt="" width="1800" height="1125" loading="lazy" decoding="async">
+            </picture>
+          </div>
+        </figure>
+      </li>
+
+      <li class="tile" data-dialog="d-tokens">
+        <div class="tile-body">
+          <h3><a href="https://github.com/Data-Barista" target="_blank" rel="noopener noreferrer">Tokenomics</a></h3>
+          <p class="result">Who is paying frontier prices for simple work? A complexity-versus-spend read on every user.</p>
+          <p class="repo">Python pipeline. AI economics</p>
+        </div>
+        <figure class="tile-fig">
+          <div class="tile-shot live" data-src="mockups/tokenomics-card.html">
+            <picture>
+              <source srcset="assets/mock-tokenomics-card-dark.png" media="(prefers-color-scheme: dark)">
+              <img class="poster" src="assets/mock-tokenomics-card.png" alt="" width="1800" height="1125" loading="lazy" decoding="async">
+            </picture>
+          </div>
+        </figure>
+      </li>
+
+      <li class="tile" data-dialog="d-patterns">
+        <div class="tile-body">
+          <h3><a href="https://github.com/Data-Barista" target="_blank" rel="noopener noreferrer">AI pattern discovery</a></h3>
+          <p class="result">A raw export of technology showcase submissions, cleaned and classified, to find where teams are building alike and where a working group could help.</p>
+          <p class="repo">Classification framework, Python. Demand analysis</p>
+        </div>
+        <figure class="tile-fig">
+          <div class="tile-shot live" data-src="mockups/patterns-card.html">
+            <picture>
+              <source srcset="assets/mock-patterns-card-dark.png" media="(prefers-color-scheme: dark)">
+              <img class="poster" src="assets/mock-patterns-card.png" alt="" width="1800" height="1125" loading="lazy" decoding="async">
+            </picture>
+          </div>
+        </figure>
+      </li>
+
+      <li class="tile" data-dialog="d-risk">
+        <div class="tile-body">
+          <h3><a href="https://github.com/Data-Barista" target="_blank" rel="noopener noreferrer">Application risk analytics</a></h3>
+          <p class="result">Do we understand our exposure, are we reducing the right risks fast enough, and when will we be under control? A pipeline built with an AI coding agent, shaped in Python, presented in Power BI.</p>
+          <p class="repo">AI coding agent, Python, Power BI</p>
+        </div>
+        <figure class="tile-fig">
+          <div class="tile-shot live" data-src="mockups/risk-card.html">
+            <picture>
+              <source srcset="assets/mock-risk-card-dark.png" media="(prefers-color-scheme: dark)">
+              <img class="poster" src="assets/mock-risk-card.png" alt="" width="1800" height="1125" loading="lazy" decoding="async">
+            </picture>
+          </div>
+        </figure>
+      </li>
+    </ul>
+  </section>
+
+  <section id="personal" aria-labelledby="t-personal">
+    <h2 id="t-personal">Personal work</h2>
+
+    <ul class="tiles">
+      <li class="tile" data-dialog="d-bee">
+        <div class="tile-body">
+          <h3><a href="https://github.com/Data-Barista/spelling-bee" target="_blank" rel="noopener noreferrer">Spelling Bee</a></h3>
+          <p class="result">Voice in, voice out: the app reads the word, the kid spells it aloud, and every letter is checked.</p>
+          <p class="repo">Data-Barista/spelling-bee&thinsp;&#8599;</p>
+        </div>
+        <figure class="tile-fig">
+          <div class="tile-shot">
+            <img src="assets/mock-spelling-bee.jpg" alt="" width="1800" height="1125" loading="lazy" decoding="async">
+          </div>
+        </figure>      </li>
+    </ul>
+  </section>
+
+  <section id="build" aria-labelledby="t-build">
+    <h2 id="t-build">How I build</h2>
+    <div class="build">
+      <div><h3>Think &amp; investigate</h3><p>Codex, Claude Code, agent skills, source-backed research</p></div>
+      <div><h3>Build &amp; connect</h3><p>React, Next.js, TypeScript, Python, FastAPI</p></div>
+      <div><h3>Measure &amp; automate</h3><p>Snowflake, SQL, Cortex, Copilot Studio, Dataverse, Power Automate</p></div>
+    </div>
+  </section>
 
   <section class="hire">
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/katiezhang" target="_blank" rel="noopener noreferrer">Katie Zhang</a></p>
+    <p>Find me on <a href="https://www.linkedin.com/in/katiezhang" target="_blank" rel="noopener noreferrer">LinkedIn</a>.</p>
   </section>
 </main>
 
@@ -228,142 +248,405 @@
   <p><a href="https://github.com/Data-Barista" target="_blank" rel="noopener noreferrer">github.com/Data-Barista</a> &middot; &copy; 2026 Data Barista</p>
 </footer>
 
+<!-- ---------- expanded views ---------- -->
+
+<dialog class="proj" id="d-cos" aria-labelledby="t-cos">
+  <div class="proj-hero live" data-src="mockups/tp-rules.html?play">
+    <picture>
+      <source srcset="assets/mock-tp-rules-dark.png" media="(prefers-color-scheme: dark)">
+      <img class="poster" src="assets/mock-tp-rules.png" alt="" width="1800" height="1125" loading="lazy">
+    </picture>
+  </div>
+  <div class="proj-inner">
+    <button class="proj-close" aria-label="Close">&times;</button>
+    <h3 id="t-cos">Talking points drafter</h3>
+    <p class="pattern">The chief-of-staff team wrote talking points for every leadership event by hand. Open last year&rsquo;s file, copy the shape, look up the numbers, fix the voice. Most of that work repeats.<br><br>I set them up in the AI tool they already use. First I reverse engineered the past talking points and the house template: how a page opens and closes, how long the bullets run, which sections come back every time. Those became written rules and reusable blocks. Numbers, names, and dates come from what the user drops in for this event. Last, a check runs before the draft is shown, and whatever the user asked to add for this event goes in.</p>
+    <h4>Stack</h4>
+    <ul class="chips"><li>Enterprise AI project, Claude or ChatGPT</li><li>6 ranked artifacts: role, voice, blocks, output contract, template, workflow</li><li>6 rule types, audited separately</li><li>Python skill: house template render</li><li>Silent self-check before the draft</li><li>Completion list, outside the file</li></ul>
+    <p class="proj-links"><a class="btn" href="https://github.com/Data-Barista/chief-of-staff-os" target="_blank" rel="noopener noreferrer">The playbook</a></p>
+  </div>
+</dialog>
+
+<dialog class="proj" id="d-pmo" aria-labelledby="t-pmo">
+  <div class="proj-hero live" data-src="mockups/pmo-graphs.html?play">
+    <picture>
+      <source srcset="assets/mock-pmo-graphs-dark.png" media="(prefers-color-scheme: dark)">
+      <img class="poster" src="assets/mock-pmo-graphs.png" alt="" width="1800" height="1125" loading="lazy">
+    </picture>
+  </div>
+  <div class="proj-inner">
+    <button class="proj-close" aria-label="Close">&times;</button>
+    <h3 id="t-pmo">Virtual PMO</h3>
+    <p class="pattern">A PMO team ran a reporting factory every month: chase emails, collection calls, copy-paste consolidation, slide building. I rebuilt it from scratch as a virtual PMO on the Microsoft stack. A Copilot Studio agent in Teams collects updates where they already happen. AI Builder reads meeting minutes and pulls out who said what and what was decided. Dataverse holds the record, Power Automate runs the flows, Power Apps gives the PMO team a control plane, and the deck is generated from signed rows. Meeting minutes turned out to be the gold mine. The real design work was the data model: what is master data, what is a monthly row, what is evidence, and where sign-off lives. Human effort moved to review and sign-off.</p>
+    <h4>Stack</h4>
+    <ul class="chips"><li>Copilot Studio agent in Teams</li><li>Dataverse, 8 tables</li><li>Power Automate flows</li><li>Power Apps control plane</li><li>AI Builder extraction</li><li>Generated PowerPoint and PDF</li></ul>
+    <p class="proj-links"><a class="btn" href="https://github.com/Data-Barista/agentic-pmo-playbook" target="_blank" rel="noopener noreferrer">The playbook</a></p>
+  </div>
+</dialog>
+
+<dialog class="proj" id="d-brief" aria-labelledby="t-brief">
+  <div class="proj-hero live" data-src="mockups/pre-meeting-brief.html?play">
+    <picture>
+      <source srcset="assets/mock-pre-meeting-brief-dark.png?v=2" media="(prefers-color-scheme: dark)">
+      <img class="poster" src="assets/mock-pre-meeting-brief.png?v=2" alt="" width="1800" height="1125" loading="lazy">
+    </picture>
+  </div>
+  <div class="proj-inner">
+    <button class="proj-close" aria-label="Close">&times;</button>
+    <h3 id="t-brief">Pre-meeting brief</h3>
+    <p class="pattern">A common pattern for a chief-of-staff team, and for sales communication: pull structured and unstructured sources into one brief a leader can use. I have built it three ways. Custom development, an API pipeline (the IR memo agent, public code). A productivity tool, an enterprise AI project set up as a jumpstarter for the chief-of-staff team. A chatbot front door with MCP into the warehouse, for a sales desk. Same pattern each time. What decided quality was context management and knowing exactly what output the business wanted, down to tone, style, and density. Those are the parts you customize. The pipeline stays the same.</p>
+        <h4>Stack</h4>
+        <ul class="chips"><li>Enterprise AI project, no code</li><li>Policy: instructions + writing rules</li><li>Form: template + precedent + standards</li><li>Evidence skills: source check, deep read, client brief</li><li>IR version: FastAPI + Claude API</li></ul>
+    <p class="proj-links"><a class="btn" href="https://github.com/Data-Barista/chief-of-staff-os" target="_blank" rel="noopener noreferrer">The playbook</a> <a href="https://github.com/Data-Barista/ir-memo-agent" target="_blank" rel="noopener noreferrer">IR version, full code</a></p>
+  </div>
+</dialog>
+
+<dialog class="proj" id="d-hotel" aria-labelledby="t-hotel">
+  <div class="proj-hero live" data-src="mockups/hoteling.html?play">
+    <picture>
+      <source srcset="assets/mock-hoteling-dark.png" media="(prefers-color-scheme: dark)">
+      <img class="poster" src="assets/mock-hoteling.png" alt="" width="1800" height="1125" loading="lazy">
+    </picture>
+  </div>
+  <div class="proj-inner">
+    <button class="proj-close" aria-label="Close">&times;</button>
+    <h3 id="t-hotel">Hoteling automation</h3>
+    <p class="pattern">I built an office booking workflow that starts with an Outlook email. AI extracts the request, the employee directory resolves the person, and configured rules decide which room or desk they can use. When seating is full, the flow handles eligible reassignments, updates the booking records, and notifies the people affected. Exceptions go to the executive assistant team.<br><br><strong>What this changes.</strong> Automates the chain of coordination behind a booking: allocating space, moving eligible bookings, maintaining the records, and telling people what changed. The requester stays in Outlook, while the EA team handles exceptions that require a person&rsquo;s decision.</p>
+    <h4>Stack</h4>
+    <ul class="chips"><li>Outlook trigger and notifications</li><li>AI Builder: email to booking fields</li><li>Microsoft Entra ID: identity and title</li><li>Power Automate: rules, bump, cascade</li><li>SharePoint lists: settings, tier map, resources, bookings</li></ul>
+    <p class="proj-links"><a class="btn" href="https://github.com/Data-Barista" target="_blank" rel="noopener noreferrer">Data Barista on GitHub</a></p>
+  </div>
+</dialog>
+
 <dialog class="proj" id="d-investment-map" aria-labelledby="t-investment-map">
-  <img class="proj-art" src="assets/tile-ai-investment-map.jpg" alt="" width="900" height="506" loading="lazy">
+  <div class="proj-hero">
+    <video class="loop" muted playsinline loop preload="none" poster="assets/mock-ai-investment-map.jpg" width="1200" height="750">
+      <source src="assets/loop-ai-investment-map.webm" type="video/webm">
+    </video>
+  </div>
   <div class="proj-inner">
     <button class="proj-close" aria-label="Close">&times;</button>
     <h3 id="t-investment-map">AI Investment Map</h3>
-    <h4>The business problem</h4>
-    <p>A board asks 3 questions about AI: how much have we spent, is it working, and where do we need to decide? With about 130 initiatives tracked by hand, nobody can answer from one screen.</p>
-    <h4>Tech stack</h4>
-    <ul class="chips"><li>React 19</li><li>Vite 7</li><li>Tailwind CSS 4</li><li>Hand-rolled squarified treemap</li><li>Vercel</li></ul>
-    <h4>What I learned</h4>
-    <p>The treemap is hand-rolled, no chart library. That one decision made everything else possible: nested business-unit regions, drill-down transitions, semantic zoom, and a map that rescales smoothly as the timeline moves.</p>
+    <p class="impact"><strong>About 130 initiatives on one screen.</strong> A fictional bank&rsquo;s AI portfolio, sized by spend and colored by status, with a timeline you can scrub.</p>
+    <div class="ba">
+      <div>
+        <h4>Before</h4>
+        <p>A board asks 3 questions about AI: how much have we spent, is it working, where do we need to decide. With initiatives tracked by hand in spreadsheets, nobody could answer from one screen.</p>
+      </div>
+      <div>
+        <h4>After</h4>
+        <p>A treemap nested by business unit and division. Click an initiative for cumulative spend against benefit, with go-live, break-even, and &ldquo;now&rdquo; markers. Drag the timeline and the whole map rescales.</p>
+      </div>
+    </div>
+    <div class="proj-body">
+      <div>
+        <h4>What changed</h4>
+        <p>I hand-rolled the squarified treemap instead of importing a chart library. That one decision made nested regions, drill-down transitions, semantic zoom, and smooth rescaling possible. The data comes from a seeded generator, so every number is reproducible and none is real.</p>
+        <h4>Stack</h4>
+        <ul class="chips"><li>React 19</li><li>Vite 7</li><li>Tailwind CSS 4</li><li>Custom squarify</li><li>Vercel</li></ul>
+      </div>
+      <div>
+        <h4>What I learned</h4>
+        <p>Writing the layout algorithm myself cost more up front and paid for itself the first time I needed a transition no chart library offered.</p>
+        <h4>What I want to share</h4>
+        <p>If the visualization is the product, own the layout code. Libraries are fine for a chart inside a dashboard. They fight you the moment the chart is the dashboard.</p>
+      </div>
+    </div>
     <p class="proj-links"><a class="btn" href="https://ai-investment-map-mu.vercel.app" target="_blank" rel="noopener noreferrer">Open the live app</a> <a href="https://github.com/Data-Barista/ai-investment-map" target="_blank" rel="noopener noreferrer">Code on GitHub</a></p>
   </div>
 </dialog>
 
 <dialog class="proj" id="d-brief-me" aria-labelledby="t-brief-me">
-  <img class="proj-art" src="assets/tile-brief-me.jpg" alt="" width="900" height="506" loading="lazy">
+  <div class="proj-hero live" data-src="mockups/brief-me-findings.html?play">
+    <img class="poster" src="assets/mock-brief-me-findings.png" alt="" width="1800" height="1125" loading="lazy">
+  </div>
   <div class="proj-inner">
     <button class="proj-close" aria-label="Close">&times;</button>
     <h3 id="t-brief-me">Brief Me</h3>
-    <h4>The business problem</h4>
-    <p>An AI rollout produces adoption claims nobody can check. This puts a pipeline under them: usage, enablement, and narrative analytics over 500 synthetic employees, queried in plain English.</p>
-    <h4>Tech stack</h4>
-    <ul class="chips"><li>Next.js 14</li><li>Snowflake</li><li>Cortex COMPLETE</li><li>Tremor</li><li>AG Grid</li><li>Vercel</li></ul>
-    <h4>What I learned</h4>
-    <p>All the logic lives in Snowflake, SQL and Cortex included. React stays a thin presentation layer, so the analytics survive any front-end rewrite. I built the pipeline first, then the conversational layer.</p>
+    <p class="pattern">A COO in a line of business runs their own numbers. Pull the report, cut it by division, explore it, find what matters, then build the PowerPoint and write the message for leadership.<br><br>This reverses the order. The COO filters to their division and the dashboard runs the metrics then reads its own results: what moved, what stalled, where the division stands against the adoption goal. Findings come back with the charts. Ask a follow-up in plain English and get the number, and a short read of what it means. The deck exports at the end.</p>
+    <h4>Stack</h4>
+    <ul class="chips"><li>Next.js 14</li><li>Snowflake</li><li>Cortex Analyst + COMPLETE</li><li>Semantic model, YAML</li><li>Tremor + AG Grid</li><li>PowerPoint export</li></ul>
     <p class="proj-links"><a class="btn" href="https://github.com/Data-Barista/brief-me" target="_blank" rel="noopener noreferrer">Code on GitHub</a></p>
   </div>
 </dialog>
 
-<dialog class="proj" id="d-research" aria-labelledby="t-research">
-  <img class="proj-art" src="assets/tile-deep-research-harness.jpg" alt="" width="900" height="506" loading="lazy">
+<dialog class="proj" id="d-training" aria-labelledby="t-training">
+  <div class="proj-hero live" data-src="mockups/training-app.html?play">
+    <img class="poster" src="assets/mock-training-app.png" alt="" width="1800" height="1125" loading="lazy">
+  </div>
   <div class="proj-inner">
     <button class="proj-close" aria-label="Close">&times;</button>
-    <h3 id="t-research">Deep Research Harness</h3>
-    <h4>The business problem</h4>
-    <p>Standing research questions need re-answering every quarter, and one-off reports start from zero each time. This pipeline reruns, diffs against prior runs, and keeps its bibliography deduped.</p>
-    <h4>Tech stack</h4>
-    <ul class="chips"><li>Claude Code</li><li>Slash commands</li><li>Markdown</li><li>No database, no runtime</li></ul>
-    <h4>What I learned</h4>
-    <p>Subagents never return findings inline. Full findings go to disk and the orchestrator only holds summaries, so the context budget survives no matter how much the subagents dig up. Every claim carries a URL and a date or it's out.</p>
-    <p class="proj-links"><a class="btn" href="https://github.com/Data-Barista/deep-research-harness" target="_blank" rel="noopener noreferrer">Code on GitHub</a></p>
+    <h3 id="t-training">AI training impact</h3>
+    <p class="pattern">I investigated whether completing AI training was followed by a change in how people used AI tools. I built a Python pipeline to connect course records with weekly usage, compare behavior before and after training, and bring the findings into a Streamlit dashboard. This case study recreates the approach with entirely synthetic data.</p>
+    <h4>Stack</h4>
+    <ul class="chips"><li>Python, pandas, SciPy</li><li>Parquet, local only</li><li>Streamlit, 3 tabs</li><li>Event-time alignment</li><li>Difference-in-differences</li><li>Wilcoxon, Mann-Whitney, bootstrap interval</li></ul>
+    <p class="proj-links"><a class="btn" href="https://github.com/Data-Barista" target="_blank" rel="noopener noreferrer">Data Barista on GitHub</a></p>
   </div>
 </dialog>
 
-<dialog class="proj" id="d-cos" aria-labelledby="t-cos">
-  <img class="proj-art" src="assets/tile-chief-of-staff-os.jpg" alt="" width="900" height="506" loading="lazy">
+<dialog class="proj" id="d-tokens" aria-labelledby="t-tokens">
+  <div class="proj-hero live" data-src="mockups/tokenomics-chart.html?play">
+    <picture>
+      <source srcset="assets/mock-tokenomics-chart-dark.png" media="(prefers-color-scheme: dark)">
+      <img class="poster" src="assets/mock-tokenomics-chart.png" alt="" width="1800" height="1125" loading="lazy">
+    </picture>
+  </div>
   <div class="proj-inner">
     <button class="proj-close" aria-label="Close">&times;</button>
-    <h3 id="t-cos">Chief of Staff OS</h3>
-    <h4>The business problem</h4>
-    <p>A talking-points cycle eats 1 to 2 weeks of a chief-of-staff team's time, and generic LLM output fails twice: it sounds like nobody and it invents numbers.</p>
-    <h4>Tech stack</h4>
-    <ul class="chips"><li>System prompts</li><li>Voice guides</li><li>Content-block library</li><li>Numbers firewall</li><li>Holdout validation</li></ul>
-    <h4>What I learned</h4>
-    <p>The tech was the easy part. The hard part was deciding what the model is allowed to do, and proving the system works before asking anyone to trust it. The firewall prevents fabrication instead of catching it after.</p>
-    <p class="proj-links"><a class="btn" href="https://github.com/Data-Barista/chief-of-staff-os" target="_blank" rel="noopener noreferrer">Code on GitHub</a></p>
+    <h3 id="t-tokens">Tokenomics</h3>
+    <p class="pattern">Inspired by charts comparing AI model intelligence and cost, I explored how task complexity relates to token consumption. I used data and research to map usage patterns into four quadrants and identify questions about task volume, workflow design, and efficiency. This case study recreates the idea with entirely synthetic data.</p>
+    <h4>Stack</h4>
+    <ul class="chips"><li>Python, pandas</li><li>Usage telemetry and token metering, joined per user</li><li>Complexity score: volume, breadth, task mix, z-scored</li><li>Log-scale spend, median split</li><li>Seeded synthetic users</li></ul>
+    <p class="proj-links"><a class="btn" href="https://github.com/Data-Barista" target="_blank" rel="noopener noreferrer">Data Barista on GitHub</a></p>
   </div>
 </dialog>
 
-<dialog class="proj" id="d-pmo" aria-labelledby="t-pmo">
-  <img class="proj-art" src="assets/tile-agentic-pmo-playbook.jpg" alt="" width="900" height="506" loading="lazy">
+<dialog class="proj" id="d-patterns" aria-labelledby="t-patterns">
+  <div class="proj-hero live" data-src="mockups/patterns-chart.html?play">
+    <picture>
+      <source srcset="assets/mock-patterns-chart-dark.png" media="(prefers-color-scheme: dark)">
+      <img class="poster" src="assets/mock-patterns-chart.png" alt="" width="1800" height="1125" loading="lazy">
+    </picture>
+  </div>
   <div class="proj-inner">
     <button class="proj-close" aria-label="Close">&times;</button>
-    <h3 id="t-pmo">Agentic PMO Playbook</h3>
-    <h4>The business problem</h4>
-    <p>Monthly portfolio reporting burns weeks: the PMO chases status, half the replies come late in 6 formats, and the deck ships with stale numbers. Here the report becomes a byproduct of small notes logged in Teams.</p>
-    <h4>Tech stack</h4>
-    <ul class="chips"><li>Copilot Studio</li><li>Dataverse, 6 tables</li><li>Power Automate, 10 flows</li><li>React + Fluent UI</li><li>Teams</li></ul>
-    <h4>What I learned</h4>
-    <p>Adoption came from meeting people in Teams: no portal, no new login, friction measured in seconds. And the sign-off design carried more weight than any feature. A human owns the AI-drafted words before their name attaches.</p>
-    <p class="proj-links"><a class="btn" href="https://github.com/Data-Barista/agentic-pmo-playbook" target="_blank" rel="noopener noreferrer">Code on GitHub</a></p>
+    <h3 id="t-patterns">AI pattern discovery</h3>
+    <p class="pattern">I took a raw export of technology showcase submissions and turned it into a structured view of what teams were building. I cleaned the records, developed a classification framework, and analyzed recurring AI capabilities and solution patterns across business units and regions. The aim was to identify concentrations that could inform shared priorities and working groups.</p>
+    <h4>Stack</h4>
+    <ul class="chips"><li>Python, pandas</li><li>Record cleaning and de-duplication</li><li>Classification framework</li><li>Capability and pattern analysis</li><li>Concentration heatmap</li></ul>
+    <p class="proj-links"><a class="btn" href="https://github.com/Data-Barista" target="_blank" rel="noopener noreferrer">Data Barista on GitHub</a></p>
   </div>
 </dialog>
 
-<dialog class="proj" id="d-ir" aria-labelledby="t-ir">
-  <img class="proj-art" src="assets/tile-ir-memo-agent.jpg" alt="" width="900" height="506" loading="lazy">
+<dialog class="proj" id="d-risk" aria-labelledby="t-risk">
+  <div class="proj-hero live" data-src="mockups/risk-model.html?play">
+    <picture>
+      <source srcset="assets/mock-risk-model-dark.png" media="(prefers-color-scheme: dark)">
+      <img class="poster" src="assets/mock-risk-model.png" alt="" width="1800" height="1125" loading="lazy">
+    </picture>
+  </div>
   <div class="proj-inner">
     <button class="proj-close" aria-label="Close">&times;</button>
-    <h3 id="t-ir">IR Memo Agent</h3>
-    <h4>The business problem</h4>
-    <p>IR teams hand-build a briefing memo before every analyst meeting. A 15 to 20 analyst roster costs hundreds of hours a year in retrieval and formatting.</p>
-    <h4>Tech stack</h4>
-    <ul class="chips"><li>FastAPI</li><li>Claude API</li><li>yfinance</li><li>SEC EDGAR</li><li>SSE streaming</li><li>React 19</li></ul>
-    <h4>What I learned</h4>
-    <p>Every section of the memo comes from a different source, and each source can fail. So it's an agent pipeline with explicit fallbacks, confidence badges, and a final quality check. Gaps become labeled placeholders, never invented facts.</p>
-    <p class="proj-links"><a class="btn" href="https://github.com/Data-Barista/ir-memo-agent" target="_blank" rel="noopener noreferrer">Code on GitHub</a></p>
+    <h3 id="t-risk">Application risk analytics</h3>
+    <p class="pattern">I framed application risk analytics around three business questions: do we understand our exposure, are we reducing the right risks fast enough, and when will we be under control? The work connects application and repository coverage with findings, remediation deadlines, and progress over time. I used an AI coding agent to build the data pipeline from APIs and manual files, shaped the data in Python, and presented it in Power BI. Every count here is synthetic.</p>
+    <h4>Stack</h4>
+    <ul class="chips"><li>AI coding agent</li><li>Python pipeline</li><li>APIs and manual files</li><li>Power BI</li><li>Six-table model, SLA policy</li></ul>
+    <p class="proj-links"><a class="btn" href="https://github.com/Data-Barista" target="_blank" rel="noopener noreferrer">Data Barista on GitHub</a></p>
   </div>
 </dialog>
 
 <dialog class="proj" id="d-bee" aria-labelledby="t-bee">
-  <img class="proj-art" src="assets/tile-spelling-bee.jpg" alt="" width="900" height="506" loading="lazy">
+  <div class="proj-hero">
+    <img src="assets/mock-spelling-bee.jpg" alt="" width="1800" height="1125" loading="lazy">
+  </div>
   <div class="proj-inner">
     <button class="proj-close" aria-label="Close">&times;</button>
     <h3 id="t-bee">Spelling Bee</h3>
-    <h4>The business problem</h4>
-    <p>My kid wanted spelling practice to feel like a Pokemon game. Voice-first, no typing: the app reads the word, the kid spells it out loud, and every letter gets checked.</p>
-    <h4>Tech stack</h4>
+    <p class="pattern">A personal spelling app that reads words aloud, listens to spoken letters, and turns practice into gym progression. I built it so my daughter had a fun way to practice for the spelling bee at school: the app says the word, she spells it out loud, and every letter is checked. Earning badges kept her coming back.</p>
+    <h4>Stack</h4>
     <ul class="chips"><li>React 19 + TypeScript</li><li>OpenAI TTS + Whisper</li><li>Vercel serverless</li><li>PWA, offline-ready</li></ul>
-    <h4>What I learned</h4>
-    <p>The UI knows nothing about storage or API calls, keys live server-side only, and progress sits in localStorage behind an interface a real backend could replace. Small and finished counts too.</p>
     <p class="proj-links"><a class="btn" href="https://github.com/Data-Barista/spelling-bee" target="_blank" rel="noopener noreferrer">Code on GitHub</a></p>
   </div>
 </dialog>
 
 <script>
-  /* Architecture diagrams animate once scrolled into view; stills without JS. */
+  document.documentElement.classList.add('js');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Below-the-fold tiles rise in on scroll,
+     everything else is visible, and a timer catches whatever the observer missed. */
   (function () {
-    if (!('IntersectionObserver' in window)) return;
+    var tiles = Array.prototype.slice.call(document.querySelectorAll('.tile'));
+    var pending = [];
+    tiles.forEach(function (t) {
+      t.style.setProperty('--i', Array.prototype.indexOf.call(t.parentNode.children, t));
+      if (t.getBoundingClientRect().top < window.innerHeight) t.classList.add('in');
+      else pending.push(t);
+    });
+    var revealAll = function () { pending.forEach(function (t) { t.classList.add('in'); }); };
+    if (!('IntersectionObserver' in window)) { revealAll(); return; }
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
       });
-    }, { threshold: 0.3 });
-    document.querySelectorAll('.card-arch').forEach(function (t) { io.observe(t); });
+    }, { threshold: 0.15 });
+    pending.forEach(function (t) { io.observe(t); });
+    setTimeout(revealAll, 2000);
   })();
 
-  /* Cards open their detail dialog; without JS the title link goes straight
-     to the live app or repo. */
+  /* ---- variant A: live mockups. The iframe loads when the tile is near the
+     viewport, sits on top of its poster once ready, plays when at least half
+     visible, and replays on hover. ---- */
   (function () {
-    document.querySelectorAll('.card[data-dialog]').forEach(function (card) {
-      var link = card.querySelector('h3 a');
-      var dlg = document.getElementById(card.getAttribute('data-dialog'));
-      if (!link || !dlg || typeof dlg.showModal !== 'function') return;
-      link.addEventListener('click', function (e) {
-        e.preventDefault();
-        dlg.showModal();
+    var lives = Array.prototype.slice.call(document.querySelectorAll('.tile-shot.live'));
+
+    function fit(el) {
+      var s = el.clientWidth / 1200;
+      el.style.setProperty('--s', s);
+      /* the iframe is 750px tall pre-scale; keep the 16:10 box in sync */
+      el.style.height = Math.round(750 * s) + 'px';
+    }
+
+    function mount(el) {
+      if (el.querySelector('iframe')) return;
+      var f = document.createElement('iframe');
+      f.setAttribute('title', '');
+      f.setAttribute('tabindex', '-1');
+      f.setAttribute('aria-hidden', 'true');
+      f.addEventListener('load', function () { el.classList.add('ready'); if (el.dataset.play) play(el); });
+      f.src = el.dataset.src;
+      el.appendChild(f);
+    }
+
+    function play(el) {
+      if (reduce) return;
+      var f = el.querySelector('iframe');
+      if (!f || !el.classList.contains('ready')) { el.dataset.play = '1'; return; }
+      delete el.dataset.play;
+      f.contentWindow.postMessage('replay', '*');
+      el.dataset.last = Date.now();
+    }
+
+    lives.forEach(fit);
+    if ('ResizeObserver' in window) {
+      var ro = new ResizeObserver(function (entries) { entries.forEach(function (e) { fit(e.target); }); });
+      lives.forEach(function (el) { ro.observe(el); });
+    }
+
+    var near = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { mount(e.target); near.unobserve(e.target); } });
+    }, { rootMargin: '300px' });
+    var seen = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { play(e.target); seen.unobserve(e.target); } });
+    }, { threshold: 0.5 });
+    lives.forEach(function (el) {
+      near.observe(el);
+      seen.observe(el);
+      el.closest('.tile').addEventListener('mouseenter', function () {
+        if (Date.now() - (+el.dataset.last || 0) > 6000) play(el);
       });
     });
+
+    /* dialog heroes: same box, mounted on open, unmounted on close */
+    window.mountHero = function (hero) {
+      fit(hero);
+      mount(hero);
+      hero.dataset.play = '1';
+    };
+    window.unmountHero = function (hero) {
+      var f = hero.querySelector('iframe');
+      if (f) f.remove();
+      hero.classList.remove('ready');
+    };
+  })();
+
+  /* ---- variant B: loops play only while on screen, never under reduced motion ---- */
+  (function () {
+    var vids = document.querySelectorAll('.tile-shot video');
+    if (reduce) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        var v = e.target;
+        if (e.isIntersecting) { v.play().catch(function () {}); } else { v.pause(); }
+      });
+    }, { threshold: 0.5 });
+    vids.forEach(function (v) { io.observe(v); });
+  })();
+
+  /* ---- expand: the tile's thumbnail and title morph into the dialog hero
+     (View Transitions API where available, instant elsewhere). Hash state
+     makes each case study linkable and the back button closes it. ---- */
+  (function () {
+    var current = null;
+
+    function name(el, n) { if (el) el.style.viewTransitionName = n; }
+    function transition(fn) {
+      if (reduce || !document.startViewTransition) { fn(); return { finished: Promise.resolve() }; }
+      var vt = document.startViewTransition(fn);
+      /* a transition that gets superseded rejects these; that is expected, not an error */
+      vt.ready.catch(function () {}); vt.updateCallbackDone.catch(function () {}); vt.finished.catch(function () {});
+      return vt;
+    }
+
+    function open(tile, dlg, pushHash) {
+      if (!dlg || typeof dlg.showModal !== 'function' || dlg.open) return;
+      var shot = tile && tile.querySelector('.tile-shot');
+      var title = tile && tile.querySelector('h3');
+      var hero = dlg.querySelector('.proj-hero');
+      var dtitle = dlg.querySelector('h3');
+      name(shot, 'shot'); name(title, 'title');
+      var vt = transition(function () {
+        name(shot, ''); name(title, '');
+        dlg.showModal();
+        name(hero, 'shot'); name(dtitle, 'title');
+        if (hero.classList.contains('live')) window.mountHero(hero);
+        var v = hero.querySelector('video');
+        if (v && !reduce) v.play().catch(function () {});
+      });
+      var settle = function () { name(hero, ''); name(dtitle, ''); };
+      vt.finished.then(settle, settle);
+      current = { tile: tile, dlg: dlg };
+      if (pushHash) history.pushState({ dlg: dlg.id }, '', '#' + dlg.id.replace(/^d-/, ''));
+    }
+
+    function close(popHash) {
+      if (!current) return;
+      var tile = current.tile, dlg = current.dlg;
+      var shot = tile && tile.querySelector('.tile-shot');
+      var title = tile && tile.querySelector('h3');
+      var hero = dlg.querySelector('.proj-hero');
+      var dtitle = dlg.querySelector('h3');
+      var v = hero.querySelector('video');
+      if (v) v.pause();
+      name(hero, 'shot'); name(dtitle, 'title');
+      var vt = transition(function () {
+        name(hero, ''); name(dtitle, '');
+        dlg.close();
+        name(shot, 'shot'); name(title, 'title');
+      });
+      var settle = function () {
+        name(shot, ''); name(title, '');
+        if (hero.classList.contains('live')) window.unmountHero(hero);
+      };
+      vt.finished.then(settle, settle);
+      current = null;
+      if (popHash && location.hash) history.pushState(null, '', location.pathname);
+    }
+
+    document.querySelectorAll('.tile[data-dialog]').forEach(function (tile) {
+      var link = tile.querySelector('h3 a');
+      var dlg = document.getElementById(tile.getAttribute('data-dialog'));
+      if (!link || !dlg) return;
+      link.addEventListener('click', function (e) {
+        if (typeof dlg.showModal !== 'function') return;
+        e.preventDefault();
+        open(tile, dlg, true);
+      });
+    });
+
     document.querySelectorAll('dialog.proj').forEach(function (dlg) {
       var btn = dlg.querySelector('.proj-close');
-      if (btn) btn.addEventListener('click', function () { dlg.close(); });
-      dlg.addEventListener('click', function (e) {
-        if (e.target === dlg) dlg.close();
-      });
+      if (btn) btn.addEventListener('click', function () { close(true); });
+      dlg.addEventListener('click', function (e) { if (e.target === dlg) close(true); });
+      dlg.addEventListener('cancel', function (e) { e.preventDefault(); close(true); });
     });
+
+    window.addEventListener('popstate', function () {
+      var id = location.hash ? 'd-' + location.hash.slice(1) : null;
+      if (current && current.dlg.id !== id) { close(false); }
+      if (id && !(current && current.dlg.id === id)) {
+        var dlg = document.getElementById(id);
+        var tile = document.querySelector('.tile[data-dialog="' + id + '"]');
+        if (dlg) open(tile, dlg, false);
+      }
+    });
+
+    if (location.hash) {
+      var id = 'd-' + location.hash.slice(1);
+      var dlg = document.getElementById(id);
+      var tile = document.querySelector('.tile[data-dialog="' + id + '"]');
+      if (dlg) { reduce = true; open(tile, dlg, false); reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
+    }
   })();
 </script>
 

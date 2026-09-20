@@ -1,0 +1,197 @@
+/* Shared tokens for the tile mockups. Mirrors style.css so a mockup reads as
+   part of the site in both color schemes. Every mockup is a fixed 1200x750
+   stage rendered by shoot.mjs. All content is synthetic (Northwind Capital). */
+
+:root {
+  color-scheme: light dark;
+  --bg: #fcfaf6;
+  --surface: #ffffff;
+  --panel: #f5efe6;
+  --ink: #2b211a;
+  --ink-soft: #6e6154;
+  --accent: #8c5033;
+  --accent-soft: #f2e6db;
+  --line: #e9e1d5;
+  --ok: #3f6b3a;
+  --ok-soft: #e4eddf;
+  --warn: #9a6a1c;
+  --warn-soft: #f4e9cf;
+  --bad: #9a3b2b;
+  --bad-soft: #f3dcd6;
+
+  --serif: "Iowan Old Style", Palatino, "Palatino Linotype", ui-serif, Georgia, serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1f1915;
+    --surface: #29221c;
+    --panel: #2f2720;
+    --ink: #f2ebe2;
+    --ink-soft: #b5a695;
+    --accent: #dfa273;
+    --accent-soft: #3d2c1f;
+    --line: #3d332a;
+    --ok: #9cc48f;
+    --ok-soft: #22301f;
+    --warn: #e0b45a;
+    --warn-soft: #33290f;
+    --bad: #e08a78;
+    --bad-soft: #3a1f19;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #1f1915;
+  --surface: #29221c;
+  --panel: #2f2720;
+  --ink: #f2ebe2;
+  --ink-soft: #b5a695;
+  --accent: #dfa273;
+  --accent-soft: #3d2c1f;
+  --line: #3d332a;
+  --ok: #9cc48f;
+  --ok-soft: #22301f;
+  --warn: #e0b45a;
+  --warn-soft: #33290f;
+  --bad: #e08a78;
+  --bad-soft: #3a1f19;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; }
+
+body {
+  width: 1200px;
+  height: 750px;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+}
+
+.stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 1200px;
+  height: 750px;
+  padding: 40px 48px;
+}
+
+/* ---------- header strip ---------- */
+
+.hd {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.hd h1 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 26px;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.hd .meta {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  color: var(--ink-soft);
+}
+
+/* ---------- surfaces ---------- */
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.card-hd {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.card-bd { padding: 16px 18px; }
+
+.mono { font-family: var(--mono); }
+.soft { color: var(--ink-soft); }
+
+/* ---------- pills and badges ---------- */
+
+.pill {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  line-height: 1;
+  padding: 5px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  background: var(--surface);
+  white-space: nowrap;
+}
+
+.pill.acc { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.pill.ok { background: var(--ok-soft); border-color: transparent; color: var(--ok); }
+.pill.warn { background: var(--warn-soft); border-color: transparent; color: var(--warn); }
+.pill.bad { background: var(--bad-soft); border-color: transparent; color: var(--bad); }
+
+/* ---------- tables ---------- */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+th {
+  text-align: left;
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+tr:last-child td { border-bottom: 0; }
+
+/* ---------- code ---------- */
+
+pre {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  line-height: 1.55;
+  white-space: pre;
+  color: var(--ink);
+}
+
+pre .kw { color: var(--accent); }
+pre .cm { color: var(--ink-soft); }

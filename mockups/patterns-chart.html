@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mockup: AI pattern discovery, from analysis to action</title>
+<link rel="stylesheet" href="mock.css">
+<link rel="stylesheet" href="patterns.css">
+<style>
+  .stage { padding: 36px 48px; }
+  .two { display: grid; grid-template-columns: 756px 1fr; gap: 32px; align-items: center; }
+  .cardbox { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 26px 28px 24px; }
+  .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0 0 6px; }
+  .title { font-family: var(--serif); font-weight: 600; font-size: 30px; letter-spacing: -0.015em; line-height: 1.1; margin: 0; }
+  .heat { --lblw: 196px; --cellw: 96px; --gap: 10px; --cellh: 38px; margin-top: 6px; }
+  .heat .ch { font-size: 13.5px; }
+  .heat .lbl { font-size: 14.5px; }
+  .heat .c { font-size: 14px; }
+  .read { --readw: 624px; margin-top: 18px; padding-top: 12px; }
+  .read b { font-size: 21px; }
+  .read span { font-size: 13.5px; }
+  .side { padding: 4px 0 4px 22px; border-left: 3px solid var(--accent); }
+  .side b { display: block; font-weight: 600; font-size: 17px; margin-bottom: 10px; }
+  .side p { margin: 0; font-size: 15.5px; line-height: 1.6; color: var(--ink-soft); }
+  html.play .side { animation: p-rise 0.45s 3.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
+</style>
+<script src="play.js"></script>
+</head>
+<body>
+<div class="stage">
+  <div class="two">
+    <div class="cardbox">
+      <p class="eyebrow">Synthetic showcase &middot; pattern discovery</p>
+      <p class="title">Where teams are building alike</p>
+
+      <div class="heat" id="heat">
+        <div class="ch"></div><div class="ch">Harbor</div><div class="ch">Cedar</div><div class="ch">Summit</div><div class="ch">Meadow</div>
+        <div class="row r1"><span class="lbl">AI workflow</span><span class="c v5">10</span><span class="c v4">7</span><span class="c v3">6</span><span class="c v3">5</span></div>
+        <div class="row r2"><span class="lbl">Retrieval</span><span class="c v3">5</span><span class="c v2">4</span><span class="c v3">6</span><span class="c v2">3</span></div>
+        <div class="row r3"><span class="lbl">AI-assisted build</span><span class="c v2">3</span><span class="c v3">5</span><span class="c v1">2</span><span class="c v2">4</span></div>
+        <div class="row r4"><span class="lbl">Direct prompt</span><span class="c v2">4</span><span class="c v2">3</span><span class="c v1">2</span><span class="c v2">3</span></div>
+        <div class="row r5"><span class="lbl">Data questions</span><span class="c v1">2</span><span class="c v2">3</span><span class="c v1">2</span><span class="c v2">3</span></div>
+        <div class="row r6"><span class="lbl">Prediction</span><span class="c v2">3</span><span class="c v1">2</span><span class="c v1">1</span><span class="c v2">4</span></div>
+        <div class="box" id="box" aria-hidden="true"></div>
+      </div>
+
+      <p class="read" id="read"><b>28 workflow showcases &rarr; compare approaches</b><span>A pattern to investigate. A working group to consider.</span></p>
+      <svg class="arrow" id="arrow" aria-hidden="true"><path id="arrowPath" d=""/></svg>
+    </div>
+
+    <div class="side">
+      <b>From analysis to action</b>
+      <p>Helps leaders see where teams could compare approaches, share lessons, and explore reusable components. The recommendations shown here illustrate how I connect an analytical finding to a possible working group; they do not claim that these fictional groups were launched.</p>
+    </div>
+  </div>
+</div>
+<script src="patterns.js"></script>
+</body>
+</html>

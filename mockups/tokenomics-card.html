@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mockup: What drives AI usage?</title>
+<link rel="stylesheet" href="mock.css">
+<style>
+  .stage { padding: 46px 64px; }
+  .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0 0 8px; }
+  .title { font-family: var(--serif); font-weight: 600; font-size: 42px; letter-spacing: -0.015em; line-height: 1.1; margin: 0 0 6px; }
+  .sub { font-size: 17px; color: var(--ink-soft); margin: 0 0 18px; }
+  svg.scatter { display: block; width: 100%; }
+  .frame { stroke: var(--ink-soft); stroke-width: 1; fill: none; opacity: 0.5; }
+  .grid { stroke: var(--line); stroke-width: 1; }
+  .med { stroke: var(--accent); stroke-width: 1.5; stroke-dasharray: 6 5; }
+  .dot, .leak { fill: var(--ink-soft); opacity: 0.75; }
+  .tick { font-family: var(--sans); font-size: 13px; fill: var(--ink-soft); }
+  .axl { font-family: var(--sans); font-size: 14px; fill: var(--ink-soft); }
+  .ab circle { fill: var(--surface); stroke: var(--accent); stroke-width: 2; }
+  .ab text { font-family: var(--sans); font-size: 13px; font-weight: 600; fill: var(--accent); }
+  .cap { text-align: center; font-size: 16px; color: var(--ink); margin: 8px 0 0; }
+  .foot { margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 14px; color: var(--ink-soft); }
+
+  /* ---- motion (html.play only): the dots appear, the two medians cut the
+     map into four, then A and B are called out. ---- */
+  @keyframes fade { from { opacity: 0; } }
+  @keyframes pop { from { opacity: 0; transform: scale(0.6); } 70% { transform: scale(1.1); } }
+  html.play .eyebrow, html.play .title, html.play .sub { animation: fade 0.5s both; }
+  html.play .frame, html.play .grid, html.play .tick, html.play .axl { animation: fade 0.5s 0.3s both; }
+  html.play .dots { animation: fade 1.0s 0.6s both; }
+  html.play .med { animation: fade 0.6s 1.8s both; }
+  html.play .ab { transform-box: fill-box; transform-origin: center; animation: pop 0.45s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  html.play .ab.b { animation-delay: 2.6s; }
+  html.play .ab.a { animation-delay: 2.9s; }
+  html.play .cap { animation: fade 0.5s 3.3s both; }
+  html.play .foot { animation: fade 0.5s 3.7s both; }
+</style>
+<script src="play.js"></script>
+<script src="tokenomics.js"></script>
+</head>
+<body>
+<div class="stage">
+  <p class="eyebrow">Exploratory study, synthetic data</p>
+  <p class="title">What drives AI usage?</p>
+  <p class="sub">A first map of task complexity and consumption</p>
+
+  <svg class="scatter" viewBox="0 0 1072 380" data-x0="120" data-x1="1040" data-lgmin="3" data-lgmax="6.05" data-y0="322" data-y1="40" aria-hidden="true">
+    <rect class="frame" x="120" y="40" width="920" height="282"/>
+    <line class="grid" x1="422" y1="40" x2="422" y2="322"/>
+    <line class="grid" x1="724" y1="40" x2="724" y2="322"/>
+    <line class="grid" x1="1026" y1="40" x2="1026" y2="322"/>
+    <line class="med" x1="120" y1="181" x2="1040" y2="181"/>
+    <text class="tick" x="106" y="46" text-anchor="end">3</text>
+    <text class="tick" x="106" y="186" text-anchor="end">2</text>
+    <text class="tick" x="106" y="327" text-anchor="end">1</text>
+    <text class="axl" x="40" y="181" transform="rotate(-90 40 181)" text-anchor="middle">Task complexity</text>
+    <text class="tick" x="120" y="348">1k</text>
+    <text class="tick" x="422" y="348" text-anchor="middle">10k</text>
+    <text class="tick" x="724" y="348" text-anchor="middle">100k</text>
+    <text class="tick" x="1026" y="348" text-anchor="middle">1m</text>
+    <text class="axl" x="580" y="376" text-anchor="middle">Total tokens per user, log scale</text>
+  </svg>
+  <p class="cap">A + B: same average score, different task volume</p>
+  <p class="foot">Original chart illustration, entirely synthetic data. Every dot is a fictional user.</p>
+</div>
+<script>
+  (function () {
+    var svg = document.querySelector('svg.scatter');
+    var mx = window.drawScatter(svg, 210, 6);
+    var NS = 'http://www.w3.org/2000/svg';
+    var l = document.createElementNS(NS, 'line');
+    l.setAttribute('class', 'med'); l.setAttribute('x1', mx); l.setAttribute('x2', mx); l.setAttribute('y1', 40); l.setAttribute('y2', 322);
+    svg.appendChild(l);
+    /* A and B: same complexity, different volume, one each side of the median */
+    [['B', mx - 46], ['A', mx + 56]].forEach(function (p) {
+      var g = document.createElementNS(NS, 'g'); g.setAttribute('class', 'ab ' + p[0].toLowerCase());
+      var c = document.createElementNS(NS, 'circle'); c.setAttribute('cx', p[1]); c.setAttribute('cy', 268); c.setAttribute('r', 16);
+      var t = document.createElementNS(NS, 'text'); t.setAttribute('x', p[1]); t.setAttribute('y', 273); t.setAttribute('text-anchor', 'middle'); t.textContent = p[0];
+      g.appendChild(c); g.appendChild(t); svg.appendChild(g);
+    });
+  })();
+</script>
+</body>
+</html>

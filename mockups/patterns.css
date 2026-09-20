@@ -1,0 +1,73 @@
+/* AI pattern discovery: the "where teams are building alike" card, shared by
+   the thumbnail (patterns-card.html) and the detail page (patterns-chart.html).
+   Sizes come from custom properties so the detail page can run it smaller. */
+
+.stage { padding: 44px 60px; }
+.eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0 0 8px; }
+.title { font-family: var(--serif); font-weight: 600; font-size: 40px; letter-spacing: -0.015em; line-height: 1.1; margin: 0; }
+
+.heat {
+  --lblw: 250px; --cellw: 118px; --gap: 12px; --cellh: 44px;
+  --heatw: calc(var(--lblw) + 4 * var(--cellw) + 4 * var(--gap));
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--lblw) repeat(4, var(--cellw));
+  column-gap: var(--gap);
+  row-gap: var(--gap);
+  width: var(--heatw);
+  margin-top: 10px;
+}
+.heat .ch { font-size: 15px; color: var(--ink-soft); text-align: center; padding-bottom: 2px; }
+.heat .row { display: contents; }
+.heat .lbl { font-size: 16px; color: var(--ink); align-self: center; }
+.heat .c {
+  height: var(--cellh);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 15.5px; color: var(--ink);
+  border-radius: 6px;
+  background: rgba(140, 80, 51, var(--a));
+}
+.heat .v1 { --a: 0.07; }
+.heat .v2 { --a: 0.12; }
+.heat .v3 { --a: 0.18; }
+.heat .v4 { --a: 0.26; }
+.heat .v5 { --a: 0.36; }
+:root[data-theme="dark"] .heat .c { background: rgba(223, 162, 115, var(--a)); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .heat .c { background: rgba(223, 162, 115, var(--a)); }
+}
+.heat .box {
+  position: absolute; pointer-events: none;
+  border: 2px solid var(--accent); border-radius: 8px;
+}
+
+.read {
+  width: var(--readw, 770px);
+  margin: 24px 0 0; padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.read b { display: block; font-weight: 500; font-size: 26px; line-height: 1.2; color: var(--accent); }
+.read span { display: block; margin-top: 5px; font-size: 15px; color: var(--ink-soft); }
+
+svg.arrow { position: absolute; left: 0; top: 0; overflow: visible; pointer-events: none; }
+svg.arrow path { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; }
+
+/* ---- motion (html.play only): the grid fills row by row, the top row is
+   boxed, the arrow draws down to the read, then the read. ---- */
+@keyframes p-rise { from { opacity: 0; transform: translateY(6px); } }
+@keyframes p-fade { from { opacity: 0; } }
+@keyframes p-box { from { opacity: 0; transform: scale(1.04); } }
+@keyframes p-draw { from { stroke-dashoffset: var(--len); opacity: 0; } 3% { opacity: 1; } to { stroke-dashoffset: 0; } }
+html.play .eyebrow, html.play .title, html.play .heat .ch { animation: p-fade 0.5s both; }
+html.play .heat .row > * { animation: p-rise 0.35s cubic-bezier(0.16, 1, 0.3, 1) both; }
+html.play .heat .r1 > * { animation-delay: 0.45s; }
+html.play .heat .r2 > * { animation-delay: 0.67s; }
+html.play .heat .r3 > * { animation-delay: 0.89s; }
+html.play .heat .r4 > * { animation-delay: 1.11s; }
+html.play .heat .r5 > * { animation-delay: 1.33s; }
+html.play .heat .r6 > * { animation-delay: 1.55s; }
+html.play .heat .box { animation: p-box 0.4s 2.0s cubic-bezier(0.16, 1, 0.3, 1) both; }
+html.play svg.arrow path { stroke-dasharray: var(--len); animation: p-draw 0.7s 2.35s ease-out both; }
+html.play .read { animation: p-fade 0.01s 3.05s both; }
+html.play .read b { animation: p-fade 0.45s 3.05s both; }
+html.play .read span { animation: p-fade 0.45s 3.3s both; }
