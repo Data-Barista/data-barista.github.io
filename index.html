@@ -10,10 +10,12 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://data-barista.github.io/">
   <meta property="og:image" content="https://data-barista.github.io/assets/mock-pre-meeting-brief.png">
-  <meta name="theme-color" content="#fcfaf6" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#1f1915" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f4f0e8">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="style.css?v=9">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=10">
 </head>
 <body>
 
@@ -35,14 +37,26 @@
     <a href="#build">How I build</a>
     <a href="https://github.com/Data-Barista" target="_blank" rel="noopener noreferrer">GitHub</a>
   </nav>
+  <button class="motion" type="button" aria-pressed="true"><span class="motion-dot" aria-hidden="true"></span>Motion <span class="motion-state">on</span></button>
 </header>
 
 <main>
   <section class="hero">
+    <div class="hero-copy">
     <h1><a href="https://www.linkedin.com/in/katiezhang" target="_blank" rel="noopener noreferrer">Katie&nbsp;Zhang</a></h1>
     <p class="lede">AI lets me build more of what I&rsquo;m curious about.</p>
     <p class="lede-2">Explore what I&rsquo;m making, how I think, and what I&rsquo;m learning along the way.</p>
+    </div>
+    <div class="observatory" data-observatory aria-hidden="true">
+      <img class="observatory-poster" src="assets/observatory.png?v=1" alt="" width="1068" height="1120" decoding="async" fetchpriority="high">
+    </div>
   </section>
+  <nav class="sections" aria-label="Portfolio sections">
+    <a href="#workflow">AI workflow</a>
+    <a href="#analytics">Data analytics</a>
+    <a href="#personal">Personal</a>
+    <a href="#build">How I build</a>
+  </nav>
 
   <section id="workflow" aria-labelledby="t-workflow">
     <h2 id="t-workflow">AI workflow</h2>
@@ -57,7 +71,6 @@
         <figure class="tile-fig">
           <div class="tile-shot live" data-src="mockups/pre-meeting-brief.html">
             <picture>
-              <source srcset="assets/mock-pre-meeting-brief-dark.png?v=2" media="(prefers-color-scheme: dark)">
               <img class="poster" src="assets/mock-pre-meeting-brief.png?v=2" alt="" width="1800" height="1125" loading="lazy" decoding="async">
             </picture>
           </div>
@@ -72,7 +85,6 @@
         <figure class="tile-fig">
           <div class="tile-shot live" data-src="mockups/virtual-pmo.html">
             <picture>
-              <source srcset="assets/mock-virtual-pmo-dark.png" media="(prefers-color-scheme: dark)">
               <img class="poster" src="assets/mock-virtual-pmo.png" alt="" width="1800" height="1125" loading="lazy" decoding="async">
             </picture>
           </div>
@@ -88,7 +100,6 @@
         <figure class="tile-fig">
           <div class="tile-shot live" data-src="mockups/tp-package.html">
             <picture>
-              <source srcset="assets/mock-tp-package-dark.png" media="(prefers-color-scheme: dark)">
               <img class="poster" src="assets/mock-tp-package.png" alt="" width="1800" height="1125" loading="lazy" decoding="async">
             </picture>
           </div>
@@ -105,7 +116,6 @@
         <figure class="tile-fig">
           <div class="tile-shot live" data-src="mockups/hoteling.html">
             <picture>
-              <source srcset="assets/mock-hoteling-dark.png" media="(prefers-color-scheme: dark)">
               <img class="poster" src="assets/mock-hoteling.png" alt="" width="1800" height="1125" loading="lazy" decoding="async">
             </picture>
           </div>
@@ -154,7 +164,6 @@
         <figure class="tile-fig">
           <div class="tile-shot live" data-src="mockups/training-card.html">
             <picture>
-              <source srcset="assets/mock-training-card-dark.png" media="(prefers-color-scheme: dark)">
               <img class="poster" src="assets/mock-training-card.png" alt="" width="1800" height="1125" loading="lazy" decoding="async">
             </picture>
           </div>
@@ -170,7 +179,6 @@
         <figure class="tile-fig">
           <div class="tile-shot live" data-src="mockups/tokenomics-card.html">
             <picture>
-              <source srcset="assets/mock-tokenomics-card-dark.png" media="(prefers-color-scheme: dark)">
               <img class="poster" src="assets/mock-tokenomics-card.png" alt="" width="1800" height="1125" loading="lazy" decoding="async">
             </picture>
           </div>
@@ -186,7 +194,6 @@
         <figure class="tile-fig">
           <div class="tile-shot live" data-src="mockups/patterns-card.html">
             <picture>
-              <source srcset="assets/mock-patterns-card-dark.png" media="(prefers-color-scheme: dark)">
               <img class="poster" src="assets/mock-patterns-card.png" alt="" width="1800" height="1125" loading="lazy" decoding="async">
             </picture>
           </div>
@@ -202,7 +209,6 @@
         <figure class="tile-fig">
           <div class="tile-shot live" data-src="mockups/risk-card.html">
             <picture>
-              <source srcset="assets/mock-risk-card-dark.png" media="(prefers-color-scheme: dark)">
               <img class="poster" src="assets/mock-risk-card.png" alt="" width="1800" height="1125" loading="lazy" decoding="async">
             </picture>
           </div>
@@ -253,7 +259,6 @@
 <dialog class="proj" id="d-cos" aria-labelledby="t-cos">
   <div class="proj-hero live" data-src="mockups/tp-rules.html?play">
     <picture>
-      <source srcset="assets/mock-tp-rules-dark.png" media="(prefers-color-scheme: dark)">
       <img class="poster" src="assets/mock-tp-rules.png" alt="" width="1800" height="1125" loading="lazy">
     </picture>
   </div>
@@ -270,7 +275,6 @@
 <dialog class="proj" id="d-pmo" aria-labelledby="t-pmo">
   <div class="proj-hero live" data-src="mockups/pmo-graphs.html?play">
     <picture>
-      <source srcset="assets/mock-pmo-graphs-dark.png" media="(prefers-color-scheme: dark)">
       <img class="poster" src="assets/mock-pmo-graphs.png" alt="" width="1800" height="1125" loading="lazy">
     </picture>
   </div>
@@ -287,7 +291,6 @@
 <dialog class="proj" id="d-brief" aria-labelledby="t-brief">
   <div class="proj-hero live" data-src="mockups/pre-meeting-brief.html?play">
     <picture>
-      <source srcset="assets/mock-pre-meeting-brief-dark.png?v=2" media="(prefers-color-scheme: dark)">
       <img class="poster" src="assets/mock-pre-meeting-brief.png?v=2" alt="" width="1800" height="1125" loading="lazy">
     </picture>
   </div>
@@ -304,7 +307,6 @@
 <dialog class="proj" id="d-hotel" aria-labelledby="t-hotel">
   <div class="proj-hero live" data-src="mockups/hoteling.html?play">
     <picture>
-      <source srcset="assets/mock-hoteling-dark.png" media="(prefers-color-scheme: dark)">
       <img class="poster" src="assets/mock-hoteling.png" alt="" width="1800" height="1125" loading="lazy">
     </picture>
   </div>
@@ -387,7 +389,6 @@
 <dialog class="proj" id="d-tokens" aria-labelledby="t-tokens">
   <div class="proj-hero live" data-src="mockups/tokenomics-chart.html?play">
     <picture>
-      <source srcset="assets/mock-tokenomics-chart-dark.png" media="(prefers-color-scheme: dark)">
       <img class="poster" src="assets/mock-tokenomics-chart.png" alt="" width="1800" height="1125" loading="lazy">
     </picture>
   </div>
@@ -404,7 +405,6 @@
 <dialog class="proj" id="d-patterns" aria-labelledby="t-patterns">
   <div class="proj-hero live" data-src="mockups/patterns-chart.html?play">
     <picture>
-      <source srcset="assets/mock-patterns-chart-dark.png" media="(prefers-color-scheme: dark)">
       <img class="poster" src="assets/mock-patterns-chart.png" alt="" width="1800" height="1125" loading="lazy">
     </picture>
   </div>
@@ -421,7 +421,6 @@
 <dialog class="proj" id="d-risk" aria-labelledby="t-risk">
   <div class="proj-hero live" data-src="mockups/risk-model.html?play">
     <picture>
-      <source srcset="assets/mock-risk-model-dark.png" media="(prefers-color-scheme: dark)">
       <img class="poster" src="assets/mock-risk-model.png" alt="" width="1800" height="1125" loading="lazy">
     </picture>
   </div>
@@ -452,6 +451,31 @@
 <script>
   document.documentElement.classList.add('js');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- motion: one switch for the hero sculpture and the project animations.
+     Off by default for visitors who ask for reduced motion; remembered per browser. ---- */
+  var motionOn = !reduce;
+  try { var savedMotion = localStorage.getItem('db-motion'); if (savedMotion === 'on') motionOn = true; if (savedMotion === 'off') motionOn = false; } catch (e) {}
+  window.DataBarista = { motion: motionOn };
+  document.documentElement.setAttribute('data-motion', motionOn ? 'on' : 'off');
+  function motion() { return window.DataBarista.motion; }
+  (function () {
+    var btn = document.querySelector('.motion');
+    if (!btn) return;
+    function paint() {
+      btn.setAttribute('aria-pressed', motion() ? 'true' : 'false');
+      btn.querySelector('.motion-state').textContent = motion() ? 'on' : 'off';
+    }
+    paint();
+    btn.addEventListener('click', function () {
+      var on = !motion();
+      window.DataBarista.motion = on;
+      document.documentElement.setAttribute('data-motion', on ? 'on' : 'off');
+      try { localStorage.setItem('db-motion', on ? 'on' : 'off'); } catch (e) {}
+      paint();
+      document.dispatchEvent(new CustomEvent('db:motion', { detail: { on: on } }));
+    });
+  })();
 
   /* Below-the-fold tiles rise in on scroll,
      everything else is visible, and a timer catches whatever the observer missed. */
@@ -499,7 +523,7 @@
     }
 
     function play(el) {
-      if (reduce) return;
+      if (!motion()) return;
       var f = el.querySelector('iframe');
       if (!f || !el.classList.contains('ready')) { el.dataset.play = '1'; return; }
       delete el.dataset.play;
@@ -513,9 +537,19 @@
       lives.forEach(function (el) { ro.observe(el); });
     }
 
+    function unmount(el) {
+      var f = el.querySelector('iframe');
+      if (f) f.remove();
+      el.classList.remove('ready');
+      delete el.dataset.play;
+    }
     var near = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { if (e.isIntersecting) { mount(e.target); near.unobserve(e.target); } });
+      entries.forEach(function (e) { if (e.isIntersecting && motion()) { mount(e.target); near.unobserve(e.target); } });
     }, { rootMargin: '300px' });
+    document.addEventListener('db:motion', function (e) {
+      if (e.detail.on) { lives.forEach(function (el) { near.observe(el); seen.observe(el); }); }
+      else { lives.forEach(unmount); }
+    });
     var seen = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) { if (e.isIntersecting) { play(e.target); seen.unobserve(e.target); } });
     }, { threshold: 0.5 });
@@ -542,15 +576,20 @@
 
   /* ---- variant B: loops play only while on screen, never under reduced motion ---- */
   (function () {
-    var vids = document.querySelectorAll('.tile-shot video');
-    if (reduce) return;
+    var vids = Array.prototype.slice.call(document.querySelectorAll('.tile-shot video'));
+    var shown = [];
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         var v = e.target;
-        if (e.isIntersecting) { v.play().catch(function () {}); } else { v.pause(); }
+        if (e.isIntersecting) { if (shown.indexOf(v) < 0) shown.push(v); if (motion()) v.play().catch(function () {}); }
+        else { shown = shown.filter(function (x) { return x !== v; }); v.pause(); }
       });
     }, { threshold: 0.5 });
     vids.forEach(function (v) { io.observe(v); });
+    document.addEventListener('db:motion', function (e) {
+      if (e.detail.on) { shown.forEach(function (v) { v.play().catch(function () {}); }); }
+      else { vids.forEach(function (v) { v.pause(); }); }
+    });
   })();
 
   /* ---- expand: the tile's thumbnail and title morph into the dialog hero
@@ -561,7 +600,7 @@
 
     function name(el, n) { if (el) el.style.viewTransitionName = n; }
     function transition(fn) {
-      if (reduce || !document.startViewTransition) { fn(); return { finished: Promise.resolve() }; }
+      if (reduce || !motion() || !document.startViewTransition) { fn(); return { finished: Promise.resolve() }; }
       var vt = document.startViewTransition(fn);
       /* a transition that gets superseded rejects these; that is expected, not an error */
       vt.ready.catch(function () {}); vt.updateCallbackDone.catch(function () {}); vt.finished.catch(function () {});
@@ -579,9 +618,9 @@
         name(shot, ''); name(title, '');
         dlg.showModal();
         name(hero, 'shot'); name(dtitle, 'title');
-        if (hero.classList.contains('live')) window.mountHero(hero);
+        if (hero.classList.contains('live') && motion()) window.mountHero(hero);
         var v = hero.querySelector('video');
-        if (v && !reduce) v.play().catch(function () {});
+        if (v && motion()) v.play().catch(function () {});
       });
       var settle = function () { name(hero, ''); name(dtitle, ''); };
       vt.finished.then(settle, settle);
@@ -649,6 +688,7 @@
     }
   })();
 </script>
+<script type="module" src="observatory.js?v=1"></script>
 
 </body>
 </html>
