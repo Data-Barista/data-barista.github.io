@@ -1,19 +1,17 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-motion="on">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Katie Zhang · Data Barista</title>
 <meta name="description" content="Katie Zhang, AI product manager in financial services. Four builds you can open, all on synthetic or fictional data, or built for her family.">
+<meta name="color-scheme" content="light">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <style>
   :root {
     --bg: #faf7f2; --card: #ffffff; --ink: #2b2420; --muted: #6f645c; --line: #e8e0d6;
     --accent: #a85a24; --chip: #f3ece3; --shadow: 0 1px 2px rgba(43,36,32,.06), 0 8px 24px rgba(43,36,32,.06);
-  }
-  @media (prefers-color-scheme: dark) {
-    :root { --bg: #1b1715; --card: #24201d; --ink: #f1ebe4; --muted: #b0a59a; --line: #3a332e;
-      --accent: #e3955e; --chip: #312a25; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25); }
+    color-scheme: light;
   }
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
@@ -22,21 +20,41 @@
   a { color: var(--accent); text-decoration: none; }
   a:hover { text-decoration: underline; }
   .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
-  header { padding: 56px 0 28px; }
-  .brand { color: var(--muted); font-size: .9rem; letter-spacing: .04em; text-transform: uppercase; margin: 0 0 10px; }
-  h1 { font-size: clamp(2rem, 5vw, 2.8rem); line-height: 1.1; margin: 0 0 14px; letter-spacing: -.01em; }
-  .lede { font-size: 1.12rem; max-width: 640px; margin: 0 0 18px; }
-  .note { color: var(--muted); max-width: 640px; margin: 0 0 20px; }
+
+  /* top bar */
+  .top { display: flex; align-items: center; justify-content: space-between; padding: 18px 0 0; }
+  .brand { display: inline-flex; align-items: center; gap: 8px; color: var(--ink); font-weight: 650; }
+  .brand:hover { text-decoration: none; }
+  .mark-steam { fill: var(--accent); }
+  .motion { display: inline-flex; align-items: center; gap: .45rem; font: 500 .78rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+    color: var(--muted); background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: .45rem .75rem; cursor: pointer; }
+  .motion:hover { border-color: var(--accent); color: var(--accent); }
+  .motion-dot { width: .5rem; height: .5rem; border-radius: 50%; background: var(--accent); }
+  .motion[aria-pressed="false"] .motion-dot { background: transparent; box-shadow: inset 0 0 0 1.5px var(--line); }
+
+  /* hero: copy left, rotating cup right (the Espresso Observatory, observatory.js) */
+  .hero { display: grid; grid-template-columns: 1fr; gap: 1rem 3rem; align-items: center; padding: 24px 0 8px; }
+  @media (min-width: 60rem) { .hero { grid-template-columns: minmax(0, 1.1fr) minmax(20rem, 1fr); padding-top: 32px; } }
+  h1 { font-size: clamp(2rem, 5vw, 2.9rem); line-height: 1.1; margin: 0 0 14px; letter-spacing: -.01em; }
+  .lede { font-size: 1.12rem; max-width: 600px; margin: 0 0 16px; }
+  .note { color: var(--muted); max-width: 600px; margin: 0 0 18px; }
   .top-links { display: flex; gap: 18px; flex-wrap: wrap; font-weight: 600; }
-  .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; padding: 12px 0 40px; }
-  @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } header { padding-top: 36px; } }
+  .observatory { position: relative; width: 100%; max-width: 30rem; aspect-ratio: 1 / 1.05; justify-self: end; }
+  @media (max-width: 60rem) { .observatory { aspect-ratio: 4 / 3; max-height: 42vh; max-width: none; justify-self: stretch; } }
+  .observatory canvas, .observatory-poster { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .observatory-poster { object-fit: contain; transition: opacity 500ms ease; }
+  .observatory canvas { touch-action: pan-y; opacity: 0; transition: opacity 500ms ease; }
+  .observatory.is-live canvas { opacity: 1; }
+  .observatory.is-live .observatory-poster { opacity: 0; }
+
+  /* tiles */
+  .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; padding: 16px 0 40px; }
+  @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
   .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden;
     box-shadow: var(--shadow); display: flex; flex-direction: column; }
   .shot { aspect-ratio: 16 / 10; background: var(--chip); border-bottom: 1px solid var(--line); overflow: hidden; }
-  .shot img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }
-  .shot.pair { display: grid; grid-template-columns: 2fr 3fr; }
-  .shot.pair img:first-child { border-right: 1px solid var(--line); }
-  .shot.pair img:last-child { object-position: 50% center; }
+  .shot img, .shot video { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }
+  .shot.center img { object-position: center; }
   .body { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
   .kicker { color: var(--muted); font-size: .8rem; letter-spacing: .05em; text-transform: uppercase; margin: 0; }
   h2 { font-size: 1.3rem; margin: 0; line-height: 1.25; }
@@ -44,32 +62,67 @@
   .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
   .chip { background: var(--chip); color: var(--muted); font-size: .8rem; padding: 3px 9px; border-radius: 999px; }
   .links { display: flex; gap: 16px; flex-wrap: wrap; margin-top: auto; padding-top: 6px; font-weight: 600; }
-  .versions { display: grid; gap: 10px; }
-  .versions b { font-weight: 650; }
-  /* Pipeline figure for the brief agent (drawn from the repo README's six steps) */
-  .pipe { aspect-ratio: 16 / 10; background: var(--chip); border-bottom: 1px solid var(--line);
-    padding: 18px; display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 1fr; gap: 10px; align-content: center; }
-  .step { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font-size: .82rem; line-height: 1.3; }
-  .step b { display: block; font-size: .9rem; margin-bottom: 2px; }
-  .step span { color: var(--muted); }
-  .step.out { border-color: var(--accent); }
-  @media (max-width: 420px) { .pipe { grid-template-columns: repeat(2, 1fr); aspect-ratio: auto; } }
+
+  /* agent pipeline diagram (from the ir-memo-agent README flowchart) */
+  .flow { width: 100%; height: 100%; display: block; }
+  .flow .box rect { fill: var(--card); stroke: var(--line); stroke-width: 1.2; }
+  .flow .box text { fill: var(--ink); font: 600 12px -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+  .flow .box text.sub { fill: var(--muted); font-weight: 400; font-size: 10.5px; }
+  .flow .box.out rect { stroke: var(--accent); }
+  .flow .wire { fill: none; stroke: #cdbfae; stroke-width: 1.4; }
+  .flow .wire.live { stroke: var(--accent); stroke-dasharray: 4 6; opacity: .55; }
+  html[data-motion="on"] .flow .wire.live { animation: dash 1.6s linear infinite; }
+  html[data-motion="on"] .flow .box rect { animation: lit 9s ease-in-out infinite; animation-delay: var(--d, 0s); }
+  @keyframes dash { to { stroke-dashoffset: -20; } }
+  @keyframes lit { 0%, 12%, 100% { stroke: var(--line); fill: var(--card); } 4%, 8% { stroke: var(--accent); fill: #fbf2ea; } }
+  html[data-motion="on"] .flow .box.out rect { animation-name: litout; }
+  @keyframes litout { 0%, 12%, 100% { stroke: var(--accent); fill: var(--card); } 4%, 8% { stroke: var(--accent); fill: #f6e3d3; } }
+
   footer { border-top: 1px solid var(--line); padding: 26px 0 44px; color: var(--muted); font-size: .92rem; }
-  footer p { margin: 0 0 8px; }
+  footer p { margin: 0; }
 </style>
+<script>
+  /* Motion: one switch for the cup, the map loop and the diagram. Off by default for visitors who
+     ask for reduced motion; remembered per browser. Set before paint so nothing flickers. */
+  (function () {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var on = !reduce;
+    try { var s = localStorage.getItem('db-motion'); if (s === 'on') on = true; if (s === 'off') on = false; } catch (e) {}
+    window.DataBarista = { motion: on };
+    document.documentElement.setAttribute('data-motion', on ? 'on' : 'off');
+  })();
+</script>
 </head>
 <body>
 <div class="wrap">
-  <header>
-    <p class="brand">Data Barista</p>
-    <h1>Katie Zhang</h1>
-    <p class="lede">AI product manager in financial services. I build what I scope: agents, retrieval, text-to-SQL, and the evals that say whether they work.</p>
-    <p class="note">Four builds you can open. Each runs on synthetic or fictional data, or was built for my family.</p>
-    <nav class="top-links">
-      <a href="https://www.linkedin.com/in/katiezhang">LinkedIn</a>
-      <a href="https://github.com/Data-Barista">GitHub</a>
-    </nav>
-  </header>
+  <div class="top">
+    <a class="brand" href="/">
+      <svg viewBox="0 0 64 64" width="22" height="22" aria-hidden="true" focusable="false">
+        <rect x="20" y="18" width="5" height="8" rx="2.5" class="mark-steam"/>
+        <rect x="29" y="13" width="5" height="13" rx="2.5" class="mark-steam"/>
+        <rect x="38" y="8" width="5" height="18" rx="2.5" class="mark-steam"/>
+        <path d="M16 32h30v10a10 10 0 0 1-10 10h-10a10 10 0 0 1-10-10z" fill="currentColor"/>
+        <path d="M46 36c7 0 7 10 0 10" stroke="currentColor" stroke-width="4" fill="none"/>
+      </svg>
+      <span>Data Barista</span>
+    </a>
+    <button class="motion" type="button" aria-pressed="true"><span class="motion-dot" aria-hidden="true"></span>Motion <span class="motion-state">on</span></button>
+  </div>
+
+  <section class="hero">
+    <div class="hero-copy">
+      <h1>Katie Zhang</h1>
+      <p class="lede">AI product manager in financial services. I build what I scope: agents, retrieval, text-to-SQL, and the evals that say whether they work.</p>
+      <p class="note">Four builds you can open. Each runs on synthetic or fictional data, or was built for my family.</p>
+      <nav class="top-links">
+        <a href="https://www.linkedin.com/in/katiezhang">LinkedIn</a>
+        <a href="https://github.com/Data-Barista">GitHub</a>
+      </nav>
+    </div>
+    <div class="observatory" data-observatory aria-hidden="true">
+      <img class="observatory-poster" src="assets/observatory.png?v=1" alt="" width="1068" height="1120" decoding="async" fetchpriority="high">
+    </div>
+  </section>
 
   <main class="grid">
     <article class="card">
@@ -84,7 +137,9 @@
     </article>
 
     <article class="card">
-      <div class="shot"><img src="assets/mock-ai-investment-map.jpg" alt="AI Investment Map: a fictional bank's AI portfolio as a treemap with a timeline" loading="lazy"></div>
+      <div class="shot">
+        <video class="loop" src="assets/loop-ai-investment-map.webm" poster="assets/mock-ai-investment-map.jpg" muted loop playsinline preload="metadata" aria-label="AI Investment Map: a fictional bank's AI portfolio as a treemap, with the timeline playing"></video>
+      </div>
       <div class="body">
         <p class="kicker">Portfolio view</p>
         <h2>AI Investment Map</h2>
@@ -95,37 +150,50 @@
     </article>
 
     <article class="card">
-      <div class="pipe" role="img" aria-label="The agent's six steps: analyst bio, forecast table, earnings Q and A, peer research, valuation, quality check, then the memo">
-        <div class="step"><b>1. Analyst bio</b><span>web search</span></div>
-        <div class="step"><b>2. Forecasts</b><span>spreadsheet</span></div>
-        <div class="step"><b>3. Earnings Q&amp;A</b><span>SEC EDGAR, with fallbacks</span></div>
-        <div class="step"><b>4. Peer research</b><span>web search</span></div>
-        <div class="step"><b>5. Valuation</b><span>market prices</span></div>
-        <div class="step out"><b>6. Quality check</b><span>then a one-page memo</span></div>
+      <div class="shot">
+        <svg class="flow" viewBox="0 0 520 325" role="img" aria-label="Pipeline: an orchestrator runs five source steps (analyst bio, forecasts, earnings Q and A, peer research, valuation), Claude drafts the memo, a quality check reviews it, and the memo exports to Word">
+          <!-- wires -->
+          <path class="wire live" d="M122 162 C 148 162, 148 37, 172 37"/>
+          <path class="wire live" d="M122 162 C 148 162, 148 99, 172 99"/>
+          <path class="wire live" d="M122 162 L 172 162"/>
+          <path class="wire live" d="M122 162 C 148 162, 148 225, 172 225"/>
+          <path class="wire live" d="M122 162 C 148 162, 148 287, 172 287"/>
+          <path class="wire" d="M342 37 C 362 37, 362 74, 382 74"/>
+          <path class="wire" d="M342 162 C 362 162, 362 74, 382 74"/>
+          <path class="wire" d="M342 225 C 362 225, 362 74, 382 74"/>
+          <path class="wire" d="M342 99 C 362 99, 362 162, 382 162"/>
+          <path class="wire" d="M342 287 C 362 287, 362 162, 382 162"/>
+          <path class="wire live" d="M443 97 L 443 139"/>
+          <path class="wire live" d="M443 185 L 443 227"/>
+          <!-- boxes -->
+          <g class="box" style="--d:0s"><rect x="12" y="135" width="110" height="54" rx="9"/><text x="24" y="158">Orchestrator</text><text class="sub" x="24" y="176">streams progress</text></g>
+          <g class="box" style="--d:.9s"><rect x="172" y="14" width="170" height="46" rx="9"/><text x="184" y="33">1. Analyst bio</text><text class="sub" x="184" y="50">web search</text></g>
+          <g class="box" style="--d:1.6s"><rect x="172" y="76" width="170" height="46" rx="9"/><text x="184" y="95">2. Forecasts</text><text class="sub" x="184" y="112">spreadsheet</text></g>
+          <g class="box" style="--d:2.3s"><rect x="172" y="139" width="170" height="46" rx="9"/><text x="184" y="158">3. Earnings Q&amp;A</text><text class="sub" x="184" y="175">SEC EDGAR, then fallbacks</text></g>
+          <g class="box" style="--d:3s"><rect x="172" y="202" width="170" height="46" rx="9"/><text x="184" y="221">4. Peer research</text><text class="sub" x="184" y="238">web search</text></g>
+          <g class="box" style="--d:3.7s"><rect x="172" y="264" width="170" height="46" rx="9"/><text x="184" y="283">5. Valuation</text><text class="sub" x="184" y="300">market prices</text></g>
+          <g class="box" style="--d:4.6s"><rect x="382" y="51" width="122" height="46" rx="9"/><text x="394" y="70">Draft</text><text class="sub" x="394" y="87">Claude, with sources</text></g>
+          <g class="box" style="--d:5.4s"><rect x="382" y="139" width="122" height="46" rx="9"/><text x="394" y="158">6. Quality check</text><text class="sub" x="394" y="175">JSON verdict</text></g>
+          <g class="box out" style="--d:6.2s"><rect x="382" y="227" width="122" height="46" rx="9"/><text x="394" y="246">One-page memo</text><text class="sub" x="394" y="263">exports to Word</text></g>
+        </svg>
       </div>
       <div class="body">
         <p class="kicker">Client intelligence</p>
         <h2>Pre-meeting brief agent</h2>
-        <p>Drafts the one-page memo an investor relations team hands the CFO before an analyst meeting. Six steps, each with its own source and fallback, a confidence badge on every section, and a quality check before the memo exports to Word. Fictional bank, fictional analysts.</p>
+        <p>Drafts a one-page pre-meeting brief on a sell-side analyst from public sources: SEC filings, earnings call Q&amp;A, peer research and market prices. Six steps, each with a fallback, a confidence badge on every section, and a quality check before it exports to Word. Fictional bank, fictional analysts.</p>
         <div class="chips"><span class="chip">FastAPI</span><span class="chip">React</span><span class="chip">Claude API</span></div>
         <div class="links"><a href="https://github.com/Data-Barista/ir-memo-agent">Code</a></div>
       </div>
     </article>
 
     <article class="card">
-      <div class="shot pair">
-        <img src="assets/mock-spelling-bee.jpg" alt="Spelling bee version 1: badge gyms" loading="lazy">
-        <img src="assets/mock-oracles-bee.jpg" alt="The Oracle's Bee, version 2: title screen in a Greek temple" loading="lazy">
-      </div>
+      <div class="shot center"><img src="assets/mock-oracles-bee.jpg" alt="The Oracle's Bee: title screen in a Greek temple, with the bee and the Oracle's jar" loading="lazy"></div>
       <div class="body">
         <p class="kicker">Built for my family</p>
-        <h2>Spelling bee, two versions</h2>
-        <div class="versions">
-          <p><b>v1.</b> Voice in, voice out. The app says the word, the child spells it aloud, and every letter is checked.</p>
-          <p><b>v2, The Oracle's Bee.</b> A spelling adventure in the Greek myths. A deterministic judge checks every letter, and nothing a character says is generated live.</p>
-        </div>
-        <div class="chips"><span class="chip">React</span><span class="chip">Three.js</span><span class="chip">Speech to text</span></div>
-        <div class="links"><a href="https://github.com/Data-Barista/spelling-bee">v1 code</a><a href="https://oracles-bee.vercel.app">Play v2 (keyboard)</a></div>
+        <h2>The Oracle's Bee</h2>
+        <p>A spelling adventure in the Greek myths. A deterministic judge checks every letter, every myth fact cites its source, and nothing a character says is generated live.</p>
+        <div class="chips"><span class="chip">React</span><span class="chip">Three.js</span><span class="chip">Vercel</span></div>
+        <div class="links"><a href="https://oracles-bee.vercel.app">Play it (keyboard)</a></div>
       </div>
     </article>
   </main>
@@ -134,5 +202,28 @@
     <p>Every project here uses synthetic or fictional data, or was built for my family. © 2026 Data Barista</p>
   </footer>
 </div>
+
+<script>
+  (function () {
+    var btn = document.querySelector('.motion');
+    var vid = document.querySelector('video.loop');
+    function on() { return window.DataBarista.motion; }
+    function paint() {
+      btn.setAttribute('aria-pressed', on() ? 'true' : 'false');
+      btn.querySelector('.motion-state').textContent = on() ? 'on' : 'off';
+      if (vid) { if (on()) { var p = vid.play(); if (p && p.catch) p.catch(function () {}); } else { vid.pause(); } }
+    }
+    btn.addEventListener('click', function () {
+      var next = !on();
+      window.DataBarista.motion = next;
+      document.documentElement.setAttribute('data-motion', next ? 'on' : 'off');
+      try { localStorage.setItem('db-motion', next ? 'on' : 'off'); } catch (e) {}
+      document.dispatchEvent(new CustomEvent('db:motion', { detail: { on: next } }));
+      paint();
+    });
+    paint();
+  })();
+</script>
+<script type="module" src="observatory.js"></script>
 </body>
 </html>
